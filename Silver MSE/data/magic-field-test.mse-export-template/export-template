@@ -110,7 +110,7 @@ script:
 		replace@(match:"V", replace:{"\{"+v_rep("V")+"\}"})
 
 	lackey_bot_mana_filter := replace@(match:"<sym(-auto)?>([0-9WUBRGCSHEQTXYZEDVI/]+)</sym(-auto)?>", replace:{"\{"+_2+"}"})+
-		replace@(match:"([0-9HSCWUBRGXYZEDV/])", in_context:"\{[0-9HSCWUBRGXYZEDVI/]*<match>[0-9HSCWUBRGXYZEDVI/]*}", replace:{"\{"+v_rep(_1)+"}"})+
+		replace@(match:"([0-9HSCWUBRGXYZEDVI/])", in_context:"\{[0-9HSCWUBRGXYZEDVI/]*<match>[0-9HSCWUBRGXYZEDVI/]*}", replace:{"\{"+v_rep(_1)+"}"})+
 		replace@(match:"}\{/}\{", replace:"/")+
 		replace@(match:"\{([0-9])}\{([0-9])}", replace:{"\{"+_1+_2+"}"})+
 		replace@(match:"\{\{", replace:"\{")+
@@ -124,6 +124,7 @@ script:
 		else if cond == "black" then "\{Black\} "
 		else if cond == "red" then "\{Red\} "
 		else if cond == "green" then "\{Green\} "
+		else if cond == "silver" then "\{Silver\} "
 		else if cond == "white, blue" then "\{White/Blue\} "
 		else if cond == "blue, black" then "\{Blue/Black\} "
 		else if cond == "black, red" then "\{Black/Red\} "
@@ -134,6 +135,18 @@ script:
 		else if cond == "black, green" then "\{Black/Green\} "
 		else if cond == "white, red" then "\{Red/White\} "
 		else if cond == "blue, green" then "\{Green/Blue\} "
+		### 2 color silver combos
+		else if cond == "white, silver" then "\{White/Silver\} "
+		else if cond == "blue, silver" then "\{Blue/Silver\} "
+		else if cond == "black, silver" then "\{Black/Silver\} "
+		else if cond == "red, silver" then "\{Red/Silver\} "
+		else if cond == "green, silver" then "\{Green/Silver\} "
+		else if cond == "white, silver" then "\{White/Silver\} "
+		else if cond == "blue, silver" then "\{Blue/Silver\} "
+		else if cond == "black, silver" then "\{Black/Silver\} "
+		else if cond == "red, silver" then "\{Red/Silver\} "
+		else if cond == "green, silver" then "\{Green/Silver\} "
+		### Regular 3 color combos
 		else if cond == "white, black, red" then "\{White/Black/Red\} "
 		else if cond == "blue, red, green" then "\{Blue/Red/Green\} "
 		else if cond == "white, black, green" then "\{Black/Green/White\} "
@@ -144,14 +157,42 @@ script:
 		else if cond == "black, red, green" then "\{Black/Red/Green\} "
 		else if cond == "white, red, green" then "\{Red/Green/White\} "
 		else if cond == "white, blue, green" then "\{Green/White/Blue\} "
+		### Silver 3 color combos
+		else if cond == "white, blue, silver" then "\{White/Blue/Silver\} "
+		else if cond == "blue, black, silver" then "\{Blue/Black/Silver\} "
+		else if cond == "black, red, silver" then "\{Black/Red/Silver\} "
+		else if cond == "red, green, silver" then "\{Red/Green/Silver\} "
+		else if cond == "white, green, silver" then "\{Green/White/Silver\} "
+		else if cond == "white, black, silver" then "\{White/Black/Silver\} "
+		else if cond == "blue, red, silver" then "\{Blue/Red/Silver\} "
+		else if cond == "black, green, silver" then "\{Black/Green/Silver\} "
+		else if cond == "white, red, silver" then "\{Red/White/Silver\} "
+		else if cond == "blue, green, silver" then "\{Green/Blue/Silver\} "
+		### Regular 4 color combos
+		else if cond == "blue, black, red, green" then "\{Blue/Black/Red/Green\}"
+		else if cond == "white, blue, black, red" then "\{White/Blue/Black/Red\}"
+		else if cond == "black, red, green, white" then "\{Black/Red/Green/White\}"
+		else if cond == "red, green, white, blue, " then "\{Red/Green/Blue/White\}"
+		else if cond == "green, white, blue, black" then "\{Green/White/Blue/Black\}"
+		### Silver 4 color combos
+		else if cond == "white, black, red, silver" then "\{White/Black/Red/Silver\} "
+		else if cond == "blue, red, green, silver" then "\{Blue/Red/Green/Silver\} "
+		else if cond == "white, black, green, silver" then "\{Black/Green/White/Silver\} "
+		else if cond == "white, blue, red, silver" then "\{Red/White/Blue/Silver\} "
+		else if cond == "blue, black, green, silver" then "\{Green/Blue/Black/Silver\} "
+		else if cond == "white, blue, black, silver" then "\{White/Blue/Black/Silver\} "
+		else if cond == "blue, black, red, silver" then "\{Blue/Black/Red/Silver\} "
+		else if cond == "black, red, green, silver" then "\{Black/Red/Green/Silver\} "
+		else if cond == "white, red, green, silver" then "\{Red/Green/White/Silver\} "
+		else if cond == "white, blue, green, silver" then "\{Green/White/Blue/Silver\} "
 		else ""
 	}
-	silver_patch := {
-		is_silver := contains(card.casting_cost, match:"I")
-		if not is_silver then input
-		else if input == "" then "\{Silver\} "
-		else replace(input, match:"\{", replace:"\{Silver/")
-	}
+	###	silver_patch := {
+	###		is_silver := contains(card.casting_cost, match:"I") or contains(card.card_color, match:"Silver")
+	###		if not is_silver then input
+	###		else if input == "" then "\{Silver\} "
+	###		else replace(input, match:"\{", replace:"\{Silver/")
+	###	}
 	trim_zeroes := replace@(match: "^00?", replace: "")+
 		replace@(match: "a?/[0-9b]+", replace: "")
 	corrected_card_number := { 
@@ -232,7 +273,7 @@ script:
 		+ "\"power\": " + (if card.power == "*" then "\"★\"" else if card.power == "" then "\"\"" else if (to_number(card.power) or else false != card.power) then "\"" + card.power + "\"" else card.power) + ", "
 		+ "\"toughness\": " + (if card.toughness == "*" then "\"★\"" else if card.toughness == "" then "\"\"" else if (to_number(card.toughness) or else false != card.toughness) then "\"" + card.toughness + "\"" else card.toughness) + ", "
 		+ "\"loyalty\": " + (if (to_number(card.loyalty) or else false != card.loyalty) then "\"" + card.loyalty + "\""  else card.loyalty) + ", "
-		+ "\"color\": \"" + (if contains(card.super_type, match:"Land") then "" else silver_patch(indicator_color_name(card.card_color))) + "\", "
+		+ "\"color\": \"" + (if contains(card.super_type, match:"Land") then "" else (indicator_color_name(card.card_color))) + "\", "
 		+ "\"cmc\": " + cmc(card.casting_cost) + ", "
 		+ "\"cardType\": \"" + type_trim(card.super_type) + "\", "
 		+ (if contains(card.shape, match: "split") or contains(card.shape, match:"double") or contains(card.shape, match:"adventure") or contains(card.shape, match:"aftermath") then secondCard())
@@ -263,7 +304,7 @@ script:
 		+ "\"power2\": " + (if card.power_2 == "*" then "\"★\"" else if card.power_2 == "" then "\"\"" else if (to_number(card.power_2) or else false != card.power_2) then "\"" + card.power_2 + "\"" else card.power_2) + ", "
 		+ "\"toughness2\": " + (if card.toughness_2 == "*" then "\"★\"" else if card.toughness_2 == "" then "\"\"" else if (to_number(card.toughness_2) or else false != card.toughness_2) then "\"" + card.toughness_2 + "\"" else card.toughness_2) + ", "
 		+ "\"loyalty2\": " + (if (to_number(card.loyalty_2) or else false != card.loyalty_2) then "\"" + card.loyalty_2 + "\""  else card.loyalty_2) + ", "
-		+ "\"color2\": \"" + (if contains(card.super_type, match:"Land") then "" else silver_patch(indicator_color_name(card.card_color_2))) + "\", "
+		+ "\"color2\": \"" + (if contains(card.super_type, match:"Land") then "" else (indicator_color_name(card.card_color_2))) + "\", "
 		+ "\"cmc2\": " + cmc(card.casting_cost_2) + ", "
 		+ "\"cardType2\": \"" + type_trim(card.super_type_2) + "\", "
 	}
@@ -276,7 +317,7 @@ script:
 	####################################
 	file_name := {
 		(
-			if token_export() then fixed_set_code()+corrected_card_number()
+			if token_export() then fixed_set_code() + corrected_card_number()
 			else corrected_card_number()
 		)
 		+".jpg"

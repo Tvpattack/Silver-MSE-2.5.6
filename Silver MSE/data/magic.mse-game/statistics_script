@@ -24,32 +24,59 @@ space_prefix :=
 	B 		: "​​​​"
 	R 		: "​​​​​"
 	G 		: "​​​​​​"
-	WU		: "​​​​​​​"
-	WB		: "​​​​​​​​"
-	WR		: "​​​​​​​​​"
-	WG		: "​​​​​​​​​​"
-	UB		: "​​​​​​​​​​​"
-	UR		: "​​​​​​​​​​​​"
-	UG		: "​​​​​​​​​​​​​"
-	BR		: "​​​​​​​​​​​​​​"
-	BG		: "​​​​​​​​​​​​​​​"
-	RG		: "​​​​​​​​​​​​​​​​"
-	WUB		: "​​​​​​​​​​​​​​​​​"
-	WUR		: "​​​​​​​​​​​​​​​​​​"
-	WUG		: "​​​​​​​​​​​​​​​​​​​"
-	WBR		: "​​​​​​​​​​​​​​​​​​​​"
-	WBG		: "​​​​​​​​​​​​​​​​​​​​​"
-	WRG		: "​​​​​​​​​​​​​​​​​​​​​​"
-	UBR		: "​​​​​​​​​​​​​​​​​​​​​​​"
-	UBG		: "​​​​​​​​​​​​​​​​​​​​​​​​"
-	URG		: "​​​​​​​​​​​​​​​​​​​​​​​​​"
-	BRG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​"
-	WUBR	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​"
-	WUBG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
-	WURG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
-	WBRG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
-	UBRG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
-	WUBRG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	I 		: "​​​​​​​"
+	WU		: "​​​​​​​​"
+	WB		: "​​​​​​​​​"
+	WR		: "​​​​​​​​​​"
+	WG		: "​​​​​​​​​​​"
+	UB		: "​​​​​​​​​​​​"
+	UR		: "​​​​​​​​​​​​​"
+	UG		: "​​​​​​​​​​​​​​"
+	BR		: "​​​​​​​​​​​​​​​"
+	BG		: "​​​​​​​​​​​​​​​​"
+	RG		: "​​​​​​​​​​​​​​​​​"
+	IW 		: "​​​​​​​​​​​​​​​​​​"
+	IU 		: "​​​​​​​​​​​​​​​​​​​"
+	IB 		: "​​​​​​​​​​​​​​​​​​​​"
+	IR 		: "​​​​​​​​​​​​​​​​​​​​​"
+	IG 		: "​​​​​​​​​​​​​​​​​​​​​​"
+	WUB		: "​​​​​​​​​​​​​​​​​​​​​​​"
+	WUR		: "​​​​​​​​​​​​​​​​​​​​​​​​"
+	WUG		: "​​​​​​​​​​​​​​​​​​​​​​​​​"
+	WBR		: "​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	WBG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	WRG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	UBR		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	UBG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	URG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	BRG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWU		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWB		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWR		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IUB		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IUR		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IUG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IBR		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IBG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IRG		: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	WUBR	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	WUBG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	WURG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	WBRG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	UBRG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWUB	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWUR	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWUG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWBR	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWBG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IWRG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IUBR	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​"
+	IUBG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​" 
+	IURG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​" 
+	IBRG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​" 
+	WUBRG	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​" 
+	WUBRGI	: "​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​" 
 ]
 
 # The casting cost
@@ -167,7 +194,7 @@ cda_to_color_statistic :=
 	context := "(" + regex_escape(card_name) + "|" + regex_escape(legend_filter(card_name)) + ") ?<match>(\\.|。)"
 	
 	if lang_setting("is_cda_colorless")(text, in_context: context) then "C" else (
-	if lang_setting("is_cda_all_colors")(text, in_context: context) then "WUBRG" else (
+	if lang_setting("is_cda_all_colors")(text, in_context: context) then "WUBRGI" else (
 	
 	cda_colors := lang_setting("cda_colors")(text, in_context: context)
 	if cda_colors == "" then "" else (
@@ -182,6 +209,7 @@ distil_color_words_statistic :=
 	if lang_setting("is_black")()		then colors := colors + "B"
 	if lang_setting("is_red")()			then colors := colors + "R"
 	if lang_setting("is_green")()		then colors := colors + "G"
+	if lang_setting("is_silver")()		then colors := colors + "I"
 	
 	if length(colors) > 1 and colors.0 == "C" then substring(colors, begin: 1) else colors
 }
@@ -194,6 +222,7 @@ distil_colors_statistic :=
 	if contains(match: "B")			then colors := colors + "B"
 	if contains(match: "R")			then colors := colors + "R"
 	if contains(match: "G")			then colors := colors + "G"
+	if contains(match: "I")			then colors := colors + "I"
 	
 	if length(colors) > 1 and colors.0 == "C" then substring(colors, begin: 1) else colors
 }
@@ -217,7 +246,7 @@ color_category_statistic :=
 }
 face_color_category_statistic :=
 {
-	artifact := chosen(choice:"artifact") and not (chosen(choice:"white") or chosen(choice:"blue") or chosen(choice:"black") or chosen(choice:"red") or chosen(choice:"green"))
+	artifact := chosen(choice:"artifact") and not (chosen(choice:"white") or chosen(choice:"blue") or chosen(choice:"black") or chosen(choice:"red") or chosen(choice:"green") or chosen(choice:"silver"))
 	land :=			chosen(choice:"land")
 	multi :=		chosen(choice:"multicolor")
 	hybrid :=		chosen(choice:"hybrid")
@@ -225,8 +254,8 @@ face_color_category_statistic :=
 	blue :=			chosen(choice:"blue")
 	black :=		chosen(choice:"black")
 	red :=			chosen(choice:"red")
-	green :=		chosen(choice:"green")
-	multi_color :=	count_chosen(choices:"white, blue, black, red, green")
+	silver :=		chosen(choice:"silver")
+	multi_color :=	count_chosen(choices:"white, blue, black, red, silver")
 	if		land						then	all_en_space_statistic(lang_setting("land"))
 	else if	multi						then	all_en_space_statistic(lang_setting("multicolor"))
 	else if	multi_color == 2
@@ -238,6 +267,7 @@ face_color_category_statistic :=
 	else if	black						then	all_en_space_statistic(lang_setting("black"))
 	else if	red							then	all_en_space_statistic(lang_setting("red"))
 	else if	green						then	all_en_space_statistic(lang_setting("green"))
+	else if	silver						then	all_en_space_statistic(lang_setting("silver"))
 	else										all_en_space_statistic(lang_setting("colorless"))
 }
 
@@ -252,7 +282,7 @@ face_omniverse_color_statistic :=
 {
 	if		chosen(choice: "land")											then	all_en_space_statistic(lang_setting("land"))
 	else if chosen(choice: "multicolor")									then	all_en_space_statistic(lang_setting("multicolor"))
-	else if count_chosen(choices: "white, blue, black, red, green, pink, purple, yellow, orange, brown") == 2
+	else if count_chosen(choices: "white, blue, black, red, green, silver, pink, purple, yellow, orange, brown") == 2
 		and	chosen(choice: "artifact")										then	all_en_space_statistic(lang_setting("hybrid"))		##hybrid artifacts would show as their first color
 	else if chosen(choice: "hybrid")										then	all_en_space_statistic(lang_setting("hybrid"))
 	else if (chosen(choice: "artifact")
@@ -261,6 +291,7 @@ face_omniverse_color_statistic :=
 					or	chosen(choice: "black")
 					or	chosen(choice: "red")
 					or	chosen(choice: "green")
+					or	chosen(choice: "silver")
 					or	chosen(choice: "pink")
 					or	chosen(choice: "purple")
 					or	chosen(choice: "yellow")
@@ -271,6 +302,7 @@ face_omniverse_color_statistic :=
 	else if chosen(choice: "black")											then	all_en_space_statistic(lang_setting("black"))
 	else if chosen(choice: "red")											then	all_en_space_statistic(lang_setting("red"))
 	else if chosen(choice: "green")											then	all_en_space_statistic(lang_setting("green"))
+	else if chosen(choice: "silver")										then	all_en_space_statistic(lang_setting("silver"))
 	else if chosen(choice: "pink")											then	all_en_space_statistic(lang_setting("pink"))
 	else if chosen(choice: "purple")										then	all_en_space_statistic(lang_setting("purple"))
 	else if chosen(choice: "yellow")										then	all_en_space_statistic(lang_setting("yellow"))
@@ -290,12 +322,14 @@ cc_colored_pips_statistic :=
 				symbol_aggregate_statistic(cc, symbol: "B") +
 				symbol_aggregate_statistic(cc, symbol: "R") +
 				symbol_aggregate_statistic(cc, symbol: "G") +
+				symbol_aggregate_statistic(cc, symbol: "I") +
 				symbol_aggregate_statistic(cc, symbol: "C") +
 				symbol_aggregate_statistic(cc2, symbol: "W") +
 				symbol_aggregate_statistic(cc2, symbol: "U") +
 				symbol_aggregate_statistic(cc2, symbol: "B") +
 				symbol_aggregate_statistic(cc2, symbol: "R") +
 				symbol_aggregate_statistic(cc2, symbol: "G") +
+				symbol_aggregate_statistic(cc2, symbol: "I") +
 				symbol_aggregate_statistic(cc2, symbol: "C")
 	substring(result, begin: 1)
 }
@@ -321,6 +355,7 @@ ability_colored_pips_statistic :=
 		symbol_aggregate_statistic(costs[x], symbol: "B") +
 		symbol_aggregate_statistic(costs[x], symbol: "R") +
 		symbol_aggregate_statistic(costs[x], symbol: "G") +
+		symbol_aggregate_statistic(costs[x], symbol: "I") +
 		symbol_aggregate_statistic(costs[x], symbol: "C")
 	)
 	substring(result, begin: 1))
@@ -381,10 +416,11 @@ devotion_filters_statistic := [
 	B: filter_text@(match:"B")
 	R: filter_text@(match:"R")
 	G: filter_text@(match:"G")
+	I: filter_text@(match:"I")
 	C: filter_text@(match:"C")
 ]
-color_pip_break_statistic := break_text@(match:"([A-Z0-9]/|[|])*[WUBRG]")
-wubrgc_break_statistic := break_text@(match:"[WUBRGC]")
+color_pip_break_statistic := break_text@(match:"([A-Z0-9]/|[|])*[WUBRGI]")
+wubrgc_break_statistic := break_text@(match:"[WUBRGIC]")
 symbol_aggregate_statistic :=
 {
 	devotion := devotion_filters_statistic[symbol](input)
@@ -466,6 +502,7 @@ face_mana_production_list_statistic :=
 	(if lang_setting("is_swamp")(sub)		or contains_element(produced_symbols, element:"B")	then ",B" else "") +
 	(if lang_setting("is_mountain")(sub)	or contains_element(produced_symbols, element:"R")	then ",R" else "") +
 	(if lang_setting("is_forest")(sub)		or contains_element(produced_symbols, element:"G")	then ",G" else "") +
+	(if lang_setting("is_fault")(sub)		or contains_element(produced_symbols, element:"I")	then ",I" else "") +
 	(if lang_setting("is_wastes")(name)		or contains_element(produced_symbols, element:"C")	then ",C" else "") +
 	(if can_Any																					then ","+all_en_space_statistic(lang_setting("mana_any")) else "") +
 	(if can_Chosen																				then ","+all_en_space_statistic(lang_setting("mana_chosen")) else "")
