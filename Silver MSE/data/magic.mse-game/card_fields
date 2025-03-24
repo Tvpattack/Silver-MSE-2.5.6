@@ -134,8 +134,9 @@ card field:
 	choice: blue
 	choice: black
 	choice: red
-	choice:
-		name: green
+	choice: green
+	choice: 
+		name: silver
 		line below: true
 	choice: artifact
 	choice: land
@@ -179,8 +180,9 @@ card field:
 	choice: blue
 	choice: black
 	choice: red
+	choice: green
 	choice:
-		name: green
+		name: silver
 		line below: true
 	choice: artifact
 	choice: land
@@ -224,8 +226,9 @@ card field:
 	choice: blue
 	choice: black
 	choice: red
+	choice: green
 	choice:
-		name: green
+		name: silver
 		line below: true
 	choice: artifact
 	choice: land
@@ -269,8 +272,9 @@ card field:
 	choice: blue
 	choice: black
 	choice: red
+	choice: green
 	choice:
-		name: green
+		name: silver
 		line below: true
 	choice: artifact
 	choice: land
@@ -730,8 +734,9 @@ card field:
 	choice: blue
 	choice: black
 	choice: red
+	choice: green
 	choice:
-		name: green
+		name: silver
 		line below: true
 	choice: artifact
 	choice: land
@@ -775,8 +780,9 @@ card field:
 	choice: blue
 	choice: black
 	choice: red
+	choice: green
 	choice:
-		name: green
+		name: silver
 		line below: true
 	choice: artifact
 	choice: land
@@ -820,8 +826,9 @@ card field:
 	choice: blue
 	choice: black
 	choice: red
+	choice: green
 	choice:
-		name: green
+		name: silver
 		line below: true
 	choice: artifact
 	choice: land
