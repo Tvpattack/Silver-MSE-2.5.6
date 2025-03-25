@@ -815,6 +815,7 @@ languages := [
 		is_black          : match@(match: "(?i)black")
 		is_red            : match@(match: "(?i)red")
 		is_green          : match@(match: "(?i)green")
+		is_silver          : match@(match: "(?i)silver")
 		is_colorless      : match@(match: "(?i)colorless")
 
 		is_cda_colorless  : match@(match: "(?i)is colorless")

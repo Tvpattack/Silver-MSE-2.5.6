@@ -24,46 +24,45 @@
 		replace@(match:"(, )?(multicolor|hybrid|artifact|land|horizontal|vertical|radial)", replace:"")
 
 watermark_colors := {
-	if face == false then face := card.card_color
-	trimmed := trim_colors(face)
-	if trimmed == "white" then "ww"
-	else if trimmed == "blue" then "uu"
-	else if trimmed == "black" then "bb"
-	else if trimmed == "red" then "rr"
-	else if trimmed == "green" then "gg"
-	else if trimmed == "silver" then "ii"
-	else if contains(face, match:"multi") or contains(face, match:"hybrid") or contains(face, match:", land") then hybrid_color(face:face)
-	else if contains(face, match:"artifact") then "aa"
-	else "cc"
-}@(face:false)
+	check_colors := card.card_color
+	if face != "" then check_colors := face
+	if	trim_colors(check_colors) == "white"			then	"ww"
+	else if trim_colors(check_colors) == "blue"			then	"uu"
+	else if trim_colors(check_colors) == "black"			then	"bb"
+	else if trim_colors(check_colors) == "red"			then	"rr"
+	else if trim_colors(check_colors) == "green"			then	"gg"
+	else if contains(check_colors, match:"multi")		or
+			contains(check_colors, match:"hybrid")	or
+			contains(check_colors, match:", land")	then	hybrid_color(face:face)
+	else if contains(check_colors, match:"artifact") then	"aa"
+	else								"cc"
+}@(face:"")
 hybrid_color := {
-	if 	trim_colors(card.card_color) == "white,	blue"			then "wu"
-	else if trim_colors(card.card_color) == "white,	black"			then "wb"
-	else if trim_colors(card.card_color) == "white,	red"			then "rw"
-	else if trim_colors(card.card_color) == "white,	green"			then "gw"
-	else if trim_colors(card.card_color) == "blue,	black"			then "ub"
-	else if trim_colors(card.card_color) == "blue,	red"			then "ur"
-	else if trim_colors(card.card_color) == "blue,	green"			then "gu"
-	else if trim_colors(card.card_color) == "black,	red"			then "br"
-	else if trim_colors(card.card_color) == "black,	green"			then "bg"
-	else if trim_colors(card.card_color) == "red,	green"			then "rg"
-	else if trim_colors(card.card_color) == "white,	blue,	reversed"	then "uw"
-	else if trim_colors(card.card_color) == "white,	black,	reversed"	then "bw"
-	else if trim_colors(card.card_color) == "white,	red,	reversed"	then "wr"
-	else if trim_colors(card.card_color) == "white,	green,	reversed"	then "wg"
-	else if trim_colors(card.card_color) == "blue,	black,	reversed"	then "bu"
-	else if trim_colors(card.card_color) == "blue,	red,	reversed"	then "ru"
-	else if trim_colors(card.card_color) == "blue,	green,	reversed"	then "ug"
-	else if trim_colors(card.card_color) == "black,	red,	reversed"	then "rb"
-	else if trim_colors(card.card_color) == "black,	green,	reversed"	then "bg"
-	else if trim_colors(card.card_color) == "red,	green,	reversed"	then "gr"
-	else if trim_colors(card.card_color) == "white,	silver,	reversed"	then "iw"
-	else if trim_colors(card.card_color) == "blue,	silver,	reversed"	then "iu"
-	else if trim_colors(card.card_color) == "black,	silver,	reversed"	then "ib"
-	else if trim_colors(card.card_color) == "red,	silver,	reversed"	then "ir"
-	else if trim_colors(card.card_color) == "green,	silver,	reversed"	then "ig"
-	else									 "mm"
-}
+	check_colors := card.card_color
+	if face != "" then check_colors := face
+	trimmed := trim_colors(check_colors)
+	if		trimmed == "white, blue"			then	"wu"
+	else if	trimmed == "white, black"			then	"wb"
+	else if	trimmed == "white, red"				then	"rw"
+	else if	trimmed == "white, green"			then	"gw"
+	else if	trimmed == "blue, black"			then	"ub"
+	else if	trimmed == "blue, red"				then	"ur"
+	else if	trimmed == "blue, green"			then	"gu"
+	else if	trimmed == "black, red"				then	"br"
+	else if	trimmed == "black, green"			then	"bg"
+	else if	trimmed == "red, green"				then	"rg"
+	else if	trimmed == "white, blue, reversed"	then	"uw"
+	else if	trimmed == "white, black, reversed"	then	"bw"
+	else if	trimmed == "white, red, reversed"	then	"wr"
+	else if	trimmed == "white, green, reversed"	then	"wg"
+	else if	trimmed == "blue, black, reversed"	then	"bu"
+	else if	trimmed == "blue, red, reversed"	then	"ru"
+	else if	trimmed == "blue, green, reversed"	then	"ug"
+	else if	trimmed == "black, red, reversed"	then	"rb"
+	else if	trimmed == "black, green, reversed"	then	"bg"
+	else if	trimmed == "red, green, reversed"	then	"gr"
+	else												"mm"
+}@(face:"")
 ########################################################################
 # Combining multiple colors (hybrids)
 ########################################################################
@@ -819,13 +818,12 @@ stamp_hybrid := [
 # Putting it all together.
 ########################################################################
 blend_colors := {
-	colors := sort_text( order: if card_is_wedge(input) then "(wbguri)" else "(wubrgi)"
+	colors := sort_text( order: if card_is_wedge(input) then "(wbgur)" else "(wubrg)"
 					, (if chosen(choice:"white"	)	then "w")
 					+ (if chosen(choice:"blue"	)	then "u")
 					+ (if chosen(choice:"black"	)	then "b")
 					+ (if chosen(choice:"red"	)	then "r")
-					+ (if chosen(choice:"green"	)	then "g")
-					+ (if chosen(choice:"silver")	then "i"))
+					+ (if chosen(choice:"green"	)	then "g"))
 	if multi and (hybrid or colors == "") then (
 		colors := colors + "m"
 	)
@@ -1040,16 +1038,15 @@ font_color_positions := [
 
 # Determine whether light or dark fonts should be used
 font_white	:= {
-	hybrid		:=		  chosen(choice:"hybrid"	)
-	artifact	:=		  chosen(choice:"artifact"	)
-	colors		:= sort_text( order: "(wubrgi)"
-				, (if chosen(choice:"white"	)	then "w")
-				+ (if chosen(choice:"blue"	)	then "u")
-				+ (if chosen(choice:"black"	)	then "b")
-				+ (if chosen(choice:"red"	)	then "r")
-				+ (if chosen(choice:"green"	)	then "g")
-				+ (if chosen(choice:"silver" )	then "i"))
-				+ (if artifact				then "a")
+	hybrid :=		chosen(choice:"hybrid"	)
+	artifact :=		chosen(choice:"artifact"	)
+	colors :=		sort_text( order: "(wubrg)"
+				,	(if chosen(choice:"white"	)	then "w")
+				+	(if chosen(choice:"blue"	)	then "u")
+				+	(if chosen(choice:"black"	)	then "b")
+				+	(if chosen(choice:"red"		)	then "r")
+				+	(if chosen(choice:"green"	)	then "g"))
+				+	(if artifact				then "a")
 	font_colors_white(
 		if		chosen(choice:"land")			then "l"
 		else if	input == "artifact, multicolor"	then "a"
