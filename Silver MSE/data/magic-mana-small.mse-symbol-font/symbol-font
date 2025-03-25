@@ -291,6 +291,29 @@ symbol:
 	code: Q
 	image: mana_q.png
 
+###################################################################################### Silver Hybrid Symbols
+symbol:
+	code: I/W
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_ww.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: I/U
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_uu.png", mask: "mask_hybrid.png") }
+symbol:
+	code: I/B
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_bb.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: I/R
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_rr.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: I/G
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_gg.png", mask: "mask_hybrid.png") }
+symbol:
+	code: I
+	image: mana_i.png
+
 ###################################################################################### Prismatic Symbols
 symbol:
 	code: W/U/B/R/G
@@ -974,7 +997,7 @@ symbol:
 	image: mana_c.png
 symbol:
 	image: mana_circle.png
-	code: [0-9]+(?!/[WUBRGSTQ2])|.
+	code: [0-9]+(?!/[WUBRGISTQ2])|.
 	regex: yes
 	draw text: 0
 	text margin left:   .2

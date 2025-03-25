@@ -191,7 +191,31 @@ symbol:
 	code: A
 	image: mana_chaos.png
 	image font size: 151.69
+
+###################################################################################### Silver Hybrid Symbols
+symbol:
+	code: I/W
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_ww.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: I/U
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_uu.png", mask: "mask_hybrid.png") }
+symbol:
+	code: I/B
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_bb.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: I/R
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_rr.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: I/G
+	image: { masked_blend(dark: "mana_ii.png", light: "mana_gg.png", mask: "mask_hybrid.png") }
+
 ###################################################################################### Phy Hybrid
+symbol:
+	code: I
+	image: mana_i.png
 symbol:
 	code: H/W/U
 	image: mana_phywu.png
