@@ -821,13 +821,14 @@ languages := [
 
 		is_cda_colorless  : match@(match: "(?i)is colorless")
 		is_cda_all_colors : match@(match: "(?i)is all colors")
-		cda_colors        : filter_text@(match: "is (white|blue|black|red|green)((,|, and| and) (white|blue|black|red|green))*")
+		cda_colors        : filter_text@(match: "is (white|blue|black|red|green|silver)((,|, and| and) (white|blue|black|red|green|silver))*")
 
 		white             : "White"
 		blue              : "Blue"
 		black             : "Black"
 		red               : "Red"
 		green             : "Green"
+		silver             : "Silver"
 		silver            : "Silver"
 		purple            : "Purple"
 		pink              : "Pink"
@@ -1034,7 +1035,7 @@ languages := [
 			+ "Yanling,"
 			+ "Zariel",
 			
-		word_lists_basic: ["Plains", "Island", "Swamp", "Mountain", "Forest"],
+		word_lists_basic: ["Plains", "Island", "Swamp", "Mountain", "Forest", "Fault"],
 		word_lists_race: [
 			  "Aetherborn,"
 			+ "Alien,"

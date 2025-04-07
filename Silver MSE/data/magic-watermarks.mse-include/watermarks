@@ -7,7 +7,7 @@ choice images:
 	mana symbol red:			/magic-watermarks.mse-include/watermark_r.png
 	mana symbol green:			/magic-watermarks.mse-include/watermark_g.png
 	mana symbol colorless:		/magic-watermarks.mse-include/watermark_c.png
-	mana symbol silver:			/magic-watermarks.mse-include/watermark_f.png
+	mana symbol silver:			/magic-watermarks.mse-include/watermark_i.png
 	mana symbol snow:			script: set_combine(combine:"shadow", input:"/magic-watermarks.mse-include/watermark_s.png")
 
 	transparent mana symbol white:		script: set_alpha(alpha: 0.4, input:"/magic-watermarks.mse-include/watermark_w.png")
@@ -15,7 +15,7 @@ choice images:
 	transparent mana symbol black:		script: set_alpha(alpha: 0.4, input:"/magic-watermarks.mse-include/watermark_b.png")
 	transparent mana symbol red:		script: set_alpha(alpha: 0.4, input:"/magic-watermarks.mse-include/watermark_r.png")
 	transparent mana symbol green:		script: set_alpha(alpha: 0.4, input:"/magic-watermarks.mse-include/watermark_g.png")
-	transparent mana symbol silver:		script: set_alpha(alpha: 0.2, input:"/magic-watermarks.mse-include/watermark_f.png")
+	transparent mana symbol silver:		script: set_alpha(alpha: 0.2, input:"/magic-watermarks.mse-include/watermark_i.png")
 	
 	guild symbol The Azorius Senate (W/U):    	script: if set.blend_with_colors then spotlight_watermark_blend("/magic-watermarks.mse-include/watermark_azorius2.png") else set_combine(combine:"shadow", input:set_alpha(alpha: 0.35, input:"/magic-watermarks.mse-include/watermark_azorius2.png"))
 	guild symbol House Dimir (U/B):       		script: if set.blend_with_colors then spotlight_watermark_blend("/magic-watermarks.mse-include/watermark_dimir2.png") else set_combine(combine:"shadow", input:set_alpha(alpha: 0.35, input:"/magic-watermarks.mse-include/watermark_dimir2.png"))
