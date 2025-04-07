@@ -78,7 +78,6 @@ init script:
 
 		alias: "/magic-modules.mse-include/extras/alias/",
 		snow: "/magic-modules.mse-include/trims/snow/",
-		hands: "/magic-modules.mse-include/trims/hands/"
 		nyx: "/magic-modules.mse-include/trims/nyx/",
 		nyx_shifted: "/magic-modules.mse-include/trims/nyx/shifted/",
 		draft: "/magic-modules.mse-include/trims/conspiracy/",
@@ -87,7 +86,7 @@ init script:
 		ubstamp: "/magic-modules.mse-include/stamps/backs/375 ub/",
 		identity: "/magic-modules.mse-include/indicators/"
 		star: "/magic-modules.mse-include/trims/star/",
-
+		
 		arrow: "/magic-modules.mse-include/levels/arrows/1/"
 		arrow2: "/magic-modules.mse-include/levels/arrows/2/"
 		arrow3: "/magic-modules.mse-include/levels/arrows/3/"
@@ -132,9 +131,8 @@ init script:
 		crown: "crown.png",
 		stamp: "stamp.png",
 		ubstamp: "stamp.png",
-		identity: "identity.png",
+		identity: "identity.png"
 		star: "star.png",
-		hands: "hands.png"
 		
 		devoid: "card.png"
 		map: "card.png"
@@ -182,7 +180,6 @@ init script:
 		landless_ar[input] or else false
 	}
 	landless_ar := [
-		hands: true,
 		nyx: true,
 		nyx_shifted: true,
 		star: true,
@@ -290,9 +287,6 @@ init script:
 		chosen(styling.frames, choice:"nyx")
 		or (lang_setting("is_enchantment")(card.super_type) and set.auto_nyx)
 	}
-	is_hands := {
-		chosen(styling.frames, choice:"hands")
-	}
 	is_leveler := {
 		chosen(styling.frames, choice:"leveler")
 	}
@@ -339,7 +333,6 @@ init script:
 	curtain_plate := { color_background(type:"curtains", base_hybrid: card_hybrid) }
 	ub_background := { color_background(type:"beyond", base_hybrid: card_hybrid, folder:template_prefix["ub"]) }
 	draft_trim := { color_background(type:"draft", base_hybrid: card_hybrid, folder:template_prefix["draft"])}
-	hands_trim := { color_background(type:"hands", base_hybrid: card_hybrid, folder:template_prefix["hands"])}
 	module_nyx :=	 	{ 
 		type := "nyx"
 		if has_png(set.alternate_nyx)
@@ -355,7 +348,6 @@ init script:
 			folder:template_prefix["nyx"],
 		)
 	}
-	
 
 	miracle_plate_base := { color_background(type:"miracle", base_hybrid:card_hybrid, folder:template_prefix["miracle"])}
 	miracle_plate_snow := { color_background(type:"miracle_snow", base_hybrid:card_hybrid, folder:template_prefix["miracle"], blend_type:"miracle")}
@@ -938,7 +930,6 @@ styling field:
 	choice: universes beyond
 	choice: miracle
 	choice: nyx
-	choice: hands
 	choice: vehicle
 	choice: leveler
 	choice: snow
@@ -1742,13 +1733,6 @@ extra card field:
 	script: card.card_color
 extra card field:
 	type: choice
-	name: hands overlay
-	choice: hands
-	save value: false
-	editable: false
-	script: card.card_color
-extra card field:
-	type: choice
 	name: snow overlay
 	choice: snow
 	save value: false
@@ -2080,16 +2064,6 @@ extra card style:
 		z index: 330
 		visible: { not is_map() and not uses_expanded_art() and is_nyx() }
 		mask: { if is_snow() or is_custom_border() or is_draft() or is_vehicle() then twin_trim_mask() else main_trim_mask() }
-	hands overlay:
-		left: 0
-		top: 0
-		width: 375
-		height: 523
-		render style: image
-		image: { devoid_mask(hands_trim()) }
-		z index: 331
-		visible: { not is_map() and not uses_expanded_art() and is_hands()}
-		mask: { if is_custom_border() or is_draft() or is_vehicle() then twin_trim_mask() else main_trim_mask() }
 	snow overlay:
 		left: 0
 		top: 0
