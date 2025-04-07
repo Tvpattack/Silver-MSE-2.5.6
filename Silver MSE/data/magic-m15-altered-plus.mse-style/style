@@ -299,12 +299,18 @@ init script:
 	is_adventure2 := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "reversed")}
 	is_focus := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "focus")}
 	is_focus2 := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "reversed focus")}
-	is_nyx := { chosen(styling.frames, choice: "nyx") and not is_map() }
+	is_nyx := {
+		chosen(styling.frames, choice:"nyx")
+		or (lang_setting("is_enchantment")(card.super_type) and set.auto_nyx and not (lang_setting("is_creature")(card.super_type) and set.auto_star)) 
+	}
+	is_star := {
+		chosen(styling.altered_plus_frames, choice:"star")
+		or (lang_setting("is_enchantment")(card.super_type) and set.auto_star and (lang_setting("is_creature")(card.super_type) and set.auto_nyx))
+	}
 	is_sky := { chosen(styling.altered_plus_frames, choice: "sky") and not is_map() }
 	is_frontier := { chosen(styling.altered_plus_frames, choice: "frontier") and not is_map() }
 	is_frontier := { chosen(styling.altered_plus_frames, choice: "frontier") and not is_map() }
 	is_paradox := { chosen(styling.frames, choice: "paradox") and not is_map() }
-	is_star := { chosen(styling.altered_plus_frames, choice: "star") and not is_map() }
 	is_space := { chosen(styling.altered_plus_frames, choice: "space") and not is_map() }
 	is_path := { chosen(styling.altered_plus_frames, choice: "path") and not is_map() }
 	is_norm := { chosen(styling.altered_plus_frames, choice: "norm") and not is_map() }
@@ -312,7 +318,7 @@ init script:
 	is_lush := { chosen(styling.altered_plus_frames, choice: "lush") and not is_map() }
 	is_prototype := { chosen(styling.frames, choice: "prototype") and not is_map() }
 	is_vehicle := { (chosen(styling.frames, choice: "vehicle") or (chosen(styling.other_options, choice:"auto vehicles") and match_vehicle(card.sub_type))) and not is_map()}
-	is_vehicle := { (chosen(styling.frames, choice: "vehicle") or (chosen(styling.other_options, choice:"auto vehicles") and match_vehicle(card.sub_type))) and not is_map()}
+
 	is_familiar := { (chosen(styling.altered_plus_frames, choice: "familiar") or (chosen(styling.other_options, choice:"auto familiars") and contains(card.sub_type, match:"Entity"))) and not is_map()}
 	is_arcun := { (chosen(styling.altered_plus_frames, choice: "arcun overlay")) }
 	is_snow := { (chosen(styling.frames, choice: "snow") or (chosen(styling.other_options, choice:"auto snow") and match_snow(card.super_type))) and not is_map()}
