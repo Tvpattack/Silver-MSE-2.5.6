@@ -1,0 +1,20 @@
+﻿[CustomCards]
+	[
+		{
+			"name": "adsfdas",
+			"rarity": "common",
+			"mana_cost": "{I}{I}{I}{I}",
+			"type": "dfsaadfs",
+			"collector_number": "1",
+			"image_uris": {
+				"en": "https://Voyager-MTG.github.io/sets/DDD-files/img/1_adsfdas.png"
+			}
+		}
+	]
+[RareSlot(1)]
+[UncommonSlot(3)]
+[CommonSlot(10)]
+30 adsfdas
+[WildcardSlot(1)]
+10 adsfdas
+[LandSlot(1)]

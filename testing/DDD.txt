@@ -1,0 +1,5 @@
+{"meta":{"setID": "DDD", "title": "adsf"},
+"cards":[
+	{"fullName": "adsfdas", "cardName": "adsfdas", "manaCost": "{I}{I}{I}{I}", "typeLine": "dfsaadfs", "rarityLine": "*DDD C*", "rulesText": "sdfadfs", "flavorText": "*dsafdfs*\n", "power": "1", "toughness": "1", "loyalty": "", "color": "{Silver} ", "cmc": 4, "cardType": "dfsaadfs", "rarity": "common", "shape": "normal", "setID": "DDD", "cardID": "0", "notes": [], "artist": "dfadsf"}
+]
+}
