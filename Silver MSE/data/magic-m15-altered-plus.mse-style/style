@@ -16,9 +16,6 @@ depends on:
 	package: magic-watermarks.mse-include
 	version: 2007-09-23
 depends on:
-	package: magic-identity-new.mse-include
-	version: 2012-01-22
-depends on:
 	package: magic-mana-large.mse-symbol-font
 	version: 2007-09-23
 depends on:
@@ -31,8 +28,8 @@ depends on:
 	package: magic-pride.mse-include
 	version: 2021-05-26
 depends on:
-	package: magic-mana-large-dark.mse-symbol-font
-	version: 2015-12-13
+	package: magic-modules.mse-include
+	version: 2024-10-01
 depends on:
 	package: magic-blends.mse-include
 	version: 2015-05-23
@@ -65,8 +62,119 @@ init script:
 
 	#Should multicolor lands with basic land types have a colored name?
 	mask_multi_land_with_color := { styling.colored_multicolor_land_name }
-	base_template_prefix := [card: "Normal/", alias: "alias/", alias2: "alias2/", snow:"snow/", snowtexture:"snow/", devoid: "devoid/", devoid2:"devoid2/", nyx: "nyx/", star: "star/", space: "space/", path: "path/", norm: "norm/",  lush: "lush/", smallbox: "smallbox/", sky: "sky/", frontier: "frontier/", miracle: "miracles/", node:"nodes/", promo: "promo/", crown: "legend/" cons:"conspiracy/", curtain: "curtains/", fnm: "fnm/", fnmpt: "paradox/", inverted: "inverted/", invertedpt: "inverted/", map: "maps/", energy: "energies/", halfart: "energies/", mappt: "maps/" pt: "Normal/", pt2: "Normal/", slide: "masks/", slide2: "masks/", slide3: "masks/", arrow: "arrows/", arrow2: "arrows/", arrow3: "arrows/", season: "season/", stamp: "Stamp/", identity: "/magic-identity-new.mse-include/", backdfc: "backdfc/", puma: "puma/", front: "flags/", back: "flags/", pins: "pins/", pop: "prototype/", cpop1: "prototype/", cpop2: "prototype/", cpop3: "prototype/", cpop4: "prototype/", cpop5: "prototype/", pro: "prototype/", adventure: "adventure/", adventure2: "adventure/", adventure3: "adventure/", adventure4: "adventure/", focus: "focus/", focus2: "focus/", paradox: "paradox/", paradoxpt: "paradox/"]
-	shifted_template_prefix := [card: "shifted/", alias: "shifted/", snow:"snow/", snowtexture:"snow/", devoid:"devoid/", devoid2: "devoid2/", nyx: "nyx/", star: "star/", pins: "pins/", space: "space/", path: "path/", lush: "lush/", norm: "norm/", smallbox:"smallbox/", sky:"sky/", frontier: "frontier/", miracle: "shifted/",  node:"shifted/", promo: "promo/", crown: "shifted/", cons:"conspiracy/", curtain: "curtains/", fnm:"fnm/", fnmpt: "paradox/", inverted: "inverted/", invertedpt: "inverted/", map: "maps/", energy: "energies/", halfart: "energies/", mappt: "maps/", pt: "shifted/", slide: "shifted/", slide2: "shifted/", slide3: "shifted/", arrow: "arrows/", arrow2: "arrows/", arrow3: "arrows/", season: "season/", stamp: "shifted/", identity: "/magic-identity-new.mse-include/", puma: "puma/shifted/", cpop1: "prototype/", cpop2: "prototype/", cpop3: "prototype/", cpop4: "prototype/", cpop5: "prototype/", pop: "prototype/", pro: "prototype/", paradox: "paradox/", paradoxpt: "paradox/"]
+	base_template_prefix := [
+		card: "Normal/"
+		alias: "alias/"
+		alias2: "alias2/"
+		snow:"snow/"
+		snowtexture:"snow/"
+		devoid: "devoid/"
+		devoid2:"devoid2/"
+		nyx: "nyx/"
+		star: "star/"
+		space: "space/"
+		path: "path/"
+		norm: "norm/"
+		lush: "lush/"
+		smallbox: "smallbox/"
+		sky: "sky/"
+		frontier: "frontier/"
+		miracle: "miracles/"
+		node:"nodes/"
+		promo: "promo/"
+		crown: "legend/" cons:"conspiracy/"
+		curtain: "curtains/"
+		fnm: "fnm/"
+		fnmpt: "paradox/"
+		inverted: "inverted/"
+		invertedpt: "inverted/"
+		map: "maps/"
+		energy: "energies/"
+		halfart: "energies/"
+		mappt: "maps/" pt: "Normal/"
+		pt2: "Normal/"
+		slide: "masks/"
+		slide2: "masks/"
+		slide3: "masks/"
+		arrow: "arrows/"
+		arrow2: "arrows/"
+		arrow3: "arrows/"
+		season: "season/"
+		stamp: "Stamp/"
+		identity: "/magic-modules.mse-include/indicators/"
+		backdfc: "backdfc/"
+		puma: "puma/"
+		front: "flags/"
+		back: "flags/"
+		pins: "pins/"
+		pop: "prototype/"
+		cpop1: "prototype/"
+		cpop2: "prototype/"
+		cpop3: "prototype/"
+		cpop4: "prototype/"
+		cpop5: "prototype/"
+		pro: "prototype/"
+		adventure: "adventure/"
+		adventure2: "adventure/"
+		adventure3: "adventure/"
+		adventure4: "adventure/"
+		focus: "focus/"
+		focus2: "focus/"
+		paradox: "paradox/"
+		paradoxpt: "paradox/"]
+
+	shifted_template_prefix := [
+		card: "shifted/"
+		alias: "shifted/"
+		snow:"snow/"
+		snowtexture:"snow/"
+		devoid:"devoid/"
+		devoid2: "devoid2/"
+		nyx: "nyx/"
+		star: "star/"
+		pins: "pins/"
+		space: "space/"
+		path: "path/"
+		lush: "lush/"
+		norm: "norm/"
+		smallbox:"smallbox/"
+		sky:"sky/"
+		frontier: "frontier/"
+		miracle: "shifted/"
+		node:"shifted/"
+		promo: "promo/"
+		crown: "shifted/"
+		cons:"conspiracy/"
+		curtain: "curtains/"
+		fnm:"fnm/"
+		fnmpt: "paradox/"
+		inverted: "inverted/"
+		invertedpt: "inverted/"
+		map: "maps/"
+		energy: "energies/"
+		halfart: "energies/"
+		mappt: "maps/"
+		pt: "shifted/"
+		slide: "shifted/"
+		slide2: "shifted/"
+		slide3: "shifted/"
+		arrow: "arrows/"
+		arrow2: "arrows/"
+		arrow3: "arrows/"
+		season: "season/"
+		stamp: "shifted/"
+		identity: "/magic-modules.mse-include/indicators/"
+		puma: "puma/shifted/"
+		cpop1: "prototype/"
+		cpop2: "prototype/"
+		cpop3: "prototype/"
+		cpop4: "prototype/"
+		cpop5: "prototype/"
+		pop: "prototype/"
+		pro: "prototype/"
+		paradox: "paradox/"
+		paradoxpt: "paradox/"
+		]
 	template_prefix := { if type == "miracle" and pure_snow() then [miracle:"snow/"] else if is_shifted() then shifted_template_prefix else base_template_prefix }
 	template_suffix := [card: "card.jpg",  node:"node.png", alias:"alias.png", alias2:"alias.png", devoid:"card.png", devoid2:"card.png", snow:"card.jpg", snowtexture:"snow.png", nyx: "nyx.png",  star: "star.png", space: "space.png", path: "path.png", norm: "norm.png", lush: "lush.png", smallbox: "smallbox.png", sky: "sky.png", frontier: "frontier.png",  miracle: "miracle.png", promo: "card.jpg", crown: "crown.png", cons:"cons.png", curtain: "card.png", fnm:"card.png", fnmpt: "pt.png", inverted: "card.png", invertedpt: "pt.png", map: "card.png", energy: "card.png", halfart: "card1.png", mappt: "pt.png", pt: "pt.png", pt2: "pt2.png", slide: "slide.png", slide2: "slide2.png", slide3: "slide3.png", stamp: "stamp.jpg", arrow: "arrow.png", arrow2: "arrow2.png", arrow3: "arrow3.png", season: "flag.png" front:"flag.png" back:"flag2.png" identity: "identity.png", backdfc: "back.png", puma: "puma.png", pins: "card.png", pop: "pop.png", cpop1: "cpop1.png", cpop2: "cpop2.png", cpop3: "cpop3.png", cpop4: "cpop4.png", cpop5: "cpop5.png", pro: "pro.png", adventure:"card.png", adventure2:"card2.png", adventure3:"card3.png", adventure4:"card4.png", focus:"focus.png", focus2:"focus2.png", paradox: "card.png", paradoxpt: "pt.png"]
 	template      := { crown_lead(type) + template_prefix()[type] + input + crown_follow(type) + template_suffix[type] }
@@ -370,7 +478,11 @@ init script:
 		+ (if box_leveler() then -5 else 0)
 		+ (if aug_leveler(input) then 4 else 0)
 	}
-	custom_watermark_a := {if styling.card_watermark == "" or not contains(styling.card_watermark, match:".png") then "/magic-watermarks.mse-include/planeswalker.png" else "/magic-watermarks.mse-include/" + styling.card_watermark}
+	custom_watermark_a := {
+		if styling.card_watermark == "" or not contains(styling.card_watermark, match:".png")
+			then "/magic-modules.mse-include/watermarks/other/planeswalker.png"
+		else "/magic-mainframe-extras.mse-include/" + styling.card_watermark
+	}
 	special_text := {if is_leveler() then ((if card.level_0 != "" then "[" + level_label(0) + " " + card.level_0 + "] " else "") + card.level_1_text + (if card.pt != "" then " [" + card.pt + "]" else "") + "\n"
 			+ (if card.level_1 != "" then "[" + level_label(1) + " " + card.level_1 + "] " else "") + card.level_2_text + (if card.pt_2 != "" then " [" + card.pt_2 + "]" else "") + "\n"
 			+ (if card.level_2 != "" then "[" + level_label(2) + " " + card.level_2 + "] " else "") + card.level_3_text + (if card.pt_3 != "" then " [" + card.pt_3 + "]" else "") + (if card.level_4_text != "" then "\n" else "")
@@ -1236,7 +1348,8 @@ card style:
 		render style: image
 		popup style: in place
 		alignment: middle center
-		include file: /magic-watermarks.mse-include/watermarks
+		include file: /magic.mse-game/watermarks/menu_choice_images
+		image: { watermark_image_1() }
 	############################# Levels
 	level 0:
 		z index: 17
