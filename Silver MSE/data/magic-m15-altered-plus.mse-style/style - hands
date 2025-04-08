@@ -301,7 +301,7 @@ init script:
 	is_adventure := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "normal")}
 	is_adventure2 := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "reversed")}
 	is_focus := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "focus")}
-	is_hands := { chosen(styling.altered_plus_frames, choice: "hands") }
+	is_hands := { chosen(styling.frames, choice: "hands") }
 	is_focus2 := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "reversed focus")}
 	is_nyx := {
 		chosen(styling.frames, choice:"nyx")
@@ -598,6 +598,7 @@ styling field:
 	choice: miracle
 	choice: vehicle
 	choice: nyx
+	choice: hands
 	choice: leveler
 	choice: snow
 styling field:
@@ -621,7 +622,6 @@ styling field:
 	choice: lush
 	choice: familiar
 	choice: norm
-	choice: hands
 	choice: backdfc
 	choice: front flag
 	choice: back flag
@@ -1817,13 +1817,6 @@ extra card field:
 	type: choice
 	name: nyx overlay
 	choice: nyx
-	save value: false
-	editable: false
-	script: card.card_color
-extra card field:
-	type: choice
-	name: hands overlay
-	choice: hands
 	save value: false
 	editable: false
 	script: card.card_color
