@@ -14,7 +14,7 @@ game: magic
 create directory: true
 file type: *.xml|*.xml|*.*|*.*
 
-# By K'yoril, edited by Advent, Updated by Reuben Covington, Updated by Cajun, Updated by Zeu
+# By Kyoril, edited by Advent, Updated by Reuben Covington, Updated by Cajun, Updated by Zeu
 # Updated to v4 xml by ebbit
 # Based on code by Pichoro, Idle Muse, Innuendo and Seeonee
 
@@ -174,7 +174,7 @@ script:
 
 	CIPT := {if contains_tapped(card.notes) then "\n      "+"\<cipt>" + "1" + "\</cipt>" else ""}
 
-	# maintype, used in cockatrice's card type sorting,
+	# maintype, used in cockatrices card type sorting,
 	# no longer automatically determined in v4 xml,
 	# first use the same heuristic used in "oracle" else do the same thing v3 xml did
 	# !maintype [type]! in the card notes overwrites this
@@ -205,6 +205,7 @@ script:
 			+(if contains(card.card_color, match:"black") or contains(card.casting_cost, match:"B") then "B" else "")
 			+(if contains(card.card_color, match:"red") or contains(card.casting_cost, match:"R") then "R" else "")
 			+(if contains(card.card_color, match:"green") or contains(card.casting_cost, match:"G") then "G" else "")
+			+(if contains(card.card_color, match:"silver") or contains(card.casting_cost, match:"I") then "I" else "")
 		)
 	}
 
@@ -217,10 +218,11 @@ script:
 			+(if contains(card.card_color_2, match:"black") or contains(card.casting_cost_2, match:"B") then "B" else "")
 			+(if contains(card.card_color_2, match:"red") or contains(card.casting_cost_2, match:"R") then "R" else "")
 			+(if contains(card.card_color_2, match:"green") or contains(card.casting_cost_2, match:"G") then "G" else "")
+			+(if contains(card.card_color_2, match:"silver") or contains(card.casting_cost_2, match:"I") then "I" else "")
 		)
 	}
 
-	#write a normal card's XML text
+	#write a normal cards XML text
 	write_normal := {
 		"\n    "+"\<card>"
 		# Name
@@ -321,6 +323,7 @@ script:
 			 	else if contains(card.card_color, match:"black") then "B"
 			 	else if contains(card.card_color, match:"red") then "R"
 			 	else if contains(card.card_color, match:"green") then "G"
+			 	else if contains(card.card_color, match:"silver") then "I"
 			 	else "")
 			 else if card.card_color != "" and card.card_color != "land" and card.card_color != "artifact" and card.card_color_2 != "" and card.card_color_2 != "land" and card.card_color_2 != "artifact"then
 			 	(if contains(card.card_color, match:"multicolor") or contains(card.card_color, match:"hybrid") or card.card_color != card.card_color_2 then "M"
@@ -329,6 +332,7 @@ script:
 				else if contains(card.card_color, match:"black") and contains(card.card_color_2, match:"black") then "B"
 				else if contains(card.card_color, match:"red") and contains(card.card_color_2, match:"red") then "R"
 				else if contains(card.card_color, match:"green") and contains(card.card_color_2, match:"green") then "G"
+				else if contains(card.card_color, match:"silver") and contains(card.card_color_2, match:"silver") then "I"
 			 	else "")
 			 else
 			 	(if contains(card.card_color, match:"multicolor") or contains(card.card_color, match:"hybrid") or contains(card.card_color_2, match:"multicolor") or contains(card.card_color_2, match:"hybrid") then "M"
@@ -337,6 +341,7 @@ script:
 				else if contains(card.card_color, match:"black") or contains(card.card_color_2, match:"black") then "B"
 				else if contains(card.card_color, match:"red") or contains(card.card_color_2, match:"red") then "R"
 				else if contains(card.card_color, match:"green") or contains(card.card_color_2, match:"green") then "G"
+				else if contains(card.card_color, match:"silver") or contains(card.card_color_2, match:"silver") then "I"
 			 	else "")
 			 )
 			+"\</colors>"
