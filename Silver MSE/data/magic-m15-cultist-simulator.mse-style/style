@@ -18,6 +18,9 @@ depends on:
 	package: magic-modules.mse-include
 	version: 2024-10-01
 depends on:
+	package: magic-mainframe-extras.mse-include
+	version: 2018-01-01
+depends on:
 	package: magic-mana-large-dark.mse-symbol-font
 	version: 2015-12-13
 depends on:
@@ -242,7 +245,7 @@ card style:
 			color: white
 	casting cost:
 		right: 375
-		top: 26
+		top: 32
 		width: 375
 		height: 30
 		alignment: middle center
@@ -291,7 +294,7 @@ card style:
 	############################# Text box
 	text:
 		left: 29
-		top: 270
+		top: 272
 		width: 314
 		bottom: 423
 		font:
@@ -336,7 +339,7 @@ card style:
 		z index: 3
 		right: 343
 		top: 424
-		width: 60
+		width: 57
 		height:	28
 		alignment: center middle shrink-overflow
 		font:
@@ -371,10 +374,10 @@ extra card field:
 	script: card.card_color
 extra card style:
 	pt box:
-		right: 352
-		top: 421
-		width: 81
-		height:	42
+		right: 345
+		top: 422
+		width: 61
+		height:	32
 		z index: 2
 		visible: { card.pt != "" }
 		render style: image

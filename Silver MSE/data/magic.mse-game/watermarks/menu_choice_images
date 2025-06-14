@@ -6,6 +6,7 @@ choice images:
 	mana symbol black:                                  /magic.mse-game/watermarks/watermark_b.png
 	mana symbol red:                                    /magic.mse-game/watermarks/watermark_r.png
 	mana symbol green:                                  /magic.mse-game/watermarks/watermark_g.png
+	mana symbol silver:                                 /magic.mse-game/watermarks/watermark_i.png
 	mana symbol colorless:                              /magic.mse-game/watermarks/watermark_c.png
 	mana symbol snow:                                   /magic.mse-game/watermarks/watermark_s.png
 	

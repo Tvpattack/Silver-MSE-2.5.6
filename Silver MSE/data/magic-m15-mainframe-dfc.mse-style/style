@@ -446,7 +446,10 @@ init script:
 	normal_size := { not chosen(styling.other_options, choice:"wider planeswalker images") }
 	front_normal_size := {mainframe_walker() and normal_size()}
 	back_normal_size := {mainframe_walkerb() and normal_size()}
-	use_evobar := {chosen(styling.other_options, choice: "pokemon evobar") and not chosen(styling.other_options, choice:"godzilla style alias")}
+	match_realm := { match@(match: "(?i)Realm") }
+	is_realm := { match@(match: "(?i)Realm")(card.type) }
+	is_evobar := { chosen(styling.other_options, choice: "pokemon evobar")}
+	use_evobar := {is_evobar() and not chosen(styling.other_options, choice:"godzilla style alias")}
 	is_pinned := {chosen(styling.other_options, choice:"pride pinlines")}
 	shrink_type := {if styling.shrink_typeline_text != "" then to_number(styling.shrink_typeline_text) else 0 }
 	shrink_name := {if styling.shrink_name_text != "" then to_number(styling.shrink_name_text) else 0 }
@@ -818,19 +821,19 @@ init script:
 	auto_snap := {
 		line := if face == 2 then styling.snap_chapter_to_back_box else styling.snap_chapter_to_box
 		snap_array := split_text(replace(line, match:",[^,]+$", replace:","), match:",")
-		abil := to_number(pull_comma_array(line, cell:input-1, end:true))											###textbox to snap to
+		abil := to_number(pull_comma_array(line, cell:input-1, end:true))											#textbox to snap to
 		if abil == 0 then 600 else snap_calc(input, snap_array:snap_array, abil:abil, bump:if face == 2 then 4 else 0)
 	}@(face:1)
 	snap_calc := {
 		out := 0
-		abil_array := saga_lore_count(snap_array)																	###chapters in each box
-		ch_count := abil_array[abil-1]																				###chapters in this box
-		self_index := saga_ch_placement(snap_array)[input-1]														###input's index
-		box_deets := coords_map[abil+bump]()																		###[top, height]
-		remain := box_deets[1] - 30*ch_count																		###remaining space after chapter hexes
-		excess := remain - 10*(ch_count-1)																			###remaining after 10px gaps
-		if excess >= 0 then out := box_deets[0] + excess/2 + 40*(self_index-1)										###top + buffer*index + hex*index-1
-		else (																										###may not be enough room to ten-gap the middle
+		abil_array := saga_lore_count(snap_array)																	#chapters in each box
+		ch_count := abil_array[abil-1]																				#chapters in this box
+		self_index := saga_ch_placement(snap_array)[input-1]														#inputs index
+		box_deets := coords_map[abil+bump]()																		#[top, height]
+		remain := box_deets[1] - 30*ch_count																		#remaining space after chapter hexes
+		excess := remain - 10*(ch_count-1)																			#remaining after 10px gaps
+		if excess >= 0 then out := box_deets[0] + excess/2 + 40*(self_index-1)										#top + buffer*index + hex*index-1
+		else (																										#may not be enough room to ten-gap the middle
 			inner_gap := 10
 			squeeze := 0
 			outer_gap := (remain - inner_gap * (ch_count-1))/2
@@ -4141,7 +4144,7 @@ extra card style:
 		z index: 840
 		image: {custom_chapter_node()}
 		visible: {front_saga()}
-###pulls double duty as saga line and mutate bar to reduce fields
+##pulls double duty as saga line and mutate bar to reduce fields
 	linebreak 1:
 		left: {if front_class() or front_case() then 188 else if front_mutate() then 28 else 30}
 		top: {if front_class() or front_case() then lev0() else if front_mutate() then 393 else 154}
@@ -4317,7 +4320,7 @@ extra card style:
 		z index: 880
 		render style: image
 		image: /magic-modules.mse-include/extras/evobar/evobar.png
-		visible: {use_evobar() and not back_skinned()}
+		visible: {use_evobar() and not is_realm() and not back_skinned()}
 	evobar tip 2:
 		left: {(if back_poke_walker() then 416.6 else if back_map() then 390.6 else if back_saga() then 564.6 else 403.6) + card_style.alias_2.content_width}
 		top: {if mainframe_walkerb() then 51 else if back_map() then 62 else 57}
@@ -4326,7 +4329,7 @@ extra card style:
 		z index: 880
 		render style: image
 		image: /magic-modules.mse-include/extras/evobar/evobar_tip.png
-		visible: {use_evobar() and not back_skinned()}
+		visible: {use_evobar() and not is_realm() and not back_skinned()}
 	evobar start:
 		left: 31
 		top: 51

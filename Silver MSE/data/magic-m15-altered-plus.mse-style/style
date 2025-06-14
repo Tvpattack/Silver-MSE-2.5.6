@@ -72,6 +72,7 @@ init script:
 		devoid2:"devoid2/"
 		nyx: "nyx/"
 		hands: "hands/"
+		voyager: "voyager/"
 		star: "star/"
 		space: "space/"
 		path: "path/"
@@ -133,6 +134,7 @@ init script:
 		devoid2: "devoid2/"
 		nyx: "nyx/"
 		hands: "hands/"
+		voyager: "voyager/"
 		star: "star/"
 		pins: "pins/"
 		space: "space/"
@@ -178,13 +180,13 @@ init script:
 		paradoxpt: "paradox/"
 		]
 	template_prefix := { if type == "miracle" and pure_snow() then [miracle:"snow/"] else if is_shifted() then shifted_template_prefix else base_template_prefix }
-	template_suffix := [card: "card.jpg",  node:"node.png", alias:"alias.png", alias2:"alias.png", devoid:"card.png", devoid2:"card.png", snow:"card.jpg", snowtexture:"snow.png", nyx: "nyx.png", hands: "hands.png", star: "star.png", space: "space.png", path: "path.png", norm: "norm.png", lush: "lush.png", smallbox: "smallbox.png", sky: "sky.png", frontier: "frontier.png",  miracle: "miracle.png", promo: "card.jpg", crown: "crown.png", cons:"cons.png", curtain: "card.png", fnm:"card.png", fnmpt: "pt.png", inverted: "card.png", invertedpt: "pt.png", map: "card.png", energy: "card.png", halfart: "card1.png", mappt: "pt.png", pt: "pt.png", pt2: "pt2.png", slide: "slide.png", slide2: "slide2.png", slide3: "slide3.png", stamp: "stamp.jpg", arrow: "arrow.png", arrow2: "arrow2.png", arrow3: "arrow3.png", season: "flag.png" front:"flag.png" back:"flag2.png" identity: "identity.png", backdfc: "back.png", puma: "puma.png", pins: "card.png", pop: "pop.png", cpop1: "cpop1.png", cpop2: "cpop2.png", cpop3: "cpop3.png", cpop4: "cpop4.png", cpop5: "cpop5.png", pro: "pro.png", adventure:"card.png", adventure2:"card2.png", adventure3:"card3.png", adventure4:"card4.png", focus:"focus.png", focus2:"focus2.png", paradox: "card.png", paradoxpt: "pt.png"]
+	template_suffix := [card: "card.jpg",  node:"node.png", alias:"alias.png", alias2:"alias.png", devoid:"card.png", devoid2:"card.png", snow:"card.jpg", snowtexture:"snow.png", nyx: "nyx.png", hands: "hands.png", voyager: "card.jpg", star: "star.png", space: "space.png", path: "path.png", norm: "norm.png", lush: "lush.png", smallbox: "smallbox.png", sky: "sky.png", frontier: "frontier.png",  miracle: "miracle.png", promo: "card.jpg", crown: "crown.png", cons:"cons.png", curtain: "card.png", fnm:"card.png", fnmpt: "pt.png", inverted: "card.png", invertedpt: "pt.png", map: "card.png", energy: "card.png", halfart: "card1.png", mappt: "pt.png", pt: "pt.png", pt2: "pt2.png", slide: "slide.png", slide2: "slide2.png", slide3: "slide3.png", stamp: "stamp.jpg", arrow: "arrow.png", arrow2: "arrow2.png", arrow3: "arrow3.png", season: "flag.png" front:"flag.png" back:"flag2.png" identity: "identity.png", backdfc: "back.png", puma: "puma.png", pins: "card.png", pop: "pop.png", cpop1: "cpop1.png", cpop2: "cpop2.png", cpop3: "cpop3.png", cpop4: "cpop4.png", cpop5: "cpop5.png", pro: "pro.png", adventure:"card.png", adventure2:"card2.png", adventure3:"card3.png", adventure4:"card4.png", focus:"focus.png", focus2:"focus2.png", paradox: "card.png", paradoxpt: "pt.png"]
 	template      := { crown_lead(type) + template_prefix()[type] + input + crown_follow(type) + template_suffix[type] }
 	land_template := { crown_lead(type) + template_prefix()[type] + (if input == "a" then "c" else input) + (if landless(type) then "" else "l") + crown_follow(type) + template_suffix[type] }
 	# Use land templates for previews because they show more contrast
 	hybrid_previews := "land,hybrid"
 
-	landless := {if input == "nyx" or input == "star" or input == "hands" or input == "backdfc" or input == "space" or input == "path" or input == "lush" or input == "smallbox" or input == "sky" or input == "frontier" or input == "pins" or input == "node" or input == "miracle" or input == "alias" or input == "alias2" or input == "devoid" or input == "devoid2" or input == "energy" or input == "halfart" or input == "season" or input == "front" or input == "back" or input =="pop" or input == "cpop1" or input == "cpop2" or input == "cpop3" or input == "cpop4" or input == "cpop5" or input == "pro" or input == "adventure2" or input == "adventure4" or input == "focus" or input == "focus2" or input == "" or input == "cons" or input == "arrow" or input == "crown" or input == "nyxcrown" or input == "starcrown" or input == "spacecrown" then true else false}
+	landless := {if input == "nyx" or input == "star" or input == "hands" or input == "voyager" or input == "backdfc" or input == "space" or input == "path" or input == "lush" or input == "smallbox" or input == "sky" or input == "frontier" or input == "pins" or input == "node" or input == "miracle" or input == "alias" or input == "alias2" or input == "devoid" or input == "devoid2" or input == "energy" or input == "halfart" or input == "season" or input == "front" or input == "back" or input =="pop" or input == "cpop1" or input == "cpop2" or input == "cpop3" or input == "cpop4" or input == "cpop5" or input == "pro" or input == "adventure2" or input == "adventure4" or input == "focus" or input == "focus2" or input == "" or input == "cons" or input == "arrow" or input == "crown" or input == "nyxcrown" or input == "starcrown" or input == "spacecrown" then true else false}
 
 	crown_lead := {
 		if input != "crown" then ""
@@ -218,6 +220,7 @@ init script:
 	node_background := { color_background(type:"node",     base_hybrid:card_hybrid) }
 	nyx_background := { color_background(type:"nyx",     base_hybrid:card_hybrid) }
 	hands_background := { color_background(type:"hands",     base_hybrid:card_hybrid) }
+	voyager_background := { color_background(type:"voyager",     base_hybrid:card_hybrid) }
 	sky_background := { color_background(type:"sky",	base_hybrid:card_hybrid)}
 	frontier_background := { color_background(type:"frontier",	base_hybrid:card_hybrid)}
 	star_background := { color_background(type:"star",     base_hybrid:card_hybrid) }
@@ -302,6 +305,7 @@ init script:
 	is_adventure2 := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "reversed")}
 	is_focus := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "focus")}
 	is_hands := { chosen(styling.altered_plus_frames, choice: "hands") }
+	is_voyager := { chosen(styling.altered_plus_frames, choice: "voyager") }
 	is_focus2 := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "reversed focus")}
 	is_nyx := {
 		chosen(styling.frames, choice:"nyx")
@@ -314,7 +318,8 @@ init script:
 	is_sky := { chosen(styling.altered_plus_frames, choice: "sky") and not is_map() }
 	is_frontier := { chosen(styling.altered_plus_frames, choice: "frontier") and not is_map() }
 	is_frontier := { chosen(styling.altered_plus_frames, choice: "frontier") and not is_map() }
-	is_paradox := { chosen(styling.frames, choice: "paradox") and not is_map() }
+	is_revelation := match@(match: "(?i)Revelation")
+	is_paradox := { ( chosen(styling.frames, choice: "paradox") or is_revelation(card.type) ) and not is_map() }
 	is_space := { chosen(styling.altered_plus_frames, choice: "space") and not is_map() }
 	is_path := { chosen(styling.altered_plus_frames, choice: "path") and not is_map() }
 	is_norm := { chosen(styling.altered_plus_frames, choice: "norm") and not is_map() }
@@ -397,6 +402,9 @@ init script:
 	is_YGO_gold := { chosen(styling.additional_options, choice: "ygogold")}
 	is_YGO := {chosen(styling.altered_plus_frames, choice:"Yugioh Frame")}
 	use_gold := { chosen(styling.additional_options, choice: "goldframe")}
+	use_porthole := { contains(card.notes, match:"!porthole") }
+	use_ocean := { contains(card.notes, match:"!ocean") }
+	use_styles := { contains(card.notes, match:"!styles") }
 	flavor_plate := { chosen(styling.additional_options, choice:"flavor plate")}
 	is_familiarpt := { chosen(styling.additional_options, choice: "familiarpt")}
 	bevel_black_name := {chosen(styling.name_color, choice:"bevel black")}
@@ -414,7 +422,7 @@ init script:
 	white_text := {chosen(styling.text_color, choice:"white")}
 	white_text2 := {chosen(styling.text_color, choice:"shadowed white") or is_rem()}
 	black_text := {chosen(styling.text_color, choice:"black")}
-	center_name := { chosen(styling.additional_options, choice: "center name")}
+	center_name := { chosen(styling.additional_options, choice: "center name") or use_porthole()}
 	use_jp := { chosen(styling.additional_options, choice: "JP symbols")}
 	alt_rarity := {styling.alt_rarity_color != ""}
 	alt_rarity_color := {
@@ -442,8 +450,8 @@ init script:
 	pure_snow := {is_snow() and not is_fnm() and not is_inverted() and not is_paradox() and not is_full_art() and not is_leveler() and not is_shifted()}
 	chop_top := {if styling.chop_top == "" then 0 else if comma_count(styling.chop_top) == "," or comma_count(styling.chop_top) == ",," then split_text(match:",", styling.chop_top).0 else styling.chop_top}
 	chop_bot := {if comma_count(styling.chop_top) == ",," then split_text(match:",", styling.chop_top).1 else if styling.chop_bottom == "" then 0 else styling.chop_bottom}
-	top_of_textbox := {(if is_map() then 340 else if is_halfart() then 413 else if is_full_art() then 359 else if is_mutate() and not is_prototype() then 395 else if is_prototype() and not is_mutate() then 385 else if is_prototype() and is_mutate() then 453.2 else if is_deck() then 60 else 327) - (-chop_top()) }
-	bottom_of_textbox := {(if is_map() then 475 else 481) - chop_bot() }
+	top_of_textbox := {(if is_map() then 340 else if is_halfart() then 413 else if is_full_art() then 359 else if is_mutate() and not is_prototype() then 395 else if is_prototype() and not is_mutate() then 385 else if is_prototype() and is_mutate() then 453.2 else if is_deck() then 60 else if use_porthole() then 369 else if use_styles() then 378 else 327) - (-chop_top()) }
+	bottom_of_textbox := {(if is_map() then 475 else if use_porthole() then 470 else 481) - chop_bot() }
 	clamp := {
 		number := to_number(input) 
 		if number < minimum 
@@ -623,6 +631,7 @@ styling field:
 	choice: familiar
 	choice: norm
 	choice: hands
+	choice: voyager
 	choice: backdfc
 	choice: front flag
 	choice: back flag
@@ -881,7 +890,7 @@ card style:
 		top width:    17
 		bottom width: 18
 		z index: 14
-		mask: { "imagemasks/" + (if is_puma() then "puma_" else "") + (if is_legend() then "crown_border" else "border_mask") + (if card.border_color == rgb(200,200,200) then "_silver" else "") + ".png" }
+		mask: { "imagemasks/" + (if is_puma() then "puma_" else "") + (if is_legend() and not use_porthole() then "crown_border" else "border_mask") + (if card.border_color == rgb(200,200,200) then "_silver" else "") + ".png" }
 	card color:
 		left:	0
 		top:	0
@@ -890,7 +899,7 @@ card style:
 		z index: 10
 		render style: image
 		popup style: in place
-		image: { if is_clear() or clear_tops() then "" else if is_fnm() then fnm_background() else if is_inverted() then inverted_background() else if is_paradox() then paradox_background() else if is_full_art() then promo_background() else if pure_snow() then snow_background() else if is_adventure() then adventure_colors() else if is_adventure2() then adventure2_colors() else card_background() }
+		image: { if is_clear() or clear_tops() or use_porthole() or use_ocean() or use_styles() then "" else if is_fnm() then fnm_background() else if is_inverted() then inverted_background() else if is_paradox() then paradox_background() else if is_full_art() then promo_background() else if pure_snow() then snow_background() else if is_adventure() then adventure_colors() else if is_adventure2() then adventure2_colors() else if is_voyager() then voyager_background() else card_background() }
 	############################# Name line
 	name:
 		left: { if center_map() then 55 else if is_map() then (if use_node() then 65 else 60) else if use_node() then 58 else if card.card_symbol=="none" then 32 else 50 }
@@ -905,7 +914,7 @@ card style:
 			name: { if is_map() then "Beleren Small Caps" else "Beleren Bold" }
 			size: { (if is_map() then 14.8 else 16) - shrink_name() }
 			color: {if white_name2() or is_fnm() then "white" else if black_name() or bevel_black_name() and not is_shifted() then "black" else if white_name() or is_shifted() and not is_fnm() or is_inverted() or black_name() then "white" else "black"}
-			shadow color: {if is_shifted() and not is_fnm() then rgb(0,0,0) else if white_name2() then rgb(0,0,0) else if bevel_black_name() then "white" else rgba(0,0,0,0)}
+			shadow color: {if is_shifted() and not is_fnm() then rgb(0,0,0) else if white_name2() then rgb(0,0,0) else if bevel_black_name() then "white" else if use_porthole() then rgb(222, 207, 171) else rgba(0,0,0,0)}
 			shadow displacement x: -1
 			shadow displacement y: 1
 			shadow blur: 3
@@ -976,13 +985,13 @@ card style:
 			EX: ex.png
 	############################# Image
 	image:
-		left: {if is_clear() or is_map() or is_expanded_art() or is_puma() or is_rem() then 0 else if is_oldYGO() and is_mutate() then 14 else if is_full_art() then 23 else if clear_tops() then 15 else if is_mutate() and not is_oldYGO() then 22 else if is_oldYGO() and not is_mutate() then 14 else 29}
-		top: {if is_map() then 57 else if is_clear() or is_expanded_art() or clear_tops() or is_rem() then 0 else if is_oldYGO() then 58 else 59}
-		width: {if is_clear() or is_map() or is_expanded_art() or is_puma() or is_rem() then 375 else if is_full_art() then 328 else if clear_tops() then 345 else if is_oldYGO() and is_mutate() then 347 else if is_mutate() and not is_oldYGO() then 330 else if is_oldYGO() then 347 else 316}
-		height:	{if is_clear() or is_expanded_art() or is_rem() then 523 else if is_map() then 241 else if is_oldYGO() and is_mutate() then 334 else if is_puma() then 265 else if is_full_art() then 423 else if clear_tops() then 291 else if is_mutate() then 334 else if is_oldYGO() then 233 else 231}
+		left: {if is_clear() or is_map() or is_expanded_art() or is_puma() or is_rem() or use_ocean() or use_styles() then 0 else if is_oldYGO() and is_mutate() then 14 else if is_full_art() then 23 else if clear_tops() then 15 else if is_mutate() and not is_oldYGO() then 22 else if is_oldYGO() and not is_mutate() then 14 else if use_porthole() then 38 else 29}
+		top: {if is_map() then 57 else if is_clear() or is_expanded_art() or clear_tops() or is_rem() or use_ocean() or use_styles() then 0 else if is_oldYGO() then 58 else if use_porthole() then 65 else 59}
+		width: {if is_clear() or is_map() or is_expanded_art() or is_puma() or is_rem() or use_ocean() or use_styles() then 375 else if is_full_art() then 328 else if clear_tops() then 345 else if is_oldYGO() and is_mutate() then 347 else if is_mutate() and not is_oldYGO() then 330 else if is_oldYGO() then 347 else if use_porthole() then 288 else 316}
+		height:	{if is_clear() or is_expanded_art() or is_rem() or use_ocean() or use_styles() then 523 else if is_map() then 241 else if is_oldYGO() and is_mutate() then 334 else if is_puma() then 265 else if is_full_art() then 423 else if clear_tops() then 291 else if is_mutate() then 334 else if is_oldYGO() then 233 else if use_porthole() then 224 else 231}
 		z index: 11
 		default: {default_image(card.card_color)}
-		mask: { if is_devoid() or is_devoid2() then "imagemasks/image_mask_devoid.png" else if is_rem() then "rem_mask.png" else if is_oldYGO() and is_expanded_art() and not is_nopopout()  then expanded_mask() else if is_oldYGO() and not is_mutate() and not is_full_art() and not is_expanded_art() then "imagemasks/YGO.png" else if is_oldYGO() and is_mutate() then "imagemasks/YGOmutatemask.png" else if is_clear() then "image_mask.png" else if is_thbland() then "cornermask.png" else if is_halfart() then "halfartmask.png" else if is_puma() then "imagemasks/puma_mask" + (if is_mutate() then "_mutate.png" else "3.png") else if is_expanded_art() then expanded_mask() else if (is_full_art() or is_full_art() and is_oldYGO()) then "imagemasks/image_mask" + (if is_rare() and styling.use_holofoil_stamps then "_rare") + ".png" else if is_mutate() and not clear_tops() then "imagemasks/mutate_mask.png" else ""}
+		mask: { if is_devoid() or is_devoid2() then "imagemasks/image_mask_devoid.png" else if is_rem() then "rem_mask.png" else if is_oldYGO() and is_expanded_art() and not is_nopopout()  then expanded_mask() else if is_oldYGO() and not is_mutate() and not is_full_art() and not is_expanded_art() then "imagemasks/YGO.png" else if is_oldYGO() and is_mutate() then "imagemasks/YGOmutatemask.png" else if is_clear() then "image_mask.png" else if use_porthole() then "voyager/portholemask.png" else if use_ocean() then "voyager/oceanmask.png" else if use_styles() then "voyager/styles_mask.png" else if is_thbland() then "cornermask.png" else if is_halfart() then "halfartmask.png" else if is_puma() then "imagemasks/puma_mask" + (if is_mutate() then "_mutate.png" else "3.png") else if is_expanded_art() then expanded_mask() else if (is_full_art() or is_full_art() and is_oldYGO()) then "imagemasks/image_mask" + (if is_rare() and styling.use_holofoil_stamps then "_rare") + ".png" else if is_mutate() and not clear_tops() then "imagemasks/mutate_mask.png" else ""}
 	mainframe image:
 		left: {if comma_count(styling.popout_image_style) == ",,,," then split_text(match:",", styling.popout_image_style).0 else "0"}
 		top: {if comma_count(styling.popout_image_style) == ",,,," then split_text(match:",", styling.popout_image_style).1 else "0"}
@@ -1012,10 +1021,10 @@ card style:
 		visible: { has_identity() }
 		image: { card_identity() }
 	type:
-		left: { if is_map() then 85 else if is_season() then (if styling.color_indicator_dot then 64 else 44)+(if is_clear() then 4 else 0) else (if styling.color_indicator_dot then 52 else 32) + (if is_clear() then 4 else 0) }
-		top: { (if is_map() then 297.5 else if is_halfart() then 382 else if is_clear() then 294 else if is_thbland() then 444 else if is_full_art() then 329 else if is_deck() then 700 else 296) + shrink_type() }
-		width: { if use_box() and not any_box() then 0 else (if is_map() then 205 else (if styling.color_indicator_dot then "290" else "310") - (if card_style.rarity.width == 0 then 0 else max(22,card_style.rarity.content_width)) - (if is_season() then 12 else 0)) }
-		height: { if use_box() and not any_box() then 0 else ((if is_map() then 18 else 20) - shrink_type()) }
+		left: { if is_map() then 85 else if is_season() then (if styling.color_indicator_dot then 64 else 44)+(if is_clear() then 4 else 0) else if use_porthole() then 57 else (if styling.color_indicator_dot then 52 else 32) + (if is_clear() then 4 else 0) }
+		top: { (if is_map() then 297.5 else if is_halfart() then 382 else if is_clear() then 294 else if is_thbland() then 444 else if is_full_art() then 329 else if is_deck() then 700 else if use_porthole() then 290 else 296) + shrink_type() }
+		width: { if use_box() and not any_box() then 0 else (if is_map() then 205 else (if styling.color_indicator_dot then "290" else "310") - (if card_style.rarity.width == 0 then 0 else if use_porthole() then 595 else max(22,card_style.rarity.content_width)) - (if is_season() then 12 else 0)) }
+		height: { if use_box() and not any_box() then 0 else if use_porthole() then 44 else ((if is_map() then 18 else 20) - shrink_type()) }
 		alignment: {if is_map() then "center top shrink-overflow" else "top shrink-overflow"}
 		z index: 15
 		padding top: 2
@@ -1023,9 +1032,9 @@ card style:
 		padding right: 0
 		font:
 			name: Beleren Bold
-			size: { (if is_map() then 12 else 13) - shrink_type() }
+			size: { (if is_map() then 12 else if use_porthole() then 14 else 13) - shrink_type() }
 			color: {if white_type2() or is_fnm() or is_frontier() then "white" else if black_type() or bevel_black_type() and not is_shifted() then "black" else if white_type() or is_full_art() or is_puma() or is_shifted() or black_type() or is_inverted() then "white" else "black"}
-			shadow color: {if is_full_art() or white_type2() or is_fnm() or is_puma() or is_shifted() and not black_type() or is_fnm() then "black" else if bevel_black_type() then "white" else rgba(0,0,0,0)}
+			shadow color: {if is_full_art() or white_type2() or is_fnm() or is_puma() or is_shifted() and not black_type() or is_fnm() then "black" else if bevel_black_type() then "white" else if use_porthole() then rgb(222, 207, 171) else rgba(0,0,0,0)}
 			shadow displacement x: -1
 			shadow displacement y: 1
 			shadow blur: 5
@@ -1053,8 +1062,8 @@ card style:
 			color: white
 			separator color: red
 	rarity:
-		right: { if is_map() then 199 else if is_scrolls() then 334 else if is_rem() then 202.5 else 344}
-		top: { if is_map() then 53 else if is_clear() then 295 else if is_thbland() and not is_halfart() then 445 else if is_halfart() then 382 else if is_full_art() then 329 else if is_deck() then 700 else if is_rem() then 475 else 297 }
+		right: { if is_map() then 199 else if is_scrolls() then 334 else if use_porthole() then 50 else if is_rem() then 202.5 else 344}
+		top: { if is_map() then 53 else if is_clear() then 295 else if is_thbland() and not is_halfart() then 445 else if is_halfart() then 382 else if is_full_art() then 329 else if is_deck() then 700 else if is_rem() then 475 else if use_porthole() then 75 else 297 }
 		width: {if set.shorten_types_for_rarity then 44 else 0}
 		height: 22
 		z index: 15
@@ -1146,21 +1155,21 @@ card style:
 			shadow blur: 5
 	############################# Text boxs
 	text:
-		left: { if (card.level_0 != "" or card.level_1 != "" or card.level_2 != "") then 75 else if is_map() then 40 else if is_focus2() or is_adventure2() then 27 else if is_focus() then 190 else if is_adventure() then 200 else 29}
+		left: { if (card.level_0 != "" or card.level_1 != "" or card.level_2 != "") then 75 else if is_map() then 40 else if is_focus2() or is_adventure2() then 27 else if is_focus() then 190 else if is_adventure() then 200 else if use_porthole() then 54 else 29}
 		top: {top_of_textbox()}
-		width: { if is_leveler() then 0 else (if(card.level_0 != "" or card.level_1 != "" or card.level_2 != "") then -46 else 0) + if is_map() then 287 else if is_focus2() or is_focus() then 154 else if is_adventure2() then 157 else if is_adventure() then 143 else 314 }
+		width: { if is_leveler() then 0 else (if(card.level_0 != "" or card.level_1 != "" or card.level_2 != "") then -46 else 0) + if is_map() then 287 else if is_focus2() or is_focus() then 154 else if is_adventure2() then 157 else if is_adventure() then 143 else if use_porthole() then 286 else 314 }
 		bottom: {bottom_of_textbox()}
 		font:
-			name: MPlantin
+			name: { if use_porthole() then "MPlantin-bold" else "MPlantin"}
 			italic name: MPlantin-Italic
 			size: {if styling.font_cap != "" then to_number(styling.font_cap) else (if is_mutate() then 12 else 14)}
 			scale down to: 6
 			color: { if black_text() or bevel_black_text() then "black" else if is_full_art() or is_fnm() or is_inverted() or white_text() or white_text2() or is_fnm() and not black_text() then "white" else "black"}
-			shadow color: {if is_full_art() or is_fnm() then "black" else if white_text2() then "black" else if bevel_black_text() then "white" else rgba(0,0,0,0)}
+			shadow color: {if is_full_art() or is_fnm() then "black" else if white_text2() then "black" else if bevel_black_text() then "white" else if use_porthole() then rgb(222, 207, 171) else rgba(0,0,0,0)}
 			shadow displacement x: -1
 			shadow displacement y: 1
 		symbol font:
-			name: { if use_jp() then "magic-mana-small-strixhaven-jp" else styling.text_box_mana_symbols }
+			name: { if use_jp() then "magic-mana-small-strixhaven-jp" else if use_porthole() then "magic-mana-large" else styling.text_box_mana_symbols }
 			size: {if styling.font_cap != "" then to_number(styling.font_cap) else (if is_mutate() then 12 else 14)}
 			scale down to: 6
 		alignment:
@@ -1436,7 +1445,7 @@ card style:
 	pt:
 		z index: 15
 		left: {if is_leveler() and not lone_pt() then 291 else 286}
-		top: { if is_leveler() and not lone_pt() then (l1_center() - 14) else if is_halfart() or is_thbland() then 479 else if is_map() then 467 else 469}
+		top: { if is_leveler() and not lone_pt() then (l1_center() - 14) else if is_halfart() or is_thbland() then 479 else if is_map() then 467 else if use_porthole() then 463 else 469}
 		width: {if starting_loyalty() and not is_leveler() then 0 else 60}
 		height:	28
 		alignment: center middle shrink-overflow
@@ -1508,7 +1517,7 @@ card style:
 	############################# Card sorting / numbering
 	set code:
 		left: 24
-		top: 498
+		top: {if use_porthole() then "504" else "498"}
 		width: 40
 		height: 10
 		z index: 13
@@ -1520,7 +1529,7 @@ card style:
 	############################# Copyright stuff
 	illustrator:
 		left: {44 + card_style.set_code.content_width }
-		top: 497.5
+		top: {if use_porthole() then "504" else "498"}
 		width: 200
 		height: 10
 		z index: 13
@@ -1536,7 +1545,7 @@ card style:
 					then 488
 				else if (starting_loyalty() and card.loyalty != "") or (card.pt != "" and not starting_loyalty() and not is_halfart())
 					then 500
-				else if is_halfart()
+				else if is_halfart() or use_porthole()
 					then 504
 				else 488
 			}
@@ -1613,6 +1622,24 @@ extra card field:
 extra card field:
 	type: choice
 	name: gold frame
+	script: card.card_color
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: porthole frame
+	script: card.card_color
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: ocean frame
+	script: card.card_color
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: styles frame
 	script: card.card_color
 	save value: false
 	editable: false
@@ -1826,6 +1853,13 @@ extra card field:
 	type: choice
 	name: hands overlay
 	choice: hands
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: voyager overlay
+	choice: voyager
 	save value: false
 	editable: false
 	script: card.card_color
@@ -2367,7 +2401,7 @@ extra card style:
 			color: rgb(223,169,41)
 	card code:
 		left: 24
-		top: 488
+		top: {if use_porthole() then "494" else "488"}
 		width: 120
 		height: 10
 		z index: 13
@@ -2378,7 +2412,7 @@ extra card style:
 			weight: bold
 	artist arrow:
 		left: {28 + card_style.set_code.content_width }
-		top: 500
+		top: {if use_porthole() then "506" else "500"}
 		width: 12
 		height: 7
 		z index: 13
@@ -2386,13 +2420,13 @@ extra card style:
 		image: artist_arrow.png
 	pt box:
 		left: {if is_leveler() and not lone_pt() then 278 else if is_map() then 270 else 273}
-		top: { if is_leveler() and not lone_pt() then (l1_center() - (if is_map() then 26 else 18)) else if is_halfart() or is_thbland() then 476 else if is_map() then 453 else 466}
+		top: { if is_leveler() and not lone_pt() then (l1_center() - (if is_map() then 26 else 18)) else if is_halfart() or is_thbland() then 476 else if is_map() then 453 else if use_porthole() then 460 else 466}
 		width: { if starting_loyalty() and not is_leveler() then 0 else if is_map() then 90 else 81}
 		height:	{ if is_map() then 54 else 42}
 		z index: 14
 		visible: { card.pt != "" }
 		render style: image
-		image: { if is_map() then mappt_background() else if is_vehicle() and (not is_legend() or chosen(styling.other_options, choice:"brown legendary vehicle pt")) then "vpt.png" else if is_familiar() or is_familiarpt() then "fmpt.png" else if is_clear() and not is_backdfc() then "cpt.png" else if use_gold() then "goldpt.png" else if is_backdfc() then pt2() else choose_ptbox() }
+		image: { if is_map() then mappt_background() else if is_vehicle() and (not is_legend() or chosen(styling.other_options, choice:"brown legendary vehicle pt")) then "vpt.png" else if is_familiar() or is_familiarpt() then "fmpt.png" else if is_clear() and not is_backdfc() then "cpt.png" else if use_gold() then "goldpt.png" else if is_backdfc() then pt2() else if use_porthole() then "voyager/portholept.png" else choose_ptbox() }
 	pt box 2:
 		left: 278
 		top: { l2_center() - (if is_map() then 26 else 15)}
@@ -2500,6 +2534,16 @@ extra card style:
 		z index: 11
 		visible: {is_hands()}
 		mask: {if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "mask.png")}
+	voyager overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {voyager_background()}
+		z index: 11
+		visible: {is_voyager()}
+		mask: "voyager/voyagermask.png"
 	star overlay:
 		left: 0
 		top: 0
@@ -2589,8 +2633,8 @@ extra card style:
 		render style: image
 		image: {if (is_clear() or clear_tops()) and not is_devoid() or is_devoid2() then "legend/xcrown.png" else if is_fnm() then set_mask(image:crown_background(), mask:"legend/fnm_mask.png") else crown_background()}
 		z index: 15
-		visible: {is_legend() and not is_map()}
-		mask: {if is_legend() and styling.legend_crown != "custom" and (is_curtains() or is_expanded_art() or is_puma() or is_devoid() or is_devoid2() or is_oldYGO()) then "curtainmask.png" else if is_season() then "crown_season_mask.png" else ""}
+		visible: {is_legend() and not is_map() and not use_porthole()}
+		mask: {if is_legend() and styling.legend_crown != "custom" and (is_curtains() or is_expanded_art() or is_puma() or is_devoid() or is_devoid2() or is_oldYGO()) then "curtainmask.png" else if is_season() then "crown_season_mask.png" else if use_ocean() then "imagemasks/crown_voyager.png" else ""}
 	curtain:
 		left: 0
 		top: 0
@@ -2772,12 +2816,13 @@ extra card style:
 	pins:
 		left: 19
 		top: 21
-		width: {if use_pins() then 338 else 0}
+		width: {if use_pins() or use_ocean() then 338 else 0}
 		height: 465
 		render style: image
 		image: {pins_image()}
 		z index: 13
-		visible: {use_pins()}
+		visible: {use_pins() or use_ocean()}
+		mask: { if use_ocean() then "imagemasks/pinlineframe-voyager.png" else "" }
 	clear frame:
 		left: 0
 		top: 0
@@ -2792,10 +2837,37 @@ extra card style:
 		top: 0
 		width: 375
 		height: 523
-		z index: 10
+		z index: 11
 		render style: image
-		image: {if use_gold() and not  chosen(styling.additional_options, choice: "goldnoborder") then "goldborder.png" else "gold.png"}
+		image: {if use_gold() then "voyager/porthole.png"}
 		visible: { use_gold()}
+	porthole frame:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 11
+		render style: image
+		image: {if use_porthole() then "voyager/porthole.png"}
+		visible: { use_porthole()}
+	ocean frame:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 11
+		render style: image
+		image: {if use_ocean() then "voyager/seafoam-2.png"}
+		visible: { use_ocean()}
+	styles frame:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 11
+		render style: image
+		image: {if use_styles() then "voyager/styles_frame_new.png"}
+		visible: { use_styles()}
 	mirror frame:
 		left:	0
 		top:	0

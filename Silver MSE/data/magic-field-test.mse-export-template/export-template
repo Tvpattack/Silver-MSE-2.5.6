@@ -135,7 +135,7 @@ script:
 		else if cond == "black, green" then "\{Black/Green\} "
 		else if cond == "white, red" then "\{Red/White\} "
 		else if cond == "blue, green" then "\{Green/Blue\} "
-		### 2 color silver combos
+		## 2 color silver combos
 		else if cond == "white, silver" then "\{White/Silver\} "
 		else if cond == "blue, silver" then "\{Blue/Silver\} "
 		else if cond == "black, silver" then "\{Black/Silver\} "
@@ -146,7 +146,7 @@ script:
 		else if cond == "black, silver" then "\{Black/Silver\} "
 		else if cond == "red, silver" then "\{Red/Silver\} "
 		else if cond == "green, silver" then "\{Green/Silver\} "
-		### Regular 3 color combos
+		## Regular 3 color combos
 		else if cond == "white, black, red" then "\{White/Black/Red\} "
 		else if cond == "blue, red, green" then "\{Blue/Red/Green\} "
 		else if cond == "white, black, green" then "\{Black/Green/White\} "
@@ -157,7 +157,7 @@ script:
 		else if cond == "black, red, green" then "\{Black/Red/Green\} "
 		else if cond == "white, red, green" then "\{Red/Green/White\} "
 		else if cond == "white, blue, green" then "\{Green/White/Blue\} "
-		### Silver 3 color combos
+		## Silver 3 color combos
 		else if cond == "white, blue, silver" then "\{White/Blue/Silver\} "
 		else if cond == "blue, black, silver" then "\{Blue/Black/Silver\} "
 		else if cond == "black, red, silver" then "\{Black/Red/Silver\} "
@@ -168,13 +168,13 @@ script:
 		else if cond == "black, green, silver" then "\{Black/Green/Silver\} "
 		else if cond == "white, red, silver" then "\{Red/White/Silver\} "
 		else if cond == "blue, green, silver" then "\{Green/Blue/Silver\} "
-		### Regular 4 color combos
+		## Regular 4 color combos
 		else if cond == "blue, black, red, green" then "\{Blue/Black/Red/Green\}"
 		else if cond == "white, blue, black, red" then "\{White/Blue/Black/Red\}"
 		else if cond == "black, red, green, white" then "\{Black/Red/Green/White\}"
 		else if cond == "red, green, white, blue, " then "\{Red/Green/Blue/White\}"
 		else if cond == "green, white, blue, black" then "\{Green/White/Blue/Black\}"
-		### Silver 4 color combos
+		## Silver 4 color combos
 		else if cond == "white, black, red, silver" then "\{White/Black/Red/Silver\} "
 		else if cond == "blue, red, green, silver" then "\{Blue/Red/Green/Silver\} "
 		else if cond == "white, black, green, silver" then "\{Black/Green/White/Silver\} "
@@ -187,12 +187,12 @@ script:
 		else if cond == "white, blue, green, silver" then "\{Green/White/Blue/Silver\} "
 		else ""
 	}
-	###	silver_patch := {
-	###		is_silver := contains(card.casting_cost, match:"I") or contains(card.card_color, match:"Silver")
-	###		if not is_silver then input
-	###		else if input == "" then "\{Silver\} "
-	###		else replace(input, match:"\{", replace:"\{Silver/")
-	###	}
+	##	silver_patch := {
+	##		is_silver := contains(card.casting_cost, match:"I") or contains(card.card_color, match:"Silver")
+	##		if not is_silver then input
+	##		else if input == "" then "\{Silver\} "
+	##		else replace(input, match:"\{", replace:"\{Silver/")
+	##	}
 	trim_zeroes := replace@(match: "^00?", replace: "")+
 		replace@(match: "a?/[0-9b]+", replace: "")
 	corrected_card_number := { 
@@ -314,7 +314,7 @@ script:
 	clean_cards := replace@(match:",\n$", replace: "\n")
 		+replace@(match:"’", replace:"'")
 	write_set := "\"meta\":\{\"setID\": \"{fixed_set_code()}\", \"title\": \"{quote_replace(set.title)}\"\},"
-	####################################
+	########################
 	file_name := {
 		(
 			if token_export() then fixed_set_code() + corrected_card_number()

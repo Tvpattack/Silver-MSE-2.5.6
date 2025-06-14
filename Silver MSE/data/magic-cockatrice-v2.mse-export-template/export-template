@@ -135,7 +135,7 @@ script:
 	add_attachment := {if filter_text(match: "<attach>", input) != "" then " attach=\"attach\"" else ""}
 	
 	#helpers to find if persistent is desired for this token relation, and generate the requisite XML
-	add_persistent := {if filter_text(match:"<(conjure|persistent)>", input) != "" then " persistent=\"persistent\"" else ""}
+	add_persistent := {if filter_text(match:"<(conjure|persistent)>", input) != "" or contains(card.notes, match:"!conjured") then " persistent=\"persistent\"" else ""}
 
 	#helper functions for converted_related later
 	related_entry_regex := "(.+?[^[:space:]])(?:;|\n|$)"
@@ -222,6 +222,10 @@ script:
 		)
 	}
 
+	token_or_code := {
+		if is_token() then "tokens" else setcode
+	}
+
 	#write a normal cards XML text
 	write_normal := {
 		"\n    "+"\<card>"
@@ -234,7 +238,7 @@ script:
 			else if contains(card.rarity,match:"mythic") then "\"mythic\""
 			else if contains(card.rarity,match:"rare") then "\"rare\""
 			else "\"\"")
-			+ ">"+setcode+"\</set>"
+			+ ">"+token_or_code()+"\</set>"
 		+"\n      "+"\<prop>"
 		# Color
 		+"\n        "+"\<colors>"

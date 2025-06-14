@@ -4501,8 +4501,8 @@ popout_height_2 := { popout_coord(3, field:styling.popout_art_2_coordinates or e
 popout_angle_2  := { popout_coord(4, field:styling.popout_art_2_coordinates or else "", lim:4) }
 
 module_chop := {
-	split := split_comma(styling.chop_text_box)
-	if length(styling.chop_text_box or else "") > input
+	split := split_comma(styling.chop_text_box or else "")
+	if length(split) > input
 		then to_number_lax(split[input])
 	else 0
 }
