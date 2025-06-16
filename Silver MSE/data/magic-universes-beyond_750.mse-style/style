@@ -283,7 +283,7 @@ styling field:
 	choice: crown
 	choice: enchantment legend
 	choice: vehicle
-	intial: nyx, land, crown, enchantment legend, vehicle
+	initial: nyx, land, crown, enchantment legend, vehicle
 styling field:
 	type:			text
 	name:			opacity percentage
