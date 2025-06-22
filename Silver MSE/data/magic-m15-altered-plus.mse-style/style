@@ -60,6 +60,8 @@ init script:
 	mask_hybrid_with_land := { styling.hybrid_name == "grey" }
 	mask_hybrid_with_gold := { styling.hybrid_name == "gold" }
 
+	use_altered_plus_holofoil := { false }
+
 	#Should multicolor lands with basic land types have a colored name?
 	mask_multi_land_with_color := { styling.colored_multicolor_land_name }
 	base_template_prefix := [
@@ -313,6 +315,7 @@ init script:
 	is_hands := { chosen(styling.altered_plus_frames, choice: "hands") }
 	is_voyager := { chosen(styling.altered_plus_frames, choice: "voyager") }
 	is_ub := { chosen(styling.frames, choice: "universes beyond") }
+	is_ff := { chosen(styling.frames, choice: "ff fullart") }
 	is_focus2 := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "reversed focus")}
 	is_nyx := {
 		chosen(styling.frames, choice:"nyx")
@@ -423,10 +426,10 @@ init script:
 	any_box := { chosen(styling.additional_options, choice: "anybox")}
 	use_pins := { chosen(styling.additional_options, choice: "pinlines")}
 	white_name := {chosen(styling.name_color, choice:"white")}
-	white_name2 := {chosen(styling.name_color, choice:"shadowed white") or is_rem() or is_paradox()}
+	white_name2 := {chosen(styling.name_color, choice:"shadowed white") or is_rem()}
 	black_name := {chosen(styling.name_color, choice:"black")}
 	white_type := {chosen(styling.typeline_color, choice:"white")}
-	white_type2 := {chosen(styling.typeline_color, choice:"shadowed white") or is_rem() or is_paradox()}
+	white_type2 := {chosen(styling.typeline_color, choice:"shadowed white") or is_rem()}
 	black_type := {chosen(styling.typeline_color, choice:"black")}
 	white_text := {chosen(styling.text_color, choice:"white")}
 	white_text2 := {chosen(styling.text_color, choice:"shadowed white") or is_rem()}
@@ -607,6 +610,7 @@ styling field:
 	choice: fnm promo
 	choice: paradox
 	choice: universes beyond
+	choice: ff fullart
 	choice: inverted
 	choice: planeshifted
 	choice: legend
@@ -924,7 +928,7 @@ card style:
 		font:
 			name: { if is_map() then "Beleren Small Caps" else "Beleren Bold" }
 			size: { (if is_map() then 14.8 else 16) - shrink_name() }
-			color: {if white_name2() or is_fnm() then "white" else if black_name() or bevel_black_name() and not is_shifted() then "black" else if white_name() or is_shifted() and not is_fnm() or is_inverted() or black_name() then "white" else "black"}
+			color: {if white_name2() or is_fnm() or is_paradox() then "white" else if black_name() or bevel_black_name() and not is_shifted() then "black" else if white_name() or is_shifted() and not is_fnm() or is_inverted() or black_name() then "white" else "black"}
 			shadow color: {if is_shifted() and not is_fnm() then rgb(0,0,0) else if white_name2() then rgb(0,0,0) else if bevel_black_name() then "white" else if use_porthole() then rgb(222, 207, 171) else rgba(0,0,0,0)}
 			shadow displacement x: -1
 			shadow displacement y: 1
@@ -999,10 +1003,10 @@ card style:
 		left: {if is_clear() or is_map() or is_expanded_art() or is_puma() or is_rem() or use_ocean() or use_styles() then 0 else if is_oldYGO() and is_mutate() then 14 else if is_full_art() then 23 else if clear_tops() then 15 else if is_mutate() and not is_oldYGO() then 22 else if is_oldYGO() and not is_mutate() then 14 else if use_porthole() then 38 else 29}
 		top: {if is_map() then 57 else if is_clear() or is_expanded_art() or clear_tops() or is_rem() or use_ocean() or use_styles() then 0 else if is_oldYGO() then 58 else if use_porthole() then 65 else 59}
 		width: {if is_clear() or is_map() or is_expanded_art() or is_puma() or is_rem() or use_ocean() or use_styles() then 375 else if is_full_art() then 328 else if clear_tops() then 345 else if is_oldYGO() and is_mutate() then 347 else if is_mutate() and not is_oldYGO() then 330 else if is_oldYGO() then 347 else if use_porthole() then 288 else if is_ub() then 318 else 316}
-		height:	{if is_clear() or is_expanded_art() or is_rem() or use_ocean() or use_styles() then 523 else if is_map() then 241 else if is_oldYGO() and is_mutate() then 334 else if is_puma() then 265 else if is_full_art() then 423 else if clear_tops() then 291 else if is_mutate() then 334 else if is_oldYGO() then 233 else if use_porthole() then 224 else if is_ub() then 233 else 231}
+		height:	{if is_clear() or is_expanded_art() or is_rem() or use_styles() then 523 else if is_map() then 241 else if is_oldYGO() and is_mutate() then 334 else if is_puma() then 265 else if is_full_art() then 423 else if clear_tops() then 291 else if is_mutate() then 334 else if is_oldYGO() then 233 else if use_porthole() then 224 else if use_ocean() then 290 else if is_ub() then 233 else 231}
 		z index: 11
 		default: {default_image(card.card_color)}
-		mask: { if is_devoid() or is_devoid2() then "imagemasks/image_mask_devoid.png" else if is_rem() then "rem_mask.png" else if is_oldYGO() and is_expanded_art() and not is_nopopout()  then expanded_mask() else if is_oldYGO() and not is_mutate() and not is_full_art() and not is_expanded_art() then "imagemasks/YGO.png" else if is_oldYGO() and is_mutate() then "imagemasks/YGOmutatemask.png" else if is_clear() then "image_mask.png" else if use_porthole() then "voyager/portholemask.png" else if use_ocean() then "voyager/oceanmask.png" else if use_styles() then "voyager/styles_mask.png" else if is_thbland() then "cornermask.png" else if is_halfart() then "halfartmask.png" else if is_puma() then "imagemasks/puma_mask" + (if is_mutate() then "_mutate.png" else "3.png") else if is_expanded_art() then expanded_mask() else if (is_full_art() or is_full_art() and is_oldYGO()) then "imagemasks/image_mask" + (if is_rare() and styling.use_holofoil_stamps then "_rare") + ".png" else if is_mutate() and not clear_tops() then "imagemasks/mutate_mask.png" else ""}
+		mask: { if is_devoid() or is_devoid2() then "imagemasks/image_mask_devoid.png" else if is_rem() then "rem_mask.png" else if is_oldYGO() and is_expanded_art() and not is_nopopout()  then expanded_mask() else if is_oldYGO() and not is_mutate() and not is_full_art() and not is_expanded_art() then "imagemasks/YGO.png" else if is_oldYGO() and is_mutate() then "imagemasks/YGOmutatemask.png" else if is_clear() then "image_mask.png" else if use_porthole() then "voyager/portholemask.png" else if use_styles() then "voyager/styles_mask.png" else if is_thbland() then "cornermask.png" else if is_halfart() then "halfartmask.png" else if is_puma() then "imagemasks/puma_mask" + (if is_mutate() then "_mutate.png" else "3.png") else if is_expanded_art() then expanded_mask() else if (is_full_art() or is_full_art() and is_oldYGO()) then "imagemasks/image_mask" + (if is_rare() and styling.use_holofoil_stamps then "_rare") + ".png" else if is_mutate() and not clear_tops() then "imagemasks/mutate_mask.png" else ""}
 	mainframe image:
 		left: {if comma_count(styling.popout_image_style) == ",,,," then split_text(match:",", styling.popout_image_style).0 else "0"}
 		top: {if comma_count(styling.popout_image_style) == ",,,," then split_text(match:",", styling.popout_image_style).1 else "0"}
@@ -1044,7 +1048,7 @@ card style:
 		font:
 			name: Beleren Bold
 			size: { (if is_map() then 12 else if use_porthole() then 14 else 13) - shrink_type() }
-			color: {if white_type2() or is_fnm() or is_frontier() then "white" else if black_type() or bevel_black_type() and not is_shifted() then "black" else if white_type() or is_full_art() or is_puma() or is_shifted() or black_type() or is_inverted() then "white" else "black"}
+			color: {if white_type2() or is_fnm() or is_frontier() or is_paradox() then "white" else if black_type() or bevel_black_type() and not is_shifted() then "black" else if white_type() or is_full_art() or is_puma() or is_shifted() or black_type() or is_inverted() then "white" else "black"}
 			shadow color: {if is_full_art() or white_type2() or is_fnm() or is_puma() or is_shifted() and not black_type() or is_fnm() then "black" else if bevel_black_type() then "white" else if use_porthole() then rgb(222, 207, 171) else rgba(0,0,0,0)} 
 			shadow displacement x: -1
 			shadow displacement y: 1
@@ -2482,7 +2486,7 @@ extra card style:
 		width: 46
 		height: 26
 		z index: 12
-		visible: { ( is_rare() or universes_stamp() ) and styling.use_holofoil_stamps and (is_devoid() or is_devoid2() or not is_clear()) }
+		visible: { ( is_rare() or universes_stamp() ) and styling.use_holofoil_stamps and (is_devoid() or is_devoid2() or not is_clear()) and not use_porthole() and use_altered_plus_holofoil() }
 		render style: image
 		image: { if is_map() then "maps/holo_stamp.png" else if is_devoid() or is_devoid2() then "devoid/stamp.png" else if is_ub() then ubstamp_background() else card_stamp() }
 		mask: { if is_ub() then "universes-beyond/stamps/border_mask_new.png" else "imagemasks/stamp_mask.png"}
@@ -2492,7 +2496,7 @@ extra card style:
 		width:   46
 		height:  { if is_ub() then 44 else 26 }
 		z index: 13
-		visible: { ( is_rare() or universes_stamp() ) and styling.use_holofoil_stamps }
+		visible: { ( is_rare() or universes_stamp() ) and styling.use_holofoil_stamps and use_altered_plus_holofoil() and not use_porthole() }
 		render style: image
 		image: { "" + if is_ub() then "universes-beyond/" + ( if is_rare() then "foil_stamp.png" else "flat_stamp.png" ) }
 	foil layer:

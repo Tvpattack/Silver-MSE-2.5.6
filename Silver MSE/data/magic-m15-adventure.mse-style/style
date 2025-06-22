@@ -195,7 +195,7 @@ init script:
 
 	card_shape := {"adventure"}
 
-	### Customize fonts
+	## Customize fonts
 	swap_fonts_name2_default := [
 		name: {"Beleren Bold"},
 		size: {12},
