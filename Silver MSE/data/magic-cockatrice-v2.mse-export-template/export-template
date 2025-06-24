@@ -115,8 +115,14 @@ script:
 	exporter_name_filter := filter_text@(match:"!exporte?r?name [^\n\<]+")
 	exporter_name_grabber := replace@(match:"!exporte?r?name ", replace:"")
 
+	#functions for the !tag command
+	tag_filter := filter_text@(match:"!tag [^\n\<]+")
+	tag_grabber := replace@(match:"!tag ", replace:"")
+
 	#determining what name should be used for the card
 	card_name := { if exporter_name_grabber(exporter_name_filter(card.notes)) != "" then exporter_name_grabber(exporter_name_filter(card.notes)) else remove_tags(card.name) }
+
+	card_tag := { if tag_grabber(tag_filter(card.notes)) != "" then tag_grabber(tag_filter(card.notes)) else false }
 
 	#surround mana symbols in curly brackets
 	format_mana := replace@(match:"(CHAOS|[1-9][0-9]+(?:\\/.)?|.\\/.\\/.|.\\/.|[+-]?[^.,: ])", replace:{"\{"+_1+"}"}, in_context:"<sym(-auto)?><match></sym")
@@ -164,7 +170,6 @@ script:
 
 		#for every other card name, surround it with reverse-related tags and put in relevant attributes
 		{for each entry in (break_text(match:related_entry_regex, input)) do ("\n      \<related" + add_related_count(entry)  + add_attachment(entry) + add_persistent(entry) + ">" + xml_escape(strip_card_name(entry)) + "\</related>")}
-
 
 	filter_related := filter_text@(match:"!relate ?[^!]+!?")
 	filter_token := filter_text@(match:"!tokens? ?[^!]+!?")
@@ -244,15 +249,24 @@ script:
 		+"\n        "+"\<colors>"
 		+ card_color()
 			+"\</colors>"
+		+"\n        "+"\<color>"
+		+ card_color()
+			+"\</color>"
 		# Mana Cost
 		+"\n        "+"\<manacost>"+card.casting_cost+"\</manacost>"
+		+"\n        "+"\<cost>"+card.casting_cost+"\</cost>"
+		+"\n        "+"\<mana>"+card.casting_cost+"\</mana>"
 		# Converted Mana Cost
 		+"\n        "+"\<cmc>"+card.cmc+"\</cmc>"
+		+"\n        "+"\<mv>"+card.cmc+"\</mv>"
 		# Type
 		+"\n        "+"\<type>"+xml_escape(replace(card.type, match:"—", replace:"-"))+"\</type>"
 		+maintype()
 		# P/T
 		+(if contains(card.type, match:"Creature") then "\n        "+"\<pt>"+xml_escape(card.pt)+"\</pt>")
+		# Notes/tag
+		+"\n        "+"\<notes>"+xml_escape(card.notes)+"\</notes>"
+		+(if card_tag() != false then "\n        "+"\<tag>"+xml_escape(card_tag())+"\</tag>")
 		+"\n      "+"\</prop>"
 		# Tablerow
 		+"\n      "+"\<tablerow>"
@@ -284,6 +298,9 @@ script:
 		+maintype()
 		# P/T
 		+(if contains(card.type, match:"Creature") then "\n        "+"\<pt>"+xml_escape(card.pt)+"\</pt>")
+		# Notes/tag
+		+"\n        "+"\<notes>"+xml_escape(card.notes)+"\</notes>"
+		+(if card_tag() != false then "\n        "+"\<tag>"+xml_escape(card_tag())+"\</tag>")
 		+"\n      "+"\</prop>"
 		# Tablerow
 		+"\n      "+"\<tablerow>"
@@ -397,10 +414,16 @@ script:
 		+"\n        "+"\<colors>"
 		+ card_color()
 			+"\</colors>"
+		+"\n        "+"\<color>"
+		+ card_color()
+			+"\</color>"
 		# Mana Cost
 		+"\n        "+"\<manacost>"+card.casting_cost+"\</manacost>"
+		+"\n        "+"\<cost>"+card.casting_cost+"\</cost>"
+		+"\n        "+"\<mana>"+card.casting_cost+"\</mana>"
 		# Converted Mana Cost
 		+"\n        "+"\<cmc>"+card.cmc+"\</cmc>"
+		+"\n        "+"\<mv>"+card.cmc+"\</mv>"
 		# Type
 		+"\n        "+"\<type>"+xml_escape(replace(card.type, match:"—", replace:"-"))+"\</type>"
 		+maintype()
@@ -440,14 +463,23 @@ script:
 		+"\n        "+"\<colors>"
 		+ card_color_2()
 			+"\</colors>"
+		+"\n        "+"\<color>"
+		+ card_color_2()
+			+"\</color>"
 		# Mana Cost II
 		+"\n        "+"\<manacost>"+card.casting_cost_2+"\</manacost>"
+		+"\n        "+"\<cost>"+card.casting_cost_2+"\</cost>"
+		+"\n        "+"\<mana>"+card.casting_cost_2+"\</mana>"
 		# Converted Mana Cost II
 		+"\n        "+"\<cmc>"+card.cmc+"\</cmc>"
+		+"\n        "+"\<mv>"+card.cmc+"\</mv>"
 		# Type II
 		+"\n        "+"\<type>"+xml_escape(replace(card.type_2, match:"—", replace:"-"))+"\</type>"
 		# P/T II
 		+(if contains(card.type_2, match:"Creature") then "\n        "+"\<pt>"+xml_escape(card.pt_2)+"\</pt>")
+		# Notes/tag
+		+"\n        "+"\<notes>"+xml_escape(card.notes)+"\</notes>"
+		+(if card_tag() != false then "\n        "+"\<tag>"+xml_escape(card_tag())+"\</tag>")
 		+"\n      "+"\</prop>"
 		# Tablerow II
 		+"\n      "+"\<tablerow>"
@@ -488,13 +520,19 @@ script:
 			+"\</colors>"
 		# Mana Cost
 		+"\n        "+"\<manacost>"+card.casting_cost+"\</manacost>"
+		+"\n        "+"\<cost>"+card.casting_cost+"\</cost>"
+		+"\n        "+"\<mana>"+card.casting_cost+"\</mana>"
 		# Converted Mana Cost
 		+"\n        "+"\<cmc>"+card.cmc+"\</cmc>"
+		+"\n        "+"\<mv>"+card.cmc+"\</mv>"
 		# Type
 		+"\n        "+"\<type>"+xml_escape(replace(card.type, match:"—", replace:"-"))+"\</type>"
 		+maintype()
 		# Loyalty
 		+"\n      "+"\<loyalty>"+card.loyalty+"\</loyalty>"
+		# Notes/tag
+		+"\n        "+"\<notes>"+xml_escape(card.notes)+"\</notes>"
+		+(if card_tag() != false then "\n        "+"\<tag>"+xml_escape(card_tag())+"\</tag>")
 		+"\n      "+"\</prop>"
 		# Tablerow
 		+"\n      "+"\<tablerow>"+"1"+"\</tablerow>"
@@ -891,7 +929,8 @@ script:
 		+"\n    "+"\</card>"
 	}
 
-	write_card := { if is_token() then ""
+	write_card := { 
+		if is_token() then ""
 		else if not(included_rarity()) then ""
 		else if contains(card.shape, match:"double") and contains(card.type, match:"Planeswalker") and contains(card.type_2, match:"Planeswalker") then write_double_walker()
 		else if contains(card.shape, match:"double") and card.loyalty_2 != "" then write_sparker()

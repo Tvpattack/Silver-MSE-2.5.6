@@ -257,7 +257,7 @@ script:
 		strings := [
 			"{q}card_name{q}: {q}{card_name()}{q}",
 			"{q}color{q}: {q}{card_color_1()}{q}",
-			"{q}rarity{q}: {q}{if options.draft_structure == "cube" then "cube" else card_rarity()}{q}",
+			"{q}rarity{q}: {q}{card_rarity()}{q}",
 			"{q}type{q}: {q}{sanitize(card.type)}{q}",
 			"{q}number{q}: {sanitize(card_number())}",
 			"{q}color_identity{q}: {q}{get_color_identity()}{q}",
