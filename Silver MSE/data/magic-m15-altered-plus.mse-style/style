@@ -2486,7 +2486,7 @@ extra card style:
 		width: 46
 		height: 26
 		z index: 12
-		visible: { is_rare() and styling.use_holofoil_stamps and (is_devoid() or is_devoid2() or not is_clear()) and not use_porthole() and use_altered_plus_holofoil() }
+		visible: { is_rare() and styling.use_holofoil_stamps and (is_devoid() or is_devoid2() or not is_clear()) and not use_porthole() and use_altered_plus_holofoil() and not is_frontier() }
 		render style: image
 		image: { if is_map() then "maps/holo_stamp.png" else if is_devoid() or is_devoid2() then "devoid/stamp.png" else if is_ub() then ubstamp_background() else card_stamp() }
 		mask: { if is_ub() then "universes-beyond/stamps/border_mask_new.png" else "imagemasks/stamp_mask.png"}
@@ -2496,7 +2496,7 @@ extra card style:
 		width:   46
 		height:  { if is_ub() then 44 else 26 }
 		z index: 13
-		visible: { ( is_rare() or universes_stamp() ) and styling.use_holofoil_stamps and use_altered_plus_holofoil() and not use_porthole() }
+		visible: { ( is_rare() or universes_stamp() ) and styling.use_holofoil_stamps and use_altered_plus_holofoil() and not use_porthole() and not is_frontier() }
 		render style: image
 		image: { if is_ub() and is_rare() then "universes-beyond/foil_stamp.png" else if is_ub() then "universes-beyond/flat_stamp.png" else "foil_stamp.png" }
 	foil layer:
@@ -2639,7 +2639,7 @@ extra card style:
 		z index: 11
 		visible: {is_frontier()}
 		mask: {if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "maskfrontier.png")}
-## FNM has a teeny mask because of a few pixel disagreements between it and normal frames
+	## FNM has a teeny mask because of a few pixel disagreements between it and normal frames
 	crown:
 		left: 0
 		top: {if is_devoid() or is_devoid2() then 1 else 0}

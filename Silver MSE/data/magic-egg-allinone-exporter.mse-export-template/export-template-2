@@ -100,14 +100,6 @@ script:
 	exporter_backname_filter := filter_text@(match:"!backf?a?c?e?name [^\n\<]+")
 	exporter_backname_grabber := replace@(match:"!backf?a?c?e?name ", replace:"")
 
-	#functions for the !designer command
-	designer_filter := filter_text@(match:"!designer [^\n\<]+")
-	designer_grabber := replace@(match:"!designer ", replace:"")
-
-	get_designer := { designer_grabber(designer_filter(input)) }
-	set_designer := { get_designer(set.description) }
-	card_designer := { if get_designer(card.notes) != "" then get_designer(card.notes) else set_designer() }
-
 	card_name := { 
 		given := exporter_name_grabber(exporter_name_filter(card.notes))
 		if given == "" then given := card.name
@@ -277,7 +269,6 @@ script:
 			"{q}shape{q}: {q}{get_shape()}{q}",
 			"{q}set{q}: {q}{adj_setcode()}{q}",
 			"{q}loyalty{q}: {q}{sanitize(card.loyalty)}{q}",
-			"{q}designer{q}: {q}{sanitize(card_designer())}{q}",
 			"{q}artist{q}: {q}{sanitize(card.illustrator)}{q}"
 		]
 		if is_double_card(card.shape) then strings := strings + [
@@ -317,7 +308,6 @@ script:
 		"{q}trimmed{q}: {q}n{q}",
 		"{q}image_type{q}: {q}{options.image_type}{q}",
 		"{q}draft_structure{q}: {q}{options.draft_structure}{q}",
-		"{q}designer{q}: {q}{set_designer()}{q}",
 		"{q}cards{q}: [{write_cards()}]"
 	]
 	write_text_file(file: adj_setcode() + ".json", "\{" + join(main_keys) + "}")

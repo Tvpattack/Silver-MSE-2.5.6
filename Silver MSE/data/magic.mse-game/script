@@ -746,7 +746,7 @@ color_of_card := {
 		else if chosen(choice:"blue", card_color)   then "C"              #### Blue
 		else if chosen(choice:"black", card_color)  then "D"              #### Black
 		else if chosen(choice:"red", card_color)    then "E"              #### Red
-		else if chosen(choice:"green", card_color)  then "I"              #### Green
+		else if chosen(choice:"green", card_color)  then "F"              #### Green
 		else if chosen(choice:"silver", card_color) then "G"             #### Silver
 		else                                            "J"              #### Artifact
 	) else (
@@ -758,7 +758,7 @@ color_of_card := {
 		else if colors == "U" then "C"                                   #### Blue
 		else if colors == "B" then "D"                                   #### Black
 		else if colors == "R" then "E"                                   #### Red
-		else if colors == "G" then "I"                                   #### Green
+		else if colors == "G" then "F"                                   #### Green
 		else if colors == "I" then "G"                                   #### Silver
 		else if is_hybrid_cost() then hybrid_color_pair_sort()           #### Hybrid (by pairs)
 		else if contains(casting_cost, match:"/") and artifact then "I"  #### Hybrid Artifacts
@@ -803,24 +803,24 @@ hybrid_color_pair_sort := {
 }
 multi_color_pair_sort := {
 	colors := sort_text(casting_cost, order: "<WUBRGI>")
-	if not set.sort_multicolor_in_pairs then "GK"
-	else if colors == "WU" then "GA"
-	else if colors == "UB" then "GB"
-	else if colors == "BR" then "GC"
-	else if colors == "RG" then "GD"
-	else if colors == "WG" then "GE"
-	else if colors == "WB" then "GF"
-	else if colors == "UR" then "GG"
-	else if colors == "BG" then "GH"
-	else if colors == "WR" then "GI"
-	else if colors == "UG" then "GJ"
-	else if colors == "IW" then "GK"
-	else if colors == "IU" then "GL"
-	else if colors == "IB" then "GM"
-	else if colors == "IR" then "GN"
-	else if colors == "IG" then "GO"
-	else if contains(card.casting_cost, match:"/") then "GQ"
-	else "GP"
+	if not set.sort_multicolor_in_pairs then "HK"
+	else if colors == "WU" then "HA"
+	else if colors == "UB" then "HB"
+	else if colors == "BR" then "HC"
+	else if colors == "RG" then "HD"
+	else if colors == "WG" then "HE"
+	else if colors == "WB" then "HF"
+	else if colors == "UR" then "HG"
+	else if colors == "BG" then "HH"
+	else if colors == "WR" then "HI"
+	else if colors == "UG" then "HJ"
+	else if colors == "IW" then "HK"
+	else if colors == "IU" then "HL"
+	else if colors == "IB" then "HM"
+	else if colors == "IR" then "HN"
+	else if colors == "IG" then "HO"
+	else if contains(card.casting_cost, match:"/") then "HQ"
+	else "HP"
 }
 
 #### Sort the card into its rarity tier
