@@ -2854,7 +2854,7 @@ extra card style:
 		height: 523
 		z index: 11
 		render style: image
-		image: {if use_gold() then "voyager/porthole.png"}
+		image: { "gold1.jpg" }
 		visible: { use_gold()}
 	porthole frame:
 		left: 0
