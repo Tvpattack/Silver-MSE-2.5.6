@@ -7,8 +7,6 @@
 /files/*
 /set symbols/*
 
-# ignore everything with magic-mainframe-extras
-/data/magic-mainframe-extras.mse-include/*
 
 # include the include file and readme
 !/data/magic-mainframe-extras.mse-include/include
