@@ -1,7 +1,7 @@
 mse version: 2.0.0
 game: magic
-short name: M15 Mainframe-Plus
-full name: M15 w/Extraframes
+short name: Altered Plus
+full name: M15 Mainframe w/Extraframes
 icon: card-sample.png
 installer group: magic/m15 style/normal cards
 position hint: 001
@@ -97,7 +97,8 @@ init script:
 		map: "maps/"
 		energy: "energies/"
 		halfart: "energies/"
-		mappt: "maps/" pt: "Normal/"
+		mappt: "maps/" 
+		pt: "Normal/"
 		pt2: "Normal/"
 		slide: "masks/"
 		slide2: "masks/"
@@ -108,6 +109,7 @@ init script:
 		season: "season/"
 		stamp: "Stamp/"
 		identity: "/magic-modules.mse-include/indicators/"
+		texture: "/magic-modules.mse-include/trims/base/"
 		backdfc: "backdfc/"
 		puma: "puma/"
 		front: "flags/"
@@ -127,7 +129,8 @@ init script:
 		focus: "focus/"
 		focus2: "focus/"
 		paradox: "paradox/"
-		paradoxpt: "paradox/"]
+		paradoxpt: "paradox/"
+	]
 
 	shifted_template_prefix := [
 		card: "shifted/"
@@ -174,6 +177,7 @@ init script:
 		season: "season/"
 		stamp: "shifted/"
 		identity: "/magic-modules.mse-include/indicators/"
+		texture: "/magic-modules.mse-include/trims/base/"
 		puma: "puma/shifted/"
 		cpop1: "prototype/"
 		cpop2: "prototype/"
@@ -186,7 +190,7 @@ init script:
 		paradoxpt: "paradox/"
 		]
 	template_prefix := { if type == "miracle" and pure_snow() then [miracle:"snow/"] else if is_shifted() then shifted_template_prefix else base_template_prefix }
-	template_suffix := [card: "card.jpg",  node:"node.png", alias:"alias.png", alias2:"alias.png", devoid:"card.png", devoid2:"card.png", snow:"card.jpg", snowtexture:"snow.png", nyx: "nyx.png", ubstamp: "stamp.png", hands: "hands.png", voyager: "card.jpg", universesbeyond: "card.png" star: "star.png", space: "space.png", path: "path.png", norm: "norm.png", lush: "lush.png", smallbox: "smallbox.png", sky: "sky.png", frontier: "frontier.png",  miracle: "miracle.png", promo: "card.jpg", crown: "crown.png", cons:"cons.png", curtain: "card.png", fnm:"card.png", fnmpt: "pt.png", inverted: "card.png", invertedpt: "pt.png", map: "card.png", energy: "card.png", halfart: "card1.png", mappt: "pt.png", pt: "pt.png", pt2: "pt2.png", slide: "slide.png", slide2: "slide2.png", slide3: "slide3.png", stamp: "stamp.jpg", arrow: "arrow.png", arrow2: "arrow2.png", arrow3: "arrow3.png", season: "flag.png" front:"flag.png" back:"flag2.png" identity: "identity.png", backdfc: "back.png", puma: "puma.png", pins: "card.png", pop: "pop.png", cpop1: "cpop1.png", cpop2: "cpop2.png", cpop3: "cpop3.png", cpop4: "cpop4.png", cpop5: "cpop5.png", pro: "pro.png", adventure:"card.png", adventure2:"card2.png", adventure3:"card3.png", adventure4:"card4.png", focus:"focus.png", focus2:"focus2.png", paradox: "card.png", paradoxpt: "pt.png"]
+	template_suffix := [card: "card.jpg",  node:"node.png", alias:"alias.png", alias2:"alias.png", devoid:"card.png", devoid2:"card.png", snow:"card.jpg", snowtexture:"snow.png", nyx: "nyx.png", ubstamp: "stamp.png", hands: "hands.png", voyager: "card.jpg", universesbeyond: "card.png" star: "star.png", space: "space.png", path: "path.png", norm: "norm.png", lush: "lush.png", smallbox: "smallbox.png", sky: "sky.png", frontier: "frontier.png",  miracle: "miracle.png", promo: "card.jpg", crown: "crown.png", cons:"cons.png", curtain: "card.png", fnm:"card.png", fnmpt: "pt.png", inverted: "card.png", invertedpt: "pt.png", map: "card.png", energy: "card.png", halfart: "card1.png", mappt: "pt.png", pt: "pt.png", pt2: "pt2.png", slide: "slide.png", slide2: "slide2.png", slide3: "slide3.png", stamp: "stamp.jpg", arrow: "arrow.png", arrow2: "arrow2.png", arrow3: "arrow3.png", season: "flag.png" front:"flag.png" back:"flag2.png" identity: "identity.png", backdfc: "back.png", puma: "puma.png", pins: "card.png", pop: "pop.png", cpop1: "cpop1.png", cpop2: "cpop2.png", cpop3: "cpop3.png", cpop4: "cpop4.png", cpop5: "cpop5.png", pro: "pro.png", adventure:"card.png", adventure2:"card2.png", adventure3:"card3.png", adventure4:"card4.png", focus:"focus.png", focus2:"focus2.png", paradox: "card.png", paradoxpt: "pt.png", texture: "texture.png"]
 	template      := { crown_lead(type) + template_prefix()[type] + input + crown_follow(type) + template_suffix[type] }
 	land_template := { crown_lead(type) + template_prefix()[type] + (if input == "a" then "c" else input) + (if landless(type) then "" else "l") + crown_follow(type) + template_suffix[type] }
 	# Use land templates for previews because they show more contrast
@@ -212,6 +216,7 @@ init script:
 			then "com"
 		else ""
 	}
+
 	mv_split := break_text@(match: "(?ix) 1/2 | [|][WUBRGICX] | [0-9](/[WUBRGCVLHSICETQ2X]) | [0-9]+(?!/[WUBRGCVLHSICETQ2X]) | [WUBRGCVLHSI0-9X](/[WUBRGCVLHSIX])\{0,4} ")
 	number_of_symbols := { length(mv_split(card.casting_cost_2)) }
 
@@ -279,6 +284,33 @@ init script:
 	front_flag_image    := { color_background(type: "front",           base_hybrid: card_hybrid) }
 	back_flag_image     := { color_background(type: "back",            base_hybrid: card_hybrid) }
 	pins_image          := { color_background(type: "pins",            base_hybrid: card_hybrid) }
+	texture_background  := { color_background(type: "texture",         base_hybrid: card_hybrid) }
+
+	sized_textbox_values := [
+		normal: 0
+		small: 30
+		extrasmall: 60
+		xxs: 80
+	]
+
+	get_textbox_offset := { if styling.textbox_offset == "" then 0 else styling.textbox_offset }
+	textbox_size_adjusted := { sized_textbox_values[styling.textbox_size] + get_textbox_offset()}
+
+	main_background := { if is_clear() or clear_tops() or use_porthole() or use_ocean() or use_styles() then "" else if is_fnm() then fnm_background() else if is_inverted() then inverted_background() else if is_paradox() then paradox_background() else if is_full_art() then promo_background() else if pure_snow() then snow_background() else if is_adventure() then adventure_colors() else if is_adventure2() then adventure2_colors() else if is_voyager() then voyager_background() else if is_ub() then ub_background() else card_background() }
+
+	typeline_img := { set_mask(image:main_background(), mask:"imagemasks/typelinemask.png") }
+	top_textbox_img := { set_mask(image:main_background(), mask:"imagemasks/top_textbox.png") }
+	mid_textbox_x := { left_of_textbox() - 4 }
+	mid_textbox_y := { base_top_of_textbox() + 2 + textbox_size_adjusted() }
+	mid_textbox_height := { height_of_textbox() }
+	mid_textbox_width := { width_of_textbox() + 8 }
+	middle_crop := { crop(input, offset_x:mid_textbox_x(), offset_y:mid_textbox_y(), height:mid_textbox_height(), width:mid_textbox_width()) }
+	middle_textbox_img := { middle_crop(main_background()) }
+	bottom_textbox_img := { set_mask(image:main_background(), mask:"imagemasks/bottom_textbox.png") }
+
+	edge_crop := { crop(input, offset_x: 346, offset_y: 60, height: 1, width: 3) }
+	image_edge := { edge_crop(main_background()) }
+
 	# Use the normal tap symbol
 	mana_t := {
 		if      styling.tap_symbol == "old"        then "old"
@@ -315,7 +347,6 @@ init script:
 	is_hands := { chosen(styling.altered_plus_frames, choice: "hands") }
 	is_voyager := { chosen(styling.altered_plus_frames, choice: "voyager") }
 	is_ub := { chosen(styling.frames, choice: "universes beyond") }
-	is_ff := { chosen(styling.frames, choice: "ff fullart") }
 	is_focus2 := {chosen(styling.frames, choice: "adventure") and chosen(styling.adventure_type, choice: "reversed focus")}
 	is_nyx := {
 		chosen(styling.frames, choice:"nyx")
@@ -331,7 +362,10 @@ init script:
 	is_revelation := match@(match: "(?i)Revelation")
 	is_paradox := { ( chosen(styling.frames, choice: "paradox") or is_revelation(card.type) ) and not is_map() }
 	is_space := { chosen(styling.altered_plus_frames, choice: "space") and not is_map() }
-	is_path := { chosen(styling.altered_plus_frames, choice: "path") and not is_map() }
+	match_anima := match@(match: "(?i)anima")
+	match_path := match@(match: "(?i)pathbound")
+	auto_path := { match_path(card.special_text) or match_anima(card.type) }
+	is_path := { chosen(styling.altered_plus_frames, choice: "path") or auto_path() and not is_map() }
 	is_norm := { chosen(styling.altered_plus_frames, choice: "norm") and not is_map() }
 	is_backdfc := { chosen(styling.altered_plus_frames, choice: "backdfc") and not is_map() }
 	is_lush := { chosen(styling.altered_plus_frames, choice: "lush") and not is_map() }
@@ -358,6 +392,7 @@ init script:
 	expanded_mask := { "bigimagemasks/" + (if is_full_art() then "dka_" else "") + (if is_borderless() then (if is_stamped() then "rare_" else "") + "borderless_" else "") + "frameless.png"}
 	is_curtains := { chosen(styling.additional_options, choice: "curtain")}
 	is_pinned := {chosen(styling.other_options, choice:"pride pinlines")}
+	is_sized := { not chosen(styling.textbox_size, choice:"normal") or styling.textbox_offset != "" }
 	use_main_rarity := { contains(set.mainframe_rarity_name, match: ".png")}
 	un_png := replace@(match:".png", replace: "")
 	ancestral_mana := { chosen(styling.other_options, choice:"ancestral generic mana")}
@@ -462,8 +497,17 @@ init script:
 	pure_snow := {is_snow() and not is_fnm() and not is_inverted() and not is_paradox() and not is_full_art() and not is_leveler() and not is_shifted()}
 	chop_top := {if styling.chop_top == "" then 0 else if comma_count(styling.chop_top) == "," or comma_count(styling.chop_top) == ",," then split_text(match:",", styling.chop_top).0 else styling.chop_top}
 	chop_bot := {if comma_count(styling.chop_top) == ",," then split_text(match:",", styling.chop_top).1 else if styling.chop_bottom == "" then 0 else styling.chop_bottom}
-	top_of_textbox := {(if is_map() then 340 else if is_halfart() then 413 else if is_full_art() then 359 else if is_mutate() and not is_prototype() then 395 else if is_prototype() and not is_mutate() then 385 else if is_prototype() and is_mutate() then 453.2 else if is_deck() then 60 else if use_porthole() then 369 else if use_styles() then 378 else 327) - (-chop_top()) }
-	bottom_of_textbox := {(if is_map() then 475 else if use_porthole() then 470 else 481) - chop_bot() }
+	base_top_of_textbox := { if is_map() then 340 else if is_halfart() then 413 else if is_full_art() then 359 else if is_mutate() and not is_prototype() then 395 else if is_prototype() and not is_mutate() then 385 else if is_prototype() and is_mutate() then 453.2 else if is_deck() then 60 else if use_porthole() then 369 else if use_styles() then 378 else 327 }
+	unchopped_top_of_textbox := { base_top_of_textbox() + textbox_size_adjusted() }
+	top_of_textbox := { unchopped_top_of_textbox() + chop_top() }
+	unchopped_bottom_of_textbox := { if is_map() then 475 else if use_porthole() then 470 else 481 }
+	bottom_of_textbox := { unchopped_bottom_of_textbox() - chop_bot() }
+	left_of_textbox := { if (card.level_0 != "" or card.level_1 != "" or card.level_2 != "") then 75 else if is_map() then 40 else if is_focus2() or is_adventure2() then 27 else if is_focus() then 190 else if is_adventure() then 200 else if use_porthole() then 54 else 29 }
+	width_of_textbox := { if is_leveler() then 0 else (if(card.level_0 != "" or card.level_1 != "" or card.level_2 != "") then -46 else 0) + if is_map() then 287 else if is_focus2() or is_focus() then 154 else if is_adventure2() then 157 else if is_adventure() then 143 else if use_porthole() then 286 else 314 }
+	height_of_textbox := { unchopped_bottom_of_textbox() - base_top_of_textbox() }
+
+	typeline_top := { (if is_map() then 297.5 else if is_halfart() then 382 else if is_clear() then 294 else if is_thbland() then 444 else if is_full_art() then 329 else if is_deck() then 700 else if use_porthole() then 290 else 296) + ( shrink_type() + textbox_size_adjusted() ) }
+
 	clamp := {
 		number := to_number(input) 
 		if number < minimum 
@@ -610,7 +654,6 @@ styling field:
 	choice: fnm promo
 	choice: paradox
 	choice: universes beyond
-	choice: ff fullart
 	choice: inverted
 	choice: planeshifted
 	choice: legend
@@ -755,6 +798,18 @@ styling field:
 	choice: smallbox
 	choice: anybox
 	choice: familiarpt
+styling field:
+	type: choice
+	name: textbox size
+	description: the size of the textbox
+	choice: normal
+	choice: small
+	choice: extrasmall
+	choice: xxs
+styling field:
+	type: text
+	name: textbox offset
+	description: move the type, textbox, etc. down by X pixels. Use negative to move up.
 styling field:
 	type: text
 	name: arrow or bullet offsets
@@ -914,7 +969,20 @@ card style:
 		z index: 10
 		render style: image
 		popup style: in place
-		image: { if is_clear() or clear_tops() or use_porthole() or use_ocean() or use_styles() then "" else if is_fnm() then fnm_background() else if is_inverted() then inverted_background() else if is_paradox() then paradox_background() else if is_full_art() then promo_background() else if pure_snow() then snow_background() else if is_adventure() then adventure_colors() else if is_adventure2() then adventure2_colors() else if is_voyager() then voyager_background() else if is_ub() then ub_background() else card_background() }
+		image: { main_background() }
+		mask: { if is_sized() then "imagemasks/sized_mask.png" else "" }
+		visible: { not is_sized() }
+	card color 2:
+		left:	0
+		top:	0
+		width:	375
+		height:	523
+		z index: 11
+		render style: image
+		popup style: in place
+		image: { main_background() }
+		mask: { if is_sized() then "imagemasks/sized_mask.png" else "" }
+		visible: { is_sized() }
 	############################# Name line
 	name:
 		left: { if center_map() then 55 else if is_map() then (if use_node() then 65 else 60) else if use_node() then 58 else if card.card_symbol=="none" then 32 else 50 }
@@ -1003,10 +1071,10 @@ card style:
 		left: {if is_clear() or is_map() or is_expanded_art() or is_puma() or is_rem() or use_ocean() or use_styles() then 0 else if is_oldYGO() and is_mutate() then 14 else if is_full_art() then 23 else if clear_tops() then 15 else if is_mutate() and not is_oldYGO() then 22 else if is_oldYGO() and not is_mutate() then 14 else if use_porthole() then 38 else 29}
 		top: {if is_map() then 57 else if is_clear() or is_expanded_art() or clear_tops() or is_rem() or use_ocean() or use_styles() then 0 else if is_oldYGO() then 58 else if use_porthole() then 65 else 59}
 		width: {if is_clear() or is_map() or is_expanded_art() or is_puma() or is_rem() or use_ocean() or use_styles() then 375 else if is_full_art() then 328 else if clear_tops() then 345 else if is_oldYGO() and is_mutate() then 347 else if is_mutate() and not is_oldYGO() then 330 else if is_oldYGO() then 347 else if use_porthole() then 288 else if is_ub() then 318 else 316}
-		height:	{if is_clear() or is_expanded_art() or is_rem() or use_styles() then 523 else if is_map() then 241 else if is_oldYGO() and is_mutate() then 334 else if is_puma() then 265 else if is_full_art() then 423 else if clear_tops() then 291 else if is_mutate() then 334 else if is_oldYGO() then 233 else if use_porthole() then 224 else if use_ocean() then 290 else if is_ub() then 233 else 231}
-		z index: 11
+		height:	{ (if is_clear() or is_expanded_art() or is_rem() or use_styles() then 523 else if is_map() then 241 else if is_oldYGO() and is_mutate() then 334 else if is_puma() then 265 else if is_full_art() then 423 else if clear_tops() then 291 else if is_mutate() then 334 else if is_oldYGO() then 233 else if use_porthole() then 224 else if use_ocean() then 290 else if is_ub() then 233 else 231) + textbox_size_adjusted() }
+		z index: 10
 		default: {default_image(card.card_color)}
-		mask: { if is_devoid() or is_devoid2() then "imagemasks/image_mask_devoid.png" else if is_rem() then "rem_mask.png" else if is_oldYGO() and is_expanded_art() and not is_nopopout()  then expanded_mask() else if is_oldYGO() and not is_mutate() and not is_full_art() and not is_expanded_art() then "imagemasks/YGO.png" else if is_oldYGO() and is_mutate() then "imagemasks/YGOmutatemask.png" else if is_clear() then "image_mask.png" else if use_porthole() then "voyager/portholemask.png" else if use_styles() then "voyager/styles_mask.png" else if is_thbland() then "cornermask.png" else if is_halfart() then "halfartmask.png" else if is_puma() then "imagemasks/puma_mask" + (if is_mutate() then "_mutate.png" else "3.png") else if is_expanded_art() then expanded_mask() else if (is_full_art() or is_full_art() and is_oldYGO()) then "imagemasks/image_mask" + (if is_rare() and styling.use_holofoil_stamps then "_rare") + ".png" else if is_mutate() and not clear_tops() then "imagemasks/mutate_mask.png" else ""}
+		mask: { if is_sized() then "" else if is_devoid() or is_devoid2() then "imagemasks/image_mask_devoid.png" else if is_rem() then "rem_mask.png" else if is_oldYGO() and is_expanded_art() and not is_nopopout()  then expanded_mask() else if is_oldYGO() and not is_mutate() and not is_full_art() and not is_expanded_art() then "imagemasks/YGO.png" else if is_oldYGO() and is_mutate() then "imagemasks/YGOmutatemask.png" else if is_clear() then "image_mask.png" else if use_porthole() then "voyager/portholemask.png" else if use_styles() then "voyager/styles_mask.png" else if is_thbland() then "cornermask.png" else if is_halfart() then "halfartmask.png" else if is_puma() then "imagemasks/puma_mask" + (if is_mutate() then "_mutate.png" else "3.png") else if is_expanded_art() then expanded_mask() else if (is_full_art() or is_full_art() and is_oldYGO()) then "imagemasks/image_mask" + (if is_rare() and styling.use_holofoil_stamps then "_rare") + ".png" else if is_mutate() and not clear_tops() then "imagemasks/mutate_mask.png" else ""}
 	mainframe image:
 		left: {if comma_count(styling.popout_image_style) == ",,,," then split_text(match:",", styling.popout_image_style).0 else "0"}
 		top: {if comma_count(styling.popout_image_style) == ",,,," then split_text(match:",", styling.popout_image_style).1 else "0"}
@@ -1037,7 +1105,7 @@ card style:
 		image: { card_identity() }
 	type:
 		left: { if is_map() then 85 else if is_season() then (if styling.color_indicator_dot then 64 else 44)+(if is_clear() then 4 else 0) else if use_porthole() then 57 else (if styling.color_indicator_dot then 52 else 32) + (if is_clear() then 4 else 0) }
-		top: { (if is_map() then 297.5 else if is_halfart() then 382 else if is_clear() then 294 else if is_thbland() then 444 else if is_full_art() then 329 else if is_deck() then 700 else if use_porthole() then 290 else 296) + shrink_type() }
+		top: {typeline_top()}
 		width: { if use_box() and not any_box() then 0 else (if is_map() then 205 else (if styling.color_indicator_dot then "290" else "310") - (if card_style.rarity.width == 0 then 0 else if use_porthole() then 595 else max(22,card_style.rarity.content_width)) - (if is_season() then 12 else 0)) }
 		height: { if use_box() and not any_box() then 0 else if use_porthole() then 44 else ((if is_map() then 18 else 20) - shrink_type()) }
 		alignment: {if is_map() then "center top shrink-overflow" else "top shrink-overflow"}
@@ -1078,7 +1146,7 @@ card style:
 			separator color: red
 	rarity:
 		right: { if is_map() then 199 else if is_scrolls() then 334 else if use_porthole() then 50 else if is_rem() then 202.5 else 344}
-		top: { if is_map() then 53 else if is_clear() then 295 else if is_thbland() and not is_halfart() then 445 else if is_halfart() then 382 else if is_full_art() then 329 else if is_deck() then 700 else if is_rem() then 475 else if use_porthole() then 75 else 297 }
+		top: { (if is_map() then 53 else if is_clear() then 295 else if is_thbland() and not is_halfart() then 445 else if is_halfart() then 382 else if is_full_art() then 329 else if is_deck() then 700 else if is_rem() then 475 else if use_porthole() then 75 else 297) + textbox_size_adjusted() }
 		width: {if set.shorten_types_for_rarity then 44 else 0}
 		height: 22
 		z index: 15
@@ -1170,9 +1238,9 @@ card style:
 			shadow blur: 5
 	############################# Text boxs
 	text:
-		left: { if (card.level_0 != "" or card.level_1 != "" or card.level_2 != "") then 75 else if is_map() then 40 else if is_focus2() or is_adventure2() then 27 else if is_focus() then 190 else if is_adventure() then 200 else if use_porthole() then 54 else 29}
+		left: {left_of_textbox()}
 		top: {top_of_textbox()}
-		width: { if is_leveler() then 0 else (if(card.level_0 != "" or card.level_1 != "" or card.level_2 != "") then -46 else 0) + if is_map() then 287 else if is_focus2() or is_focus() then 154 else if is_adventure2() then 157 else if is_adventure() then 143 else if use_porthole() then 286 else 314 }
+		width: {width_of_textbox()}
 		bottom: {bottom_of_textbox()}
 		font:
 			name: { if use_porthole() then "MPlantin-bold" else "MPlantin"}
@@ -2401,6 +2469,56 @@ extra card field:
 	choice: car door
 	save value: false
 	editable: false
+extra card field:
+	type: choice
+	name: typeline overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: textbox top
+	choice: null 
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: textbox middle
+	choice: null 
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: textbox bottom
+	choice: null 
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: texture
+	choice: null 
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: right image edge
+	choice: null 
+	save value: false
+	editable: false
+	script: 
+		card.card_color
+extra card field:
+	type: choice
+	name: left image edge
+	choice: null 
+	save value: false
+	editable: false
+	script: card.card_color
 	
 extra card style:
 	promo label:
@@ -3272,5 +3390,57 @@ extra card style:
 			size: 10
 			scale down to: 6
 		alignment: right middle
-
-			
+	typeline overlay:
+		left: 0
+		top: {textbox_size_adjusted()}
+		width: 375
+		height: 523
+		z index: 11
+		visible: { is_sized() }
+		render style: image
+		image: {typeline_img()}
+	textbox top:
+		left: 0
+		top: {textbox_size_adjusted()}
+		width: 375
+		height: 523
+		z index: 11
+		visible: { is_sized() }
+		render style: image
+		image: {top_textbox_img()}
+	textbox middle:
+		left: {mid_textbox_x()}
+		top: {mid_textbox_y()}
+		width: {mid_textbox_width()}
+		height: {mid_textbox_height()}
+		z index: 11
+		visible: { is_sized() }
+		render style: image
+		image: {middle_textbox_img()}
+	texture:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 8
+		visible: { is_sized() }
+		render style: image
+		image: {texture_background()}
+	right image edge:
+		left: 346
+		top: 60
+		width: 3
+		height: { unchopped_top_of_textbox() - 59 }
+		z index: 8
+		visible: { is_sized() }
+		render style: image
+		image: {image_edge()}
+	left image edge:
+		left: 25
+		top: 60
+		width: 3
+		height: { unchopped_top_of_textbox() - 59 }
+		z index: 8
+		visible: { is_sized() }
+		render style: image
+		image: {image_edge()}

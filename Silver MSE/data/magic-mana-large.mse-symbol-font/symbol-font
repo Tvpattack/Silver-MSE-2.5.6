@@ -218,44 +218,64 @@ symbol:
 	image: mana_i.png
 symbol:
 	code: H/W/U
-	image: mana_phywu.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phyww.png", light: "mana_phyuu.png", mask: "mask_hybrid.png") }
+	image font size: 145
 symbol:
 	code: H/W/B
-	image: mana_phywb.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phyww.png", light: "mana_phybb.png", mask: "mask_hybrid.png") }
+	image font size: 145
 symbol:
 	code: H/U/B
-	image: mana_phyub.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phyuu.png", light: "mana_phybb.png", mask: "mask_hybrid.png") }
+	image font size: 145
 symbol:
 	code: H/U/R
-	image: mana_phyur.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phyuu.png", light: "mana_phyrr.png", mask: "mask_hybrid.png") }
+	image font size: 145
 symbol:
 	code: H/B/R
-	image: mana_phybr.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phybb.png", light: "mana_phyrr.png", mask: "mask_hybrid.png") }
+	image font size: 145
 symbol:
 	code: H/B/G
-	image: mana_phybg.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phybb.png", light: "mana_phygg.png", mask: "mask_hybrid.png") }
+	image font size: 145
 symbol:
 	code: H/R/G
-	image: mana_phyrg.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phyrr.png", light: "mana_phygg.png", mask: "mask_hybrid.png") }
+	image font size: 145
 symbol:
 	code: H/R/W
-	image: mana_phyrw.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phyrr.png", light: "mana_phyww.png", mask: "mask_hybrid.png") }
+	image font size: 145
 symbol:
 	code: H/G/W
-	image: mana_phygw.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phygg.png", light: "mana_phyww.png", mask: "mask_hybrid.png") }
+	image font size: 145
 symbol:
 	code: H/G/U
-	image: mana_phygu.png
-	image font size: 75
+	image: { masked_blend(dark: "mana_phygg.png", light: "mana_phyuu.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: H/I/W
+	image: { masked_blend(dark: "mana_phyii.png", light: "mana_phyww.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: H/I/U
+	image: { masked_blend(dark: "mana_phyii.png", light: "mana_phyuu.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: H/I/B
+	image: { masked_blend(dark: "mana_phyii.png", light: "mana_phybb.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: H/I/R
+	image: { masked_blend(dark: "mana_phyii.png", light: "mana_phyrr.png", mask: "mask_hybrid.png") }
+	image font size: 145
+symbol:
+	code: H/I/G
+	image: { masked_blend(dark: "mana_phyii.png", light: "mana_phygg.png", mask: "mask_hybrid.png") }
+	image font size: 145
 
 ###################################################################################### Prismatic Symbols
 symbol:
@@ -501,6 +521,10 @@ symbol:
 symbol:
 	code: H/G
 	image: mana_phyg.png
+	image font size: 120
+symbol:
+	code: H/I
+	image: mana_phyi.png
 	image font size: 120
 symbol:
 	code: L/W
@@ -857,6 +881,10 @@ symbol:
 #	code: C/G
 #	image: { masked_blend(dark: "mana_cc.png", light: "mana_gg.png", mask: "mask_hybrid.png") }
 #	image font size: 145
+#symbol:
+#	code: C/I
+#	image: { masked_blend(dark: "mana_cc.png", light: "mana_ii.png", mask: "mask_hybrid.png") }
+#	image font size: 145
 ###################################################################################### #/C Hybrid Symbols
 
 
@@ -873,7 +901,6 @@ insert symbol menu:
 	item: X
 	item: Y
 	item: Z
-	item: I
 	item: C
 	item:
 		type: custom
@@ -885,6 +912,7 @@ insert symbol menu:
 	item: B
 	item: R
 	item: G
+	item: I
 	item: S
 	item:
 		type: line
@@ -911,6 +939,12 @@ insert symbol menu:
 		item: B/G
 		item: R/W
 		item: G/U
+			type: line
+		item: H/W
+		item: H/U
+		item: H/B
+		item: H/R
+		item: H/G
 	item:
 		name: colorless hybrid
 		item: C/W
@@ -918,6 +952,7 @@ insert symbol menu:
 		item: C/B
 		item: C/R
 		item: C/G
+		item: C/I
 	item:
 		name: phyrexian
 		item: H
@@ -926,6 +961,7 @@ insert symbol menu:
 		item: H/B
 		item: H/R
 		item: H/G
+		item: H/I
 	item:
 		name: hybrid 3
 		item: W/U/B

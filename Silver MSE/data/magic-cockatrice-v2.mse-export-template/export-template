@@ -74,7 +74,7 @@ option style:
 script:
 	splitter_name := {false} ## experimental future thing for splitting dfc images
 	#determine if the card is a type that is a "token" i.e. it should be batched with tokens instead of with other cards
-	is_token := {contains(card.shape, match:"token") or contains(card.shape, match:"emblem") or contains(card.shape, match:"rulestip") }
+	is_token := {contains(card.shape, match:"token") or contains(card.shape, match:"emblem") or contains(card.shape, match:"rulestip") or contains(card.notes, match:"!token") }
 	is_double := {contains(card.shape, match:"double") }
 	
 	file_type := {if options.export_Images == "PNG" then "png" else "jpg"}

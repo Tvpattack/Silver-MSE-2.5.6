@@ -25,7 +25,7 @@ statistics dimension:
 		White		: rgb(255,231,185)
 		Blue		: rgb(15,80,166)
 		Black		: rgb(33,33,33)
-		Red		: rgb(156,15,15)
+		Red		    : rgb(156,15,15)
 		Green		: rgb(68,144,15)
 		Silver		: rgb(142,92,184)
 		Colorless	: rgb(101,104,94)
