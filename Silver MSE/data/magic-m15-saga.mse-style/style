@@ -115,7 +115,7 @@ init script:
 	]
 	auto_snap := {
 		snap_array := split_text(styling.snap_chapter_to_box, match:",", end:false)
-		abil := to_number(pull_comma_array(styling.snap_chapter_to_box, cell:input-1, end:false))					###textbox to snap to
+		abil := to_number(pull_comma_array(styling.snap_chapter_to_box, cell:input-1, end:false)) ##textbox to snap to
 		if abil == 0 then 600 else snap_calc(input, snap_array:snap_array, abil:abil)
 	}
 	snap_calc := {
