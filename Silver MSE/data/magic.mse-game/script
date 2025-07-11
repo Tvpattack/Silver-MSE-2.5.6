@@ -600,14 +600,31 @@ land_multicolor := {
 	else if count == 2 then color_names_2() + ", land"
 	else                    "land, multicolor"
 }
+# basic_land_type_color := {
+# 	type := input
+# 	base := { ""
+# 	+ if contains(card.type, match:"Plains") then "white, "
+# 	+ if contains(card.type, match:"Island") then "blue, "
+# 	+ if contains(card.type, match:"Swamp") then "black, "
+# 	+ if contains(card.type, match:"Mountain") then "red, "
+# 	+ if contains(card.type, match:"Forest") then "green, "
+# 	+ if contains(card.type, match:"Fault") then "silver, " }
+	
+# 	is_multi := length(comma_count(base())) > 1
+
+# 	base := { base() + (if is_multi() then "multicolor, " else "") }
+
+# 	base() + "land"
+# }
 land_to_color := {
-	#### Based on watermark
+	#### Based on watermark or land type
 	if      watermark == "mana symbol white" then "white, land"
 	else if watermark == "mana symbol blue"  then "blue, land"
 	else if watermark == "mana symbol black" then "black, land"
 	else if watermark == "mana symbol red"   then "red, land"
 	else if watermark == "mana symbol green" then "green, land"
 	else if watermark == "mana symbol silver" then "silver, land"
+	# else basic_land_type_color(card.type)
 	else land_multicolor(colors:color_text_filter(input: rules))
 }@(rules:card.rule_text)
 

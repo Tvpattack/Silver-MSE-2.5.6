@@ -1008,7 +1008,7 @@ card style:
 		top:	0
 		width:	375
 		height:	523
-		z index: 11
+		z index: 9
 		render style: image
 		popup style: in place
 		image: { main_background() }
