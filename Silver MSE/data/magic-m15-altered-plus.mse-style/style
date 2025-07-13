@@ -33,6 +33,17 @@ depends on:
 depends on:
 	package: magic-blends.mse-include
 	version: 2015-05-23
+depends on: magic-overlay-foil-normal.mse-include 2008-08-31
+depends on: magic-overlay-foil-ghost.mse-include 2008-08-31
+depends on: magic-overlay-foil-fracture.mse-include 2008-08-31
+depends on: magic-overlay-foil-holes.mse-include 2008-08-31
+depends on: magic-overlay-foil-ripples.mse-include 2008-08-31
+depends on: magic-overlay-foil-polishedstone.mse-include 2008-08-31
+depends on: magic-overlay-foil-parallel.mse-include 2008-08-31
+depends on: magic-overlay-foil-oil.mse-include 2008-08-31
+depends on: magic-overlay-foil-old.mse-include 2008-08-31
+depends on: magic-overlay-foil-jss.mse-include 2008-08-31
+depends on: magic-overlay-foil-oldfeed.mse-include 2008-08-31
 
 card width: 375
 card height: 523
@@ -704,6 +715,19 @@ styling field:
 	choice: reversed
 	choice: focus
 	choice: reversed focus
+styling field:
+	type: choice
+	name: foil type
+	choice: normal
+	choice: ghost
+	choice: holes
+	choice: jss
+	choice: oil
+	choice: old
+	choice: oldfeed
+	choice: parallel
+	choice: polishedstone
+	choice: ripples
 styling field:
 	type: multiple choice
 	name: altered plus frames
@@ -3580,7 +3604,7 @@ extra card style:
 		top: 0
 		width: 375
 		height: 523
-		z index: 8
-		visible: { is_sized() }
+		z index: 80
+		visible: { chosen(styling.frames, choice:"foil") }
 		render style: image
-		image: {"/magic-foil-overlay.mse-include/"}
+		image: {"/magic-overlay-foil-" + styling.foil_type + ".mse-include/overlay.png"}
