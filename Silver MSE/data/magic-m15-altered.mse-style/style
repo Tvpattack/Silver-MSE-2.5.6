@@ -490,7 +490,7 @@ init script:
 			devoid: "devoid/" + input + "card.png",
 			clear: "/magic-modules.mse-include/cards/375 m15 simple/xcard.png",
 			energy: "energies/" + input + "card.png",
-			fullart: "dka/" + input + (if land then "l" else "") + "card.jpg"
+			fullart: "dka/" + input + (if land and not contains(card.type, match:"Artifact") then "l" else "") + "card.jpg"
 			fnm: "fnm/" + input + "card.png"
 			inverted: "inverted/" + (if land and input == "a" then "cl" else if land then input + "l" else input) + "card.png"
 			shifted: "/magic-modules.mse-include/cards/375 m15 simple/shifted/" + (if land and input == "a" then "cl" else if land then input + "l" else input) + "card.jpg"
