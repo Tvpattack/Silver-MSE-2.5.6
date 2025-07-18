@@ -877,7 +877,6 @@ color_combination := {
 	if blend_type == "" then blend_type := type
 	# The base hybrid, without the outer frame blended over it
 	base := base_hybrid[shape][color_count]()
-	trace("{folder}{masks_folder}multicolor_blend_{blend_type}.png")
 	# Put a frame around it?
 	if land and not colored_lands then
 		masked_blend(
