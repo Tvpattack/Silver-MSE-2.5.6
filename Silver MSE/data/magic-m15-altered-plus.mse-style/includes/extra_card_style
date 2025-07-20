@@ -1,0 +1,1135 @@
+extra card style:
+	promo label:
+		left: 40
+		top: { if is_full_art() then 295 else 262 }
+		width: {if chosen(styling.other_options, choice:"prerelease stamp") then 295 else 0}
+		height: 29
+		alignment: middle right
+		z index: 14
+		font:
+			name: ModMatrix
+			size: 14
+			color: rgb(223,169,41)
+	card code:
+		left: 24
+		top: {if use_porthole() then "494" else "488"}
+		width: 120
+		height: 10
+		z index: 13
+		font:
+			name: Relay-Medium
+			size: 7
+			color: white
+			weight: bold
+	artist arrow:
+		left: {28 + card_style.set_code.content_width }
+		top: {if use_porthole() then "506" else "500"}
+		width: 12
+		height: 7
+		z index: 13
+		render style: image
+		image: artist_arrow.png
+	pt box:
+		left: 
+			script:
+				if is_leveler() 
+				and not lone_pt() 
+					then 278 
+				else if is_map() 
+					then 270 
+				else 273
+		top:  
+			script: 
+				if is_leveler() 
+				and not lone_pt() 
+					then (
+						l1_center() 
+						- (
+							if is_map() 
+								then 26 
+							else 18
+						)
+					) 
+				else if is_halfart() 
+				or is_thbland() 
+					then 476 
+				else if is_map() 
+					then 453 
+				else if use_porthole() 
+					then 460 
+				else 466
+		width:  
+			script:
+				if starting_loyalty() 
+				and not is_leveler() 
+					then 0 
+				else if is_map() 
+					then 90 
+				else 81
+		height:	 
+			script:
+				if is_map() 
+					then 54 
+				else 42
+		z index: 14
+		visible: { card.pt != "" }
+		render style: image
+		image: 
+			script: 
+				if is_map() 
+					then mappt_background() 
+				else if is_vehicle() 
+				and (
+					not is_legend() 
+					or chosen(
+						styling.other_options, 
+						choice:"brown legendary vehicle pt"
+					)
+				) 
+					then "vpt.png" 
+				else if is_familiar() 
+				or is_familiarpt() 
+					then "fmpt.png" 
+				else if is_clear() 
+				and not is_backdfc() 
+					then "cpt.png" 
+				else if use_gold() 
+					then "goldpt.png" 
+				else if is_backdfc() 
+					then pt2() 
+				else if use_porthole() 
+					then "cards/voyager/portholept.png" 
+				else choose_ptbox() 
+		
+	pt box 2:
+		left: 278
+		top: { l2_center() - (if is_map() then 26 else 15)}
+		width: { if (is_leveler() and not lone_pt()) or card.pt_2 != "" then (if is_map() then 90 else 81) else 0}
+		height:	{ if (is_leveler() and not lone_pt()) or card.pt_2 != "" then (if is_map() then 54 else 42) else 0}
+		z index: 13
+		visible: { card.pt_2 != "" and not is_prototype() }
+		render style: image
+		image: {if is_map() then mappt_background() else combine_blend(image1: lv_2_ptbox(), image2: "ptbox_multiply_1.png", combine: "multiply")}
+	pt box 3:
+		left: 278
+		top: { l3_center() - (if is_map() then 26 else 15)}
+		width: { if (is_leveler() and not lone_pt()) or card.pt_3 != "" then (if is_map() then 90 else 81) else 0}
+		height:	{ if (is_leveler() and not lone_pt()) or card.pt_3 != "" then (if is_map() then 54 else 42) else 0}
+		z index: 13
+		visible: { card.pt_3 != "" }
+		render style: image
+		image: {if is_map() then mappt_background() else combine_blend(image1: lv_3_ptbox(), image2: "ptbox_multiply_2.png", combine: "multiply")}
+	pt box 4:
+		left: 278
+		top: { l4_center() - (if is_map() then 26 else 15)}
+		width: { if (is_leveler() and not lone_pt()) or card.pt_3 != "" then (if is_map() then 90 else 81) else 0}
+		height:	{ if (is_leveler() and not lone_pt()) or card.pt_3 != "" then (if is_map() then 54 else 42) else 0}
+		z index: 13
+		visible: { card.pt_7 != "" }
+		render style: image
+		image: {if is_map() then mappt_background() else combine_blend(image1: lv_4_ptbox(), image2: "ptbox_multiply_3.png", combine: "multiply")}
+	loyalty box:
+		right: 362
+		top: 466
+		width: 60
+		height: 38
+		z index: 16
+		render style: image
+		visible: { starting_loyalty() and card.loyalty != "" }
+		choice images:
+			loyalty: modules/loyalty/loyalty.png
+		image: {"modules/loyalty/loyalty.png"}
+	stamp:
+		left: 165
+		top: 472
+		width: 46
+		height: 26
+		z index: 12
+		visible: { is_rare() and styling.use_holofoil_stamps and (is_devoid() or is_devoid2() or not is_clear()) and not use_porthole() and use_altered_plus_holofoil() and not is_frontier() }
+		render style: image
+		image: { if is_map() then "cards/maps/holo_stamp.png" else if is_devoid() or is_devoid2() then "cards/devoid/stamp.png" else if is_ub() then ubstamp_background() else card_stamp() }
+		mask: { if is_ub() then "cards/universes-beyond/stamps/border_mask_new.png" else "imagemasks/stamp_mask.png"}
+	foil stamp:
+		left:	165
+		top:	 { if is_ub() then 471 else 472 }
+		width:   46
+		height:  { if is_ub() then 44 else 26 }
+		z index: 13
+		visible: { ( is_rare() or universes_stamp() ) and styling.use_holofoil_stamps and use_altered_plus_holofoil() and not use_porthole() and not is_frontier() }
+		render style: image
+		image: { if is_ub() and is_rare() then "cards/universes-beyond/foil_stamp.png" else if is_ub() then "cards/universes-beyond/flat_stamp.png" else "foil_stamp.png" }
+	foil layer:
+		left: 0
+		top : 0
+		width: 375
+		height: 523
+		z index: 19
+		render style: image
+		image: {if styling.overlay == "" then nil else styling.overlay + "/overlay.png"}
+		mask: { "imagemasks/foil_mask" + (if card.pt != "" then "_pt") + (if is_rare() and styling.use_holofoil_stamps then "_rare") + ".png" }
+	auto copyright:
+		right: {if starting_loyalty() then 305 else 350}
+		top:
+			{ 
+				if is_leveler() and not lone_pt()
+					then 488
+				else if (starting_loyalty() and card.loyalty != "") or (card.pt != "" and not starting_loyalty() and not is_halfart() and not is_thbland())
+					then 504
+				else if is_halfart() or is_thbland() and card.pt != ""
+					then 508
+				else 488
+			}
+		width: {if set.automatic_copyright then 140 else 0}
+		height: 10
+		z index: 14
+		alignment: middle right
+		font:
+			name: MPlantin
+			size: 6.5
+			color: white
+			weight: bold
+	nyx overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {nyx_background()}
+		z index: 11
+		visible: {is_nyx()}
+		mask: {if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "mask.png")}
+	hands overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {hands_background()}
+		z index: 11
+		visible: {is_hands()}
+		mask: {if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "mask.png")}
+	voyager overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {voyager_background()}
+		z index: 11
+		visible: {is_voyager()}
+		mask: "cards/voyager/voyagermask.png"
+	star overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {star_background()}
+		z index: 11
+		visible: {is_star()}
+		mask: {if is_rem() then "imagemasks/remstar_mask.png" else if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "mask.png")}
+	space overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {space_background()}
+		z index: 11
+		visible: {is_space()}
+		mask: {if is_rem() then "imagemasks/remstar_mask.png" else if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "mask.png")}
+	path overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {path_background()}
+		z index: 11
+		visible: {is_path()}
+		mask: {if is_rem() then "imagemasks/remstar_mask.png" else if clear_tops() then "imagemasks/ctopmask.png" else if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "mask.png")}
+	norm overlay:
+		left: 0
+		top: {if is_clear() or is_devoid() or is_devoid2() then -1 else 0}
+		width: 375
+		height: 523
+		render style: image
+		image: {norm_overlay()}
+		z index: 13
+		visible: {is_norm()}
+		mask: {if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "mask.png")}
+	backdfc:
+		left: 0
+		top: {if is_clear() or is_devoid() or is_devoid2() then -1 else 0}
+		width: 375
+		height: 523
+		render style: image
+		image: {backdfc_background()}
+		z index: 11
+		visible: {is_backdfc()}
+		mask: {"imagemasks/backdfcmask.png"}
+	lush overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {lush_background()}
+		z index: 11
+		visible: {is_lush()}
+		mask: {if is_rem() then "imagemasks/remstar_mask.png" else if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "mask.png")}
+	sky overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {sky_background()}
+		z index: 11
+		visible: {is_sky()}
+		mask: {if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "masksky.png")}
+	frontier overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {frontier_background()}
+		z index: 11
+		visible: {is_frontier()}
+		mask: {if is_puma() then "imagemasks/pumamask.png" else if is_oldYGO() then "imagemasks/YGOmask.png" else ("imagemasks/" + (if is_vehicle() then "v_" else "") + (if is_familiar() then "f_" else "") + (if is_full_art() then "full" else "") + "maskfrontier.png")}
+	## FNM has a teeny mask because of a few pixel disagreements between it and normal frames
+	crown:
+		left: 0
+		top: {if is_devoid() or is_devoid2() then 1 else 0}
+		width: 375
+		height: 523
+		render style: image
+		image: {if (is_clear() or clear_tops()) and not is_devoid() or is_devoid2() then "modules/legend/xcrown.png" else if is_fnm() then set_mask(image:crown_background(), mask:"modules/legend/fnm_mask.png") else crown_background()}
+		z index: 15
+		visible: {is_legend() and not is_map() and not use_porthole()}
+		mask: {if is_legend() and styling.legend_crown != "custom" and (is_curtains() or is_expanded_art() or is_puma() or is_devoid() or is_devoid2() or is_oldYGO()) then "curtainmask.png" else if is_season() then "crown_season_mask.png" else if use_ocean() then "imagemasks/crown_voyager.png" else ""}
+	curtain:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {if is_cons() then cons_background() else curtain_background()}
+		z index: 10
+		visible: {is_cons() or is_curtains()}
+		mask: {if is_legend() and is_curtains() then "lcurtainmask.png"}
+	scrolls:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {if is_puma() then "puma.png" else (if is_full_art() then "full_" else "") + "consscrolls.png"}
+		mask: {if is_puma() then "imagemasks/puma_mask3.png" else ""}
+		z index: 11
+		visible: {is_scrolls() or is_puma()}
+	miracle overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {if (is_clear() or clear_tops()) and not is_devoid() or is_devoid2() then "modules/miracles/xmiracle.png" else miracle_background()}
+		z index: 11
+		visible: {is_miracle()}
+	snow overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {snow_texture()}
+		z index: 11
+		mask: {"cards/snow/snow_" + (if is_full_art() then "promo" else "fnm") + "_mask.png"}
+		visible: {is_snow() and not pure_snow() and not is_expanded_art()}
+	vehicle overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {"voverlay" + (if is_full_art() then "_full" else "") + ".png" }
+		z index: 10
+		visible: {is_vehicle()}
+	adventure overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		popup style: in place
+		image: {adventure_colors()}
+		z index: 10
+		visible: {is_adventure()}
+	adventure overlay2:
+		left: 20
+		top: 327
+		width: {if is_adventure() then 169 else 0}
+		height: 155
+		render style: image
+		popup style: in place
+		image: {adventure2_colors()}
+		z index: 11
+		visible: {is_adventure()}
+	adventure overlay3:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		popup style: in place
+		image: {adventure3_colors()}
+		z index: 10
+		visible: {is_adventure2()}
+	adventure overlay4:
+		left: 187
+		top: 327
+		width: {if is_adventure2() then 169 else 0}
+		height: 155
+		render style: image
+		popup style: in place
+		image: {adventure4_colors()}
+		z index: 11
+		visible: {is_adventure2()}
+	focus overlay:
+		left: 27
+		top: 326
+		width: {if is_focus() then 163 else 0}
+		height: 157
+		render style: image
+		image: {focus_colors()}
+		z index: 11
+		visible: {is_focus()}
+	focus overlay2:
+		left: 185
+		top: 326
+		width: {if is_focus2() then 163 else 0}
+		height: 157
+		render style: image
+		image: {focus2_colors()}
+		z index: 11
+		visible: {is_focus2()}
+	familiar overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {"foverlay" + (if is_full_art() or is_clear() then "_full" else "") + ".png"}
+		z index: 10
+		visible: {is_familiar()}
+	arcun overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: arcunoverlay.png
+		z index: 11
+		visible: {is_arcun()}
+	Bevel overlay:
+		left: {if is_YGO() then 71 else 87}
+		top: {if is_skinned() then 78.5 else if is_YGO() then 58 else 74.5}
+		width: {if is_YGO() then 233 else 200}
+		height: {if is_YGO() then 233 else 204}
+		render style: image
+		image: {if is_YGO() then "ycanbevel.png" else "bevel.png"}
+		z index: 11
+		visible: {is_oldYGO() or is_YGO() and not is_nopopout()}
+	Gold Bevel overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {"Gold-Bevel.png"}
+		z index: 12
+		visible: {is_YGO_gold()}
+	smallbox overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		render style: image
+		image: {smallbox_colors()}
+		z index: 13
+		visible: {use_box()}
+	prototype overlay:
+		left: 25
+		top: {if is_mutate() then 392.7 else 325.5}
+		width: 324
+		height: 60
+		render style: image
+		image: {prototype_colors()}
+		z index: 14
+		visible: {is_prototype()}
+	prototype cost:
+		left: 253
+		top: {if is_mutate() then 395 else 327.8}
+		width: 92
+		height: 24
+		render style: image
+		image: {prototype_cost()}
+		z index: 15
+		visible: {is_prototype()}
+	prototype pt:
+		left: 288
+		top: {if is_prototype() and is_mutate() then 419.8 else 352.6}
+		width: {if card.pt_2 != "" then 66 else 0}
+		height: 32
+		render style: image
+		image: {prototype_pt()}
+		z index: 15
+		visible: {is_prototype()}
+	pins:
+		left: 19
+		top: 21
+		width: {if use_pins() or use_ocean() then 338 else 0}
+		height: 465
+		render style: image
+		image: {pins_image()}
+		z index: 13
+		visible: {use_pins() or use_ocean()}
+		mask: { if use_ocean() then "imagemasks/pinlineframe-voyager.png" else "" }
+	clear frame:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 11
+		render style: image
+		image: { if is_devoid() then devoid_background() else if is_devoid2() then devoid2_background() else if is_rare() and styling.use_holofoil_stamps then "clear_rare.png" else if is_ub() then "cards/universes-beyond/cclearcard.png" else "clear.png"}
+		visible: { is_clear() or is_devoid() or is_devoid2() or clear_tops() }
+	gold frame:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 11
+		render style: image
+		image: { "gold1.jpg" }
+		visible: { use_gold()}
+	porthole frame:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 11
+		render style: image
+		image: {if use_porthole() then "cards/voyager/porthole.png"}
+		visible: { use_porthole()}
+	ocean frame:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 11
+		render style: image
+		image: {if use_ocean() then "cards/voyager/seafoam-2.png"}
+		visible: { use_ocean()}
+	styles frame:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 11
+		render style: image
+		image: {if use_styles() then "cards/voyager/styles_frame_new.png"}
+		visible: { use_styles()}
+	mirror frame:
+		left:	0
+		top:	0
+		width:	{if clear_tops() then 375 else 0}
+		height:	523
+		z index: 11
+		render style: image
+		popup style: in place
+		image: 
+			script:
+				if not clear_tops() 
+				then "" 
+				else if is_fnm() 
+				then fnm_background() 
+				else if is_inverted() 
+				then inverted_background() 
+				else if is_paradox() 
+				then paradox_background() 
+				else if is_full_art() 
+				then promo_background() 
+				else card_background()
+		mask: 
+			script:
+				if clear_tops() 
+				then "imagemasks/clear_tops_mask.png" 
+				else ""
+	map frame:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 11
+		render style: image
+		image: 
+			script:
+				if is_map() 
+				then map_background() 
+				else if is_halfart() 
+				then halfart_background() 
+				else energy_background()
+		visible: 
+			script:
+					is_map() 
+					or is_halfart() 
+					or is_thbland()
+	evobar:
+		left:
+			script:
+				if is_map() 
+				then 15 
+				else 27
+		top: 
+			script:
+				if is_map() 
+				then 62 
+				else 57
+		width: {card_style.alias.content_width}
+		height: 27
+		z index: 22
+		render style: image
+		image: evobar.png
+		visible: {use_evobar()}
+	evobar tip:
+		left: 
+			script:
+				(
+					if is_map() 
+					then 14.6 
+					else 26
+					) 
+				+ card_style.alias.content_width
+		top: {if is_map() then 62 else 57}
+		width: 36
+		height: 27
+		z index: 22
+		render style: image
+		image: evobar_tip.png
+		visible: {use_evobar()}
+	flavor bar:
+		left: 
+			script:
+				if is_reversed() 
+				then 10 
+				else if is_altcast() 
+				then 175 
+				else if flavor_plate() 
+				then 27 
+				else 0
+		top: {bar_equation()}
+		width: 
+			script:
+				if is_altcast() 
+				then 188 
+				else if flavor_plate() 
+				then 317 
+				else 375
+		height: 
+			script: if flavor_plate() 
+			then (
+				484 
+				- bar_equation()
+			) 
+			else 1
+		z index: 12
+		render style: image
+		image: 
+			script:
+				if is_altcast() 
+				then "altflav.png"
+				else if flavor_plate() 
+				then crop(
+					"flavorframe.png", 
+					height: clamp(
+						484 - bar_equation(), 
+						minimum: 1, 
+						maximum: 154
+					),
+						width:317, 
+						offset_x: 0, 
+						offset_y: 0
+				) 
+				else "bar.png"
+		visible: 
+			script:
+				card.rule_text != "" 
+				and remove_tags(
+					card.flavor_text
+				) != "" 
+				and set.use_flavor_bar 
+	tarot watermark:
+		left: { if is_map() then 40 else 19 }
+		top: { if is_full_art() then 359 else 330 }
+		width: { if not is_tarot() then 0 else if is_map() then 287 else 334 }
+		height: { if is_map() then 154 else if is_full_art() then 120 else 152 }
+		z index: 12
+		alignment: middle center
+		font:
+			name: MPlantin
+			size: 90
+			color: {rgba(0,0,0,40)}
+	lvl label 0:
+		left: {if box_leveler() then 8 else if loy_leveler() then 48 else 21}
+		top: {l1_center() - (if loy_leveler() then 2 else 10) + arrow_offset(0)}
+		width: {if is_leveler() or card.level_0 != "" then (if loy_leveler() then 10 else 34 + (if box_leveler() then 30 else 0)) else 0}
+		height: {if loy_leveler() then 10 else if center_label(0) then 0 else 10}
+		z index: 16
+		alignment: middle center
+		font:
+			name: {if loy_leveler() then "MPlantin" else "Beleren Small Caps"}
+			size: {if loy_leveler() then 15 else if length(level_label(0)) < 8 or box_leveler() then 7 else 6}
+			color: black
+			weight: {if loy_leveler() then "" else "bold"}
+		visible: {card.level_0 != ""}
+	lvl label 1:
+		left: {if box_leveler() then 8 else if loy_leveler() then 48 else 21}
+		top: {l2_center() - (if loy_leveler() then 2 else 10) + arrow_offset(1)}
+		width: {if is_leveler() or card.level_1 != "" then (if loy_leveler() then 10 else 34 + (if box_leveler() then 30 else 0)) else 0}
+		height: {if loy_leveler() then 10 else if center_label(1) then 0 else 10}
+		z index: 16
+		alignment: middle center
+		font:
+			name: {if loy_leveler() then "MPlantin" else "Beleren Small Caps"}
+			size: {if loy_leveler() then 15 else if length(level_label(1)) < 8 or box_leveler() then 7 else 6}
+			color: black
+			weight: {if loy_leveler() then "" else "bold"}
+		visible: {card.level_1 != ""}
+	lvl label 2:
+		left: {if box_leveler() then 8 else if loy_leveler() then 48 else 21}
+		top: {l3_center() - (if loy_leveler() then 2 else 10) + arrow_offset(2)}
+		width: {if is_leveler() or card.level_2 != "" then (if loy_leveler() then 10 else 34 + (if box_leveler() then 30 else 0)) else 0}
+		height: {if loy_leveler() then 10 else if center_label(2) then 0 else 10}
+		z index: 16
+		alignment: middle center
+		font:
+			name: {if loy_leveler() then "MPlantin" else "Beleren Small Caps"}
+			size: {if loy_leveler() then 15 else if length(level_label(2)) < 8 or box_leveler() then 7 else 6}
+			color: black
+			weight: {if loy_leveler() then "" else "bold"}
+		visible: {card.level_2 != ""}
+	lvl label 3:
+		left: {if box_leveler() then 8 else if loy_leveler() then 48 else 21}
+		top: {l4_center() - (if loy_leveler() then 2 else 10) + arrow_offset(3)}
+		width: {if is_leveler() or card.level_3 != "" then (if loy_leveler() then 10 else 34 + (if box_leveler() then 30 else 0)) else 0}
+		height: {if loy_leveler() then 10 else if center_label(3) then 0 else 10}
+		z index: 16
+		alignment: middle center
+		font:
+			name: {if loy_leveler() then "MPlantin" else "Beleren Small Caps"}
+			size: {if loy_leveler() then 15 else if length(level_label(2)) < 8 or box_leveler() then 7 else 6}
+			color: black
+			weight: {if loy_leveler() then "" else "bold"}
+		visible: {card.level_3 != ""}
+	level 2 overlay:
+		left: 29
+		top: { if is_readable() then top_of_textbox() else if is_d20() then top_of_para(rolls_start(card.text)) else 329 + lv_2_coordinate()}
+		height: {if is_readable() then bottom_of_textbox() else if is_d20() then height_of_para(rolls_start(card.text)) else lv_2_height()}
+		width: 314
+		z index: 12
+		render style: image
+		image: {overlay1()}
+		visible: {(is_readable() and (card.rule_text != "")) or (is_d20() and number_of_rolls(card.text) > 0) or (is_leveler() and not is_static())}
+	level 3 overlay:
+		left: 29
+		top: { if is_readable() then 30 else if is_d20() then top_of_para(rolls_start(card.text)+2) else 329 + lv_3_coordinate()}
+		height: {if is_readable() then 23 else if is_d20() then height_of_para(rolls_start(card.text)+2) else lv_3_height()}
+		width: {if is_readable() then 319 else 314}
+		z index: 12
+		render style: image
+		image: {overlay2()}
+		visible: {(is_readable() and (card.name != "")) or (is_d20() and number_of_rolls(card.text)-no_roll(card.text) > 2) or (is_leveler() and not is_static())}
+	level 4 overlay:
+		left: 29
+		top: { if is_readable() and not is_deck() then 298 else if is_d20() then top_of_para(rolls_start(card.text)+4) else 329 + lv_4_coordinate()}
+		height: {if is_readable() then 21 else if is_d20() then height_of_para(rolls_start(card.text)+4) else lv_4_height()}
+		width: 314
+		z index: 12
+		render style: image
+		image: {overlay3()}
+		visible:
+			script:
+				(
+					is_readable() 
+					and (to_text(card.type) != "")
+				) 
+					or (
+						is_d20() 
+						and number_of_rolls(
+							card.text
+						)
+						-no_roll(
+							card.text
+						) 
+						> 4
+					) 
+					or (
+						is_leveler() 
+						is_static()
+					)
+	arrow 1:
+		z index: 15
+		left: {arrow_left()}
+		top: {l1_center() - 16 + arrow_offset(0)}
+		width: {if card.level_0 != "" then arrow_width() else 0}
+		height:	{arrow_height(0)}
+		render style: image
+		image: {if loy_leveler() then loyalty_image(card.level_0) else if box_leveler() then choose_ptbox() else arrow_background()}
+	arrow 2:
+		z index: 15
+		left: {arrow_left()}
+		top: {l2_center() - 16 + arrow_offset(1)}
+		width: {if card.level_1 != "" then arrow_width() else 0}
+		height:	{arrow_height(1)}
+		render style: image
+		image: {if loy_leveler() then loyalty_image(card.level_1) else if box_leveler() then choose_ptbox() else arrow_background()}
+	arrow 3:
+		z index: 15
+		left: {arrow_left()}
+		top: {l3_center() - 16 + arrow_offset(2)}
+		width: {if card.level_2 != "" then arrow_width() else 0}
+		height:	{arrow_height(2)}
+		render style: image
+		image: {if loy_leveler() then loyalty_image(card.level_2) else if box_leveler() then choose_ptbox() else arrow_background()}
+	arrow 4:
+		z index: 15
+		left: {arrow_left()}
+		top: {l4_center() - 16 + arrow_offset(3)}
+		width: {if card.level_3 != "" then arrow_width() else 0}
+		height:	{arrow_height(3)}
+		render style: image
+		image: {if loy_leveler() then loyalty_image(card.level_3) else if box_leveler() then choose_ptbox() else arrow_background()}
+	mutbar:
+		z index: 12
+		left: 28
+		top: 393
+		height: 2
+		width: 317
+		render style: image
+		image: mutbar.png
+		visible: {is_mutate()}
+	silver patch:
+		left: 10
+		top: 10
+		width: 355
+		height: 15
+		z index: 12
+		visible: {is_legend() and card.border_color == rgb(200,200,200)}
+	season flag:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 13
+		render style: image
+		image: { season_background() }
+		visible: { is_season() }
+		mask: {if is_expanded_art() then "season/full_mask.png" else ""}
+	ascend:
+		left: 37
+		top: 59
+		width: {if is_season() then 300 else 0}
+		height: 20
+		angle: 270
+		z index: 16
+		alignment: justify-all force
+		always symbol: true
+		font:
+			name: MPlantin
+			italic name: MPlantin-Italic
+			size: {if styling.font_cap != "" then to_number(styling.font_cap) else 14}
+			scale down to: 6
+			color: black
+		symbol font:
+			name: { styling.text_box_mana_symbols }
+			size: {if styling.font_cap != "" then to_number(styling.font_cap) else 14}
+			scale down to: 6
+	alias bar:
+		left: 38
+		top: {if is_clear() or clear_tops() then 59 else 57}
+		width: 298
+		height: 21
+		z index: 12
+		render style: image
+		image: {if is_devoid() or is_devoid2() then (if is_legend() then alias_bar() else "alias/devoidalias.png") else if is_clear() or clear_tops() then "alias/xalias.png" else alias_bar()}
+		visible: {is_skinned() and not use_evobar()}
+	node:
+		left: 0
+		top: 0
+		height: 63
+		width: 375
+		z index: 16
+		render style: image
+		image: {node_background()}
+		visible: {not is_map() and use_node()}
+	corner:
+		left: { if is_map() then 22 else 19}
+		top: 25
+		height: 31
+		width: {if use_node() then 31 else 0}
+		z index: 17
+		render style: image
+		visible: {use_node()}
+		choice images:
+			lesson: modules/corners/lesson.png
+			sanctum: modules/corners/sanctum.png
+			day: modules/corners/sun_circle.png
+			night: modules/corners/night_circle.png
+			modal front: modules/corners/mdfc_up.png
+			modal back: modules/corners/mdfc_down.png
+			eldrazi: modules/corners/eldrazi.png
+			moon: modules/corners/moon.png
+			compass: modules/corners/compass.png
+			artifact: modules/corners/artifact.png
+			creature: modules/corners/creature.png
+			enchantment: modules/corners/enchantment.png
+			instant: modules/corners/instant.png
+			land: modules/corners/land.png
+			multitype: modules/corners/multitype.png
+			sorcery: modules/corners/sorcery.png
+			planeswalker: modules/corners/planeswalker.png
+			structure: modules/corners/structure.png
+			compass: modules/corners/compass.png
+			aetherprint: modules/corners/aetherprint.png
+			sparker colors white: modules/corners/wcorner.png
+			sparker colors blue: modules/corners/ucorner.png
+			sparker colors black: modules/corners/bcorner.png
+			sparker colors red: modules/corners/rcorner.png
+			sparker colors green: modules/corners/gcorner.png
+			sparker colors multicolor: modules/corners/mcorner.png
+			sparker colors colorless: modules/corners/ccorner.png
+			custom: { if contains(styling.custom_symbol, match:".png") then "/magic-mainframe-extras.mse-include/" + styling.custom_symbol else "" }
+	pride pin:
+		left: {if is_legend() then 18 else 24}
+		top: 58
+		width: {if not is_pinned() then 0 else if is_legend() then 338 else 325}
+		height: {if not is_pinned() then 0 else 234}
+		z index: 17
+		render style: image
+		popup style: in place
+		mask: {"/magic-pride.mse-include/masks/m15" + if is_legend() then " legend.png" else ".png"}
+		image: {pin_image()}
+	vorthos box:
+		right: { if is_leveler() and not lone_pt() then 350 else if (starting_loyalty() and card.loyalty != "") then 300 else if (card.pt != "" and not starting_loyalty()) then 275 else 350 }
+		top: {if card.pt == "" and shown_cr() then 500 else 488}
+		width: { if is_leveler() and not lone_pt() then 140 else if (starting_loyalty() and card.loyalty != "") then 90 else if (card.pt != "" and not starting_loyalty()) then 65 else 140 }
+		height: {if use_vorthos() then 10 else 0}
+		z index: 13
+		alignment: middle right
+		font:
+			name: Relay-Medium
+			size: 7
+			color: white
+			weight: bold
+	smallbox text:
+		left: {if use_box() and any_box() then 33 else 0}
+		top: {if use_box() and any_box() then 272 else 0}
+		width: {if use_box() and any_box() then 220 else 0}
+		bottom: {if use_box() and any_box() then 287 else 0}
+		font:
+			name: Beleren Bold
+			size: {if styling.font_cap != "" then to_number(styling.font_cap) else (if is_mutate() then 13 else 15)}
+			scale down to: 7
+			color: {"black"}
+			#####shadow color: {if is_full_art() or is_fnm() then "black" else rgba(0,0,0,0)}
+			shadow displacement x: -1
+			shadow displacement y: 1
+		symbol font:
+			name: { styling.text_box_mana_symbols }
+			size: {if styling.font_cap != "" then to_number(styling.font_cap) else (if is_mutate() then 13 else 15)}
+			scale down to: 7
+		####remember to check if this does anything
+		alignment: left shrink-overflow
+		z index: 14
+		padding left:   6
+		padding right:  4
+		line height hard: {if is_modal(card.rule_text) then 0.9 else 1.2 }
+		line height line: 1.0
+		line height soft: 0.9
+		line height hard max: {if is_modal(card.rule_text) then 1.0 else 1.3 }
+		line height line max: 1.6
+	front modal flag:
+		left: 14
+		top: 468
+		width: {if chosen(styling.altered_plus_frames, choice: "back flag" )then 160 else 0}
+		height: 20
+		render style: image
+		image: {front_flag_image()}
+		z index: 15
+		visible: {chosen(styling.altered_plus_frames, choice: "back flag") }
+	front type hint:
+		left: { if mainframe_walkerb() then 24 else 28}
+		top: 471
+		width: {if chosen(styling.altered_plus_frames, choice: "front flag" )then 80 else 0}
+		height: 12
+		z index: 18
+		visible: {chosen(styling.altered_plus_frames, choice: "front flag") }
+		font:
+			name: Beleren Bold
+			size: 9
+			color: black
+	front color hint:
+		right: 161
+		top: 471
+		width: {if chosen(styling.altered_plus_frames, choice: "front flag" )then 80 else 0}
+		height: 14
+		z index: 17
+		visible: {chosen(styling.altered_plus_frames, choice: "front flag") }
+		font:
+			name: MPlantin
+			size: 10
+			color: black
+		symbol font:
+			name: { styling.text_box_mana_symbols }
+			size: 10
+			scale down to: 6
+		alignment: right middle
+	back modal flag:
+		left: 14
+		top: 468
+		width: {if chosen(styling.altered_plus_frames, choice: "front flag" )then 160 else 0}
+		height: 20
+		render style: image
+		image: {back_flag_image()}
+		z index: 15
+		visible: {chosen(styling.altered_plus_frames, choice: "front flag") }
+	back type hint:
+		left: 28
+		top: 471
+		width: {if chosen(styling.altered_plus_frames, choice: "back flag" )then 80 else 0}
+		height: 12
+		z index: 17
+		visible: {chosen(styling.altered_plus_frames, choice: "back flag") }
+		font:
+			name: Beleren Bold
+			size: 9
+			color: white
+	back color hint:
+		right: 161
+		top: 471
+		width: {if chosen(styling.altered_plus_frames, choice: "back flag" )then 80 else 0}
+		height: 14
+		z index: 18
+		visible: {chosen(styling.altered_plus_frames, choice: "back flag") }
+		font:
+			name: MPlantin
+			size: 10
+			color: white
+		symbol font:
+			name: { styling.text_box_mana_symbols }
+			size: 10
+			scale down to: 6
+		alignment: right middle
+	typeline overlay:
+		left: 0
+		top: {textbox_size_adjusted()}
+		width: 375
+		height: 523
+		z index: 11
+		visible: { is_sized() }
+		render style: image
+		image: {typeline_img()}
+	textbox top:
+		left: 0
+		top: {textbox_size_adjusted()}
+		width: 375
+		height: 523
+		z index: 11
+		visible: { is_sized() }
+		render style: image
+		image: {top_textbox_img()}
+	textbox middle:
+		left: {mid_textbox_x()}
+		top: {mid_textbox_y()}
+		width: {mid_textbox_width()}
+		height: {mid_textbox_height()}
+		z index: 11
+		visible: { is_sized() }
+		render style: image
+		image: {middle_textbox_img()}
+	texture:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 8
+		visible: { is_sized() }
+		render style: image
+		image: {texture_background()}
+	right image edge:
+		left: 346
+		top: 60
+		width: 3
+		height: { unchopped_top_of_textbox() - 59 }
+		z index: 8
+		visible: { is_sized() }
+		render style: image
+		image: {image_edge()}
+	left image edge:
+		left: 25
+		top: 60
+		width: 3
+		height: { unchopped_top_of_textbox() - 59 }
+		z index: 8
+		visible: { is_sized() }
+		render style: image
+		image: {image_edge()}
+	## Sagas
+	bookmark:
+		left: 15
+		top: 60
+		width: 27
+		height: 372
+		render style: image
+		image: {bookmark_background()}
+		z index: 810
+		visible: {is_saga()}
+	chapter 1:
+		left: 14
+		top: { if chapter1() == "" then 185 else chapter1() }
+		width: 30
+		height: 34
+		render style: image
+		z index: 840
+		image: {alt_chapters("1")}
+		visible: {is_saga()}
+	chapter 2:
+		left: 14
+		top: { if chapter2() == "" then 279 else chapter2() }
+		width: 30
+		height: 34
+		render style: image
+		z index: 840
+		image: {alt_chapters("2")}
+		visible: {is_saga()}
+	chapter 3:
+		left: 14
+		top: { if chapter3() == "" then 373 else chapter3() }
+		width: 30
+		height: 34
+		render style: image
+		z index: 840
+		image: {alt_chapters("3")}
+		visible: {is_saga()}
+	foil overlay:
+		left: 0
+		top: 0
+		width: 375
+		height: 523
+		z index: 80
+		visible: { chosen(styling.frames, choice:"foil") }
+		render style: image
+		image: {"/magic-overlay-foil-" + styling.foil_type + ".mse-include/overlay.png"}
