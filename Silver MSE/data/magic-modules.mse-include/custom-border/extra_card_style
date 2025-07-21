@@ -1,0 +1,10 @@
+custom overlay:
+	left: 0
+	top: 0
+	width: 375
+	height: 523
+	render style: image
+	image: { custom_border_blend() }
+	z index: 317
+	visible: { not is_map() and is_custom_border() }
+	mask: { custom_border_mask() }

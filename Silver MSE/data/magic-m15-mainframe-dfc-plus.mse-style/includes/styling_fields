@@ -1,0 +1,435 @@
+styling field:
+	type: text
+	name: popout image style
+	description: The styling instructions for the popout image field, formatted as "left,top,width,height,". The text MUST end with a comma.
+styling field:
+	type: choice
+	name: dfc type
+	choice: transforming
+	choice: modal with standard flags
+	choice: modal with custom flags
+styling field:
+	type: choice
+	name: defaults
+	choice: Click here for default coordinate information
+	choice: 2 ability walker stripes - "48,"
+	choice: 3 ability walker stripes - "27,80,"
+	choice: 4 ability walker stripes - "21,69,119,"
+	choice: 2 box saga stripes - "296,"
+	choice: 3 box saga stripes - "249,343,"
+	choice: 4 box saga stripes - "225,296,367"
+	choice: 2 box saga chapters - "183,223,329,"
+	choice: 3 box saga chapters - "185,279,373,"
+	choice: saga chapters use the "move loyalty costs" options
+	choice: to add chapters 4-6, add their coordinates at the end, ie "183,223,329,369,"
+	choice: leveler stripes - "0,0,"
+	choice: leveler arrows use the "move loyalty costs" options
+	choice: for loyalty costs, saga chapters, leveler arrows and stripes, use -N to move up
+styling field:
+	type: text
+	name: stripe coordinate
+	description: Overrides the coordinates for the ability stripes. Defaults are "48," and "27,80," and "21,69,119,". The text MUST end with a ,
+styling field:
+	type: text
+	name: move loyalty costs
+	description: Moves loyalty costs up the specified amount. Use negative to move down. Formatted as "1,2,3,4," MUST end with a comma.
+styling field:
+	type: text
+	name: snap chapter to box
+	description: Sets the chapter symbols to the given textbox, fo example "1,1,2," for I, II - Ability 1; III - Ability 2
+styling field:
+	type: text
+	name: front font cap
+	description: Use to standardize the font size of separated abilities. Default is size 14.
+styling field:
+	type: text
+	name: shrink name text
+	description: reduces the name text N points.
+styling field:
+	type: text
+	name: shrink typeline text
+	description: reduces the typeline text N points.
+styling field:
+	type: text
+	name: front chop
+	description: Changes the start/stop points of the textbox. Formatted as "X,Y"
+styling field:
+	type: choice
+	name: d20 dividers
+	choice: d20 mode
+	choice: off
+	choice: all breaks
+	choice: all breaks +1
+	choice: all breaks +2
+	choice: all breaks +3
+	description: Do dice levels normally, off, on all linebreaks, on all but the first linebreak, etc.
+styling field:
+	type: info
+	name: frames
+styling field:
+	type: choice
+	name: front style
+	choice: normal
+	choice: auto-sizing planeswalker
+	choice: 4 ability compleated planeswalker
+	choice: 4 ability planeswalker
+	choice: 3 ability planeswalker
+	choice: 2 ability planeswalker
+	choice: 1 ability planeswalker
+	choice: 2 box saga
+	choice: 3 box saga
+	choice: 4 box saga
+	choice: class
+	choice: case
+	choice: leveler
+	choice: vehicle
+	choice: snow
+	choice: map
+	initial: normal
+	description: Choose the style for the front face
+styling field:
+	type: choice
+	name: back style
+	choice: normal
+	choice: auto-sizing planeswalker
+	choice: 4 ability planeswalker
+	choice: 3 ability planeswalker
+	choice: 2 ability planeswalker
+	choice: 1 ability planeswalker
+	choice: 2 box saga
+	choice: 3 box saga
+	choice: 4 box saga
+	choice: class
+	choice: case
+	choice: leveler
+	choice: vehicle
+	choice: snow
+	choice: map
+	initial: normal
+	description: Choose the style for the back face
+styling field:
+	type: multiple choice
+	name: official frames
+	description: Official canon/mse frames
+	choice: nyx (front)
+	choice: nyx (back)
+	choice: mutate (front)
+	choice: mutate (back)
+	choice: clear (front)
+	choice: clear (back)
+	choice: miracle (front)
+	choice: miracle (back)
+	choice: companion (front)
+	choice: companion (back)
+	choice: draft matters (front)
+	choice: draft matters (back)
+	choice: godzilla alias (both)
+	choice: evobar (front)
+	choice: evobar (back)
+	choice: bordless (both)
+	choice: normal back face
+styling field:
+	type: multiple choice
+	name: altered plus frames
+	description: Unofficial extraframes
+	choice: star (front)
+	choice: star (back)
+	choice: space (front)
+	choice: space (back)
+	choice: sky (front)
+	choice: sky (back)
+	choice: frontier (front)
+	choice: frontier (back)
+	choice: path (front)
+	choice: path (back)
+	choice: lush (front)
+	choice: lush (back)
+	choice: familiar (front)
+	choice: familiar (back)
+	choice: hands (front)
+	choice: hands (back)
+styling field:
+	type: multiple choice
+	name: auto frames
+	description: Automatic frames to apply
+	choice: vehicles
+	choice: snow
+	choice: class
+	choice: case
+	choice: sagas
+	choice: planeswalkers
+	choice: nyx crowns
+	choice: star crowns
+	choice: space crowns
+	initial: nyx crowns, star crowns, space crowns, vehicles, snow, class, case, saga
+styling field:
+	type: multiple choice
+	name: frame options
+	description: Additional frame options
+	choice: companion crown (front)
+	choice: companion crown (back)
+	choice: alternate path
+	choice: custom border (front)
+	choice: custom border (back)
+styling field:
+	type: text
+	name: custom border source
+	description: Use this file from magic-mainframe-extras as a custom vehicle-like frame. if colored, name images like "wborder.png" and put "-color-border.png" here.
+styling field:
+	type: info
+	name: Back Face
+styling field:
+	type: text
+	name: back stripe coordinate
+	description: Overrides the coordinates for the backface ability stripes. Defaults are "48," and "27,80," and "21,69,119,". The text MUST end with a ,
+styling field:
+	type: text
+	name: move back loyalty costs
+	description: Moves loyalty costs of the back face up the specified amount. Use negative to move down. Formatted as "1,2,3,4," MUST end with a comma.
+styling field:
+	type: text
+	name: snap chapter to back box
+	description: Sets the chapter symbols to the given textbox, fo example "1,1,2," for I, II - Ability 1; III - Ability 2
+styling field:
+	type: text
+	name: back font cap
+	description: Use to standardize the font size of separated abilities of the back face. Default is size 14.
+styling field:
+	type: text
+	name: shrink back name text
+	description: reduces the name text N points.
+styling field:
+	type: text
+	name: shrink back typeline text
+	description: reduces the typeline text N points.
+styling field:
+	type: text
+	name: back chop
+	description: Changes the start/stop points of the textbox of the back face. Formatted as "X,Y"
+styling field:
+	type: choice
+	name: d20 dividers back
+	choice: d20 mode
+	choice: off
+	choice: all breaks
+	choice: all breaks +1
+	choice: all breaks +2
+	choice: all breaks +3
+	description: Do dice levels normally, off, on all linebreaks, on all but the first linebreak, etc.
+styling field:
+	type: info
+	name: Both faces
+styling field:
+	type: multiple choice
+	name: other options
+	description: Additional options
+	choice: ancestral generic mana
+	choice: pokemon evobar
+	choice: prerelease stamps
+	choice: remove from autocount
+	choice: use hovering pt
+	choice: use hovering loyalty
+	choice: use backface rarity
+	choice: center front
+	choice: center back
+	choice: center first name
+	choice: center second name
+	choice: right align
+	choice: wider planeswalker images
+	choice: unindent nonloyalty abilities
+	choice: regular pt on levelers
+	choice: meld back
+	initial: use hovering pt, unindent nonloyalty abilities
+styling field:
+	type: text
+	name: custom symbol one
+	description: Uses a custom DFC symbol from data/magic-mainframe-extras.mse-include
+	script: verify_symbol_image(value)
+styling field:
+	type: text
+	name: custom symbol two
+	description: Uses a custom DFC symbol from data/magic-mainframe-extras.mse-include
+	script: verify_symbol_image(value)
+styling field:
+	type: text
+	name: card watermark
+	description: Filename in magic-mainframe-extras to use for standalone card watermark
+	script: verify_watermark_image(value)
+styling field:
+	type: text
+	name: card watermark 2
+	description: Filename in magic-mainframe-extras to use for standalone card watermark
+	script: verify_watermark_image(value)
+include file: /magic-modules.mse-include/crowns/styling_fields
+include file: /magic-modules.mse-include/rarities/styling_fields
+styling field:
+	type: info
+	name: levels
+styling field:
+	type: choice
+	name: class levels
+	description: Which type of level bar should classes use?
+	choice: notched
+	choice: unnotched
+	choice: line
+	choice: cyber
+styling field:
+	type: text
+	name: custom class bar
+	description: Location of 158x25 image in magic-mainframe-extras to use as class bars
+styling field:
+	type: text
+	name: alternate saga reminder
+	description: Change the reminder text that is generated for new cards
+styling field:
+	type: text
+	name: custom chapter location
+	description: Use this image from magic-mainframe-extras as the custom chapter.
+styling field:
+	type: text
+	name: custom chapter coordinate
+	description: Set the custom symbol at the given heights, formatted as Front,Back,
+styling field:
+	type: text
+	name: custom chapter name
+	description: Set how this symbol will be called in text exports (ie I, II...). Default is C.
+styling field:
+	type: text
+	name: replacement chapter location
+	description: location of replacement chapter symbols in magic-mainframe-extras, formatted as "folder/"
+styling field:
+	type: text
+	name: level label
+	description: Change the level label. default is "LEVEL". Secondary lables can be added after a comma, "1,2,3,4,5,6,"
+styling field:
+	type: choice
+	name: level containers
+	choice: arrows
+	choice: pt boxes
+	choice: loyalty boxes
+styling field:
+	type: choice
+	name: level containers 2
+	choice: arrows
+	choice: pt boxes
+	choice: loyalty boxes
+styling field:
+	type: text
+	name: level 1 chop
+	description: Changes the start/stop points of the first textbox. Use negative to move down. Formatted as "1,2," MUST end with a comma.
+styling field:
+	type: text
+	name: level 2 chop
+	description: Changes the start/stop points of the second textbox. Use negative to move down. Formatted as "1,2," MUST end with a comma.
+styling field:
+	type: text
+	name: level 3 chop
+	description: Changes the start/stop points of the third textbox. Use negative to move down. Formatted as "1,2," MUST end with a comma.
+styling field:
+	type: text
+	name: level 4 chop
+	description: Changes the start/stop points of the fourth textbox. Use negative to move down. Formatted as "1,2," MUST end with a comma.
+styling field:
+	type: text
+	name: level 5 chop
+	description: Changes the start/stop points of the first textbox of the back face. Use negative to move down. Formatted as "1,2," MUST end with a comma.
+styling field:
+	type: text
+	name: level 6 chop
+	description: Changes the start/stop points of the second textbox of the back face. Use negative to move down. Formatted as "1,2," MUST end with a comma.
+styling field:
+	type: text
+	name: level 7 chop
+	description: Changes the start/stop points of the third textbox of the back face. Use negative to move down. Formatted as "1,2," MUST end with a comma.
+styling field:
+	type: text
+	name: level 8 chop
+	description: Changes the start/stop points of the fourth textbox of the back face. Use negative to move down. Formatted as "1,2," MUST end with a comma.
+styling field:
+	type: info
+	name: Custom fonts
+include file: /magic-modules.mse-include/fonts/styling_fields_dfc
+styling field:
+	type: info
+	name: planeswalkers
+styling field:
+	type: text
+	name: custom mask
+	description: Uses a custom mask from data/magic-mainframe-extras.mse-include
+styling field:
+	type: text
+	name: custom mask 2
+	description: Uses a custom mask from data/magic-mainframe-extras.mse-include
+include file: /magic-modules.mse-include/loyalty/styling_recoloring
+include file: /magic-modules.mse-include/loyalty/styling_recoloring_dfc
+styling field:
+	type: info
+	name: Other stuff
+styling field:
+	type: boolean
+	name: grey hybrid name
+	description: Use a grey background for the name and type line on hybrid cards. This is done on real cards.
+styling field:
+	type: boolean
+	name: use guild mana symbols
+	description: Use the Ravnica guild symbols instead of the official half/half circles for hybrid mana.
+	initial: no
+styling field:
+	type: package choice
+	name: text box mana symbols
+	match: magic-mana-*.mse-symbol-font
+	initial: magic-mana-small.mse-symbol-font
+styling field:
+	type: package choice
+	name: level mana symbols
+	match: magic-mana-*.mse-symbol-font
+	initial: magic-mana-large.mse-symbol-font
+styling field:
+	type: choice
+	name: tap symbol
+	description: What tap and untap symbols should be used on cards?
+	initial: modern
+	choice: modern
+	choice: old
+	choice: diagonal T
+styling field:
+	type: boolean
+	name: inverted common symbol
+	description: Should the common rarity symbol be inverted, like in Coldsnap?
+	initial: no
+styling field:
+	type: package choice
+	name: overlay
+	description: Should there be an overlay applied, such as foil?
+	match: magic-overlay-*.mse-include
+	required: false
+styling style:
+	official frames:
+		render style: checklist
+		direction: vertical
+	altered plus frames:
+		render style: checklist
+		direction: vertical
+	auto frames:
+		render style: checklist
+		direction: vertical
+	frame options:
+		render style: checklist
+		direction: vertical
+	use guild mana symbols:
+		choice images:
+			yes: /magic-mana-small.mse-symbol-font/mana_guild_rg.png
+			no:  /magic-mana-small.mse-symbol-font/mana_rg.png
+	tap symbol:
+		render style: both
+		choice images:
+			modern:     /magic-mana-large.mse-symbol-font/mana_t.png
+			old:        /magic-mana-large.mse-symbol-font/mana_t_old.png
+			diagonal T: /magic-mana-large.mse-symbol-font/mana_t_older.png
+	inverted common symbol:
+		choice images:
+			no:  { symbol_variation(symbol: set.symbol, variation: "common") }
+			yes: { symbol_variation(symbol: set.symbol, variation: "invertedcommon") }
+	other options:
+		render style: checklist
+		direction: vertical

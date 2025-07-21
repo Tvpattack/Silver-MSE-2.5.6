@@ -8,13 +8,3 @@ pins:
 	z index: 13
 	visible: {use_pins() or use_ocean()}
 	mask: { if use_ocean() then "imagemasks/pinlineframe-voyager.png" else "" }
-pride pin:
-	left: {if is_legend() then 18 else 24}
-	top: 58
-	width: {if not is_pinned() then 0 else if is_legend() then 338 else 325}
-	height: {if not is_pinned() then 0 else 234}
-	z index: 17
-	render style: image
-	popup style: in place
-	mask: {"/magic-pride.mse-include/masks/m15" + if is_legend() then " legend.png" else ".png"}
-	image: {pin_image()}

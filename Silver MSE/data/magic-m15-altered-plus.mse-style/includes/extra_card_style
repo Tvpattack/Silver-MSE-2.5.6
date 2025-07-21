@@ -1,4 +1,5 @@
 extra card style:
+	#### Template includes
 	## Card code, artist arrow, pt boxes, stamp, copyright
 	include file: includes/extra/style/bottom_area
 	## Card frames
@@ -29,3 +30,8 @@ extra card style:
 	include file: includes/extra/style/saga
 	## Everything else
 	include file: includes/extra/style/other
+	#### Modules
+	## Custom border
+	include file: /magic-modules.mse-include/custom-border/extra_card_style
+	## Pride Pins
+	include file: /magic-pride.mse-include/extra_card_style

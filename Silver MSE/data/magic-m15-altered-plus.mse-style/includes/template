@@ -208,7 +208,11 @@ template_suffix := [
     saga: "card.jpg"
     bookmark: "mark.png"
 ]
-template      := { 
+dummy := {"dummy"}
+harder_script := [
+	dummy: dummy
+]
+template_normal      := { 
     crown_lead(
         type
     ) 
@@ -217,6 +221,11 @@ template      := {
         type
     ) 
     + template_suffix[type] 
+}
+template := { 
+	if type_name(harder_script[type] or else nil) != type_name(nil)
+		then harder_script[type](input, land:false)
+	else template_normal(input, type: type)
 }
 land_template := { 
     crown_lead(

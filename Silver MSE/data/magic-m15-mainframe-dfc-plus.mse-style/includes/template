@@ -1,0 +1,172 @@
+#### base template
+template_prefix := [
+	card: "/magic-modules.mse-include/cards/375 m15 simple/",
+	pt: "/magic-modules.mse-include/pts/375 m15/",
+	pt2: "/magic-modules.mse-include/pts/375 m15/back/",
+	fnm_pt: "/magic-modules.mse-include/pts/375 m15/paradox/",
+	inv_pt: "/magic-modules.mse-include/pts/375 m15/inverted/",
+	shifted_pt: "/magic-modules.mse-include/pts/375 m15/shifted/",
+
+	alias: "/magic-modules.mse-include/extras/alias/",
+	snow: "/magic-modules.mse-include/cards/375 m15 simple/snow/",
+	nyx: "/magic-modules.mse-include/trims/nyx/",
+	nyx_shifted: "/magic-modules.mse-include/trims/nyx/shifted/",
+	draft: "/magic-modules.mse-include/trims/conspiracy/",
+	crown: "/magic-modules.mse-include/crowns/375/",
+	crown2: "/magic-modules.mse-include/crowns/375/",
+	stamp: "/magic-modules.mse-include/stamps/backs/375 round/",
+	ubstamp: "/magic-modules.mse-include/stamps/backs/375 ub/",
+	identity: "/magic-modules.mse-include/indicators/"
+	star: "/magic-modules.mse-include/trims/star/",
+	space: "/magic-modules.mse-include/trims/space/",
+	sky: "/magic-modules.mse-include/trims/sky/",
+	hands: "/magic-modules.mse-include/trims/hands/",
+	path: "/magic-modules.mse-include/trims/path/",
+	lush: "/magic-modules.mse-include/trims/lush/",
+	path2: "/magic-modules.mse-include/trims/path/",
+	frontier: "/magic-modules.mse-include/cards/altered plus/frontier/"
+	
+	arrow: "/magic-modules.mse-include/levels/arrows/1/"
+	arrow2: "/magic-modules.mse-include/levels/arrows/2/"
+	arrow3: "/magic-modules.mse-include/levels/arrows/3/"
+	slide: "/magic-modules.mse-include/levels/slides/1/"
+	slide2: "/magic-modules.mse-include/levels/slides/2/"
+	slide3: "/magic-modules.mse-include/levels/slides/3/"
+	slide4: "/magic-modules.mse-include/levels/slides/1/back/"
+	slide5: "/magic-modules.mse-include/levels/slides/2/back/"
+	slide6: "/magic-modules.mse-include/levels/slides/3/back/"
+	slide_shift: "/magic-modules.mse-include/levels/slides/1/shifted/"
+	slide2_shift: "/magic-modules.mse-include/levels/slides/2/shifted/"
+	slide3_shift: "/magic-modules.mse-include/levels/slides/3/shifted/"
+	
+	devoid: "devoid/"
+	map: "/magic-modules.mse-include/cards/746 maps/"
+	mappt: "/magic-modules.mse-include/pts/746 maps/"
+	miracle: "/magic-modules.mse-include/trims/miracle/"
+	miracle2: "/magic-modules.mse-include/trims/miracle/back/"
+	miracle_shifted: "/magic-modules.mse-include/trims/miracle/shifted/"
+	miracle_inv: "/magic-modules.mse-include/trims/miracle/inverted/"
+	miracle_fnm: "/magic-modules.mse-include/trims/miracle/fnm/"
+	miracle_snow: "/magic-modules.mse-include/trims/miracle/snow/"
+	draft: "/magic-modules.mse-include/trims/draft/"
+	node: "nodes/"
+	node_shifted: "nodes/shifted/"
+	puma: "puma/"
+	puma_shift: "puma/shifted/"
+	curtains: "curtains/"
+	mark: "bookmarks/"
+	
+	flag: "/magic-modules.mse-include/flags/dark/",
+	flag2: "/magic-modules.mse-include/flags/light/",
+]
+template_suffix := [
+	card: "card.jpg",
+	pt: "pt.png",
+	pt2: "pt.png",
+	fnm_pt: "pt.png",
+	inv_pt: "pt.png",
+	shifted_pt: "pt.png",
+
+	alias: "alias.png",
+	snow: "card.jpg",
+	nyx: "nyx.png",
+	nyx_shifted: "nyx.png",
+	draft: "draft.png",
+	crown: "crown.png",
+	crown2: "crown.png",
+	stamp: "stamp.png",
+	ubstamp: "stamp.png",
+	identity: "identity.png"
+	star: "star.png",
+	space: "space.png",
+	hands: "hands.png",
+	sky: "sky.png",
+	path: "path.png",
+	lush: "lush.png",
+	path2: "path - copy.png",
+	frontier: "frontier.png"
+	
+	devoid: "card.png"
+	map: "card.png"
+	mappt: "pt.png"
+	miracle: "miracle.png"
+	miracle2: "miracle.png"
+	miracle_shifted: "miracle.png"
+	miracle_inv: "miracle.png"
+	miracle_fnm: "miracle.png"
+	miracle_snow: "miracle.png"
+	node: "node.png"
+	node_shifted: "node.png"
+	curtains: "card.png"
+	
+	slide: "slide.png"
+	slide2: "slide.png"
+	slide3: "slide.png"
+	slide4: "slide.png"
+	slide5: "slide.png"
+	slide6: "slide.png"
+	slide_shifted: "slide.png"
+	slide2_shifted: "slide.png"
+	slide3_shifted: "slide.png"
+	arrow: "arrow.png"
+	arrow2: "arrow.png"
+	arrow3: "arrow.png"
+	
+	mark: "mark.png"
+	puma: "puma.png"
+	puma_shift: "puma.png"
+	
+	flag: "flag.png",
+	flag2: "flag.png",
+]
+template := { 
+	if type_name(harder_script[type] or else nil) != type_name(nil)
+		then harder_script[type](input, land:false)
+	else template_prefix[type] + input + template_suffix[type]
+}
+land_template := {
+	if type_name(harder_script[type] or else nil) != type_name(nil)
+		then harder_script[type](input, land:true)
+	else template_prefix[type] + input + (if landless(type) or input == "a" then "" else "l") + template_suffix[type]
+}
+# Use land templates for previews because they show more contrast
+hybrid_previews := "land,hybrid"
+
+landless := {
+	landless_ar[input] or else false
+}
+landless_ar := [
+	nyx: true,
+	nyx_shifted: true,
+	star: true,
+	sky: true,
+	hands: true,
+	path: true,
+	lush: true,
+	frontier: true,
+	space: true,
+	path: true,
+	path2: true,
+	node: true,
+	miracle: true,
+	miracle2: true,
+	miracle_shifted: true,
+	miracle_snow: true,
+	miracle_inv: true,
+	miracle_fnm: true,
+	alias: true,
+	devoid: true,
+	energy: true,
+	season: true,
+	conspiracy: true,
+	arrow: true,
+	arrow2: true,
+	arrow3: true,
+	crown: true,
+	crown2: true,
+	draft: true,
+	flag: true,
+	flag2: true,
+	mark: true,
+	curtains: true
+]

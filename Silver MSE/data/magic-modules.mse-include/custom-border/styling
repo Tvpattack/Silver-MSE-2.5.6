@@ -1,0 +1,11 @@
+styling field:
+	type: choice
+	name: use custom border
+	description: Use custom border?
+	choice: yes
+	choice: no
+	initial: no
+styling field:
+	type: text
+	name: custom border source
+	description: Use this file from magic-mainframe-extras as a custom vehicle-like frame. if colored, name images like "wborder.png" and put "-color-border.png" here.

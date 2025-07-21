@@ -34,10 +34,3 @@ extra card field:
 		name: reversed
 	script: card_color_filter(value)
 	show statistics: false
-## Pride pins
-extra card field:
-	type: multiple choice
-	name: pride pin
-	include file: /magic-pride.mse-include/pins
-	save value: true
-	editable: true
