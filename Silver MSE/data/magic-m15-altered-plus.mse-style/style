@@ -48,7 +48,7 @@ init script:
 	include file: includes/saga_script
 	#### Modules
 	# Custom border
-	include file: /magic-modules.mse-include/custom-border/script
+	include file: /magic-modules.mse-include/information/custom-border/script
 
 ############################################# Set info fields
 include file: includes/set_info_style
@@ -60,4 +60,4 @@ include file: includes/card_fields
 include file: includes/extra_card_fields
 include file: includes/extra_card_style
 ############################################# Modules
-include file: /magic-modules.mse-include/custom-border/include
+include file: /magic-modules.mse-include/information/custom-border/include
