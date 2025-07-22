@@ -59,3 +59,5 @@ include file: includes/card_fields
 ############################################# Extra card fields
 include file: includes/extra_card_fields
 include file: includes/extra_card_style
+############################################# Modules
+include file: /magic-modules.mse-include/custom-border/include

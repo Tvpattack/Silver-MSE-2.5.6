@@ -15,7 +15,7 @@ clear frame:
 	height: 523
 	z index: 11
 	render style: image
-	image: { if is_devoid() then devoid_background() else if is_devoid2() then devoid2_background() else if is_rare() and styling.use_holofoil_stamps then "clear_rare.png" else if is_ub() then "cards/universes-beyond/cclearcard.png" else "clear.png"}
+	image: { if is_devoid() then devoid_background() else if is_devoid2() then devoid2_background() else if is_rare() and styling.use_holofoil_stamps then "cards/clear/clear_rare.png" else if is_ub() then "cards/universes-beyond/cclearcard.png" else "cards/clear/clear.png"}
 	visible: { is_clear() or is_devoid() or is_devoid2() or clear_tops() }
 gold frame:
 	left: 0

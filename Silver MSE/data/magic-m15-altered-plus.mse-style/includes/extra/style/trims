@@ -104,7 +104,7 @@ vehicle overlay:
 	width: 375
 	height: 523
 	render style: image
-	image: {"voverlay" + (if is_full_art() then "_full" else "") + ".png" }
+	image: {"trims/vehicle/voverlay" + (if is_full_art() then "_full" else "") + ".png" }
 	z index: 10
 	visible: {is_vehicle()}
 familiar overlay:
@@ -113,6 +113,6 @@ familiar overlay:
 	width: 375
 	height: 523
 	render style: image
-	image: {"foverlay" + (if is_full_art() or is_clear() then "_full" else "") + ".png"}
+	image: {"trims/familiar/foverlay" + (if is_full_art() or is_clear() then "_full" else "") + ".png"}
 	z index: 10
 	visible: {is_familiar()}

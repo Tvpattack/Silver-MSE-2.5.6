@@ -1,6 +1,0 @@
-extra card field:
-	type: choice
-	name: custom overlay
-	script: card.card_color
-	save value: false
-	editable: false

@@ -77,6 +77,6 @@ card symbol:
 	z index: 12
 	render style: image
 	choice images:
-		tombstone: tombstone.png
-		alchemy: alchemy.png
-		EX: ex.png
+		tombstone: modules/cardicons/tombstone.png
+		alchemy: modules/cardicons/alchemy.png
+		EX: modules/cardicons/ex.png

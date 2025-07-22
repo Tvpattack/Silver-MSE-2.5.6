@@ -13,7 +13,7 @@ image:
 				or is_devoid2() 
 				then "imagemasks/image_mask_devoid.png" 
 				else if is_rem() 
-				then "rem_mask.png" 
+				then "imagemasks/rem_mask.png" 
 				else if is_oldYGO() 
 				and is_expanded_art() 
 				and not is_nopopout()  
@@ -33,9 +33,9 @@ image:
 				else if use_styles() 
 				then "cards/voyager/styles_mask.png" 
 				else if is_thbland() 
-				then "cornermask.png" 
+				then "imagemasks/cornermask.png" 
 				else if is_halfart() 
-				then "halfartmask.png" 
+				then "imagemasks/halfartmask.png" 
 				else if is_puma() 
 				then "imagemasks/puma_mask" + (
 				if is_mutate() then "_mutate.png" else "3.png"

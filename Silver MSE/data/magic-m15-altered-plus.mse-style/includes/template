@@ -187,7 +187,7 @@ template_suffix := [
     back:"flag2.png"
     identity: "identity.png"
     backdfc: "back.png"
-    puma: "puma.png"
+    puma: "modules/extras/puma.png"
     pins: "card.png"
     pop: "pop.png"
     cpop1: "cpop1.png"

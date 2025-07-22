@@ -16,7 +16,7 @@ artist arrow:
 	height: 7
 	z index: 13
 	render style: image
-	image: artist_arrow.png
+	image: modules/extras/artist_arrow.png
 pt box:
 	left: 
 		script:
@@ -74,15 +74,15 @@ pt box:
 					choice:"brown legendary vehicle pt"
 				)
 			) 
-				then "vpt.png" 
+				then "trims/vehicle/vpt.png" 
 			else if is_familiar() 
 			or is_familiarpt() 
-				then "fmpt.png" 
+				then "trims/familiar/fmpt.png" 
 			else if is_clear() 
 			and not is_backdfc() 
-				then "cpt.png" 
+				then "cards/normal/cpt.png" 
 			else if use_gold() 
-				then "goldpt.png" 
+				then "cards/gold/goldpt.png" 
 			else if is_backdfc() 
 				then pt2() 
 			else if use_porthole() 
@@ -97,7 +97,7 @@ pt box 2:
 	z index: 13
 	visible: { card.pt_2 != "" and not is_prototype() }
 	render style: image
-	image: {if is_map() then mappt_background() else combine_blend(image1: lv_2_ptbox(), image2: "ptbox_multiply_1.png", combine: "multiply")}
+	image: {if is_map() then mappt_background() else combine_blend(image1: lv_2_ptbox(), image2: "modules/extras/ptbox_multiply_1.png", combine: "multiply")}
 pt box 3:
 	left: 278
 	top: { l3_center() - (if is_map() then 26 else 15)}
@@ -106,7 +106,7 @@ pt box 3:
 	z index: 13
 	visible: { card.pt_3 != "" }
 	render style: image
-	image: {if is_map() then mappt_background() else combine_blend(image1: lv_3_ptbox(), image2: "ptbox_multiply_2.png", combine: "multiply")}
+	image: {if is_map() then mappt_background() else combine_blend(image1: lv_3_ptbox(), image2: "modules/extras/ptbox_multiply_2.png", combine: "multiply")}
 pt box 4:
 	left: 278
 	top: { l4_center() - (if is_map() then 26 else 15)}
@@ -115,7 +115,7 @@ pt box 4:
 	z index: 13
 	visible: { card.pt_7 != "" }
 	render style: image
-	image: {if is_map() then mappt_background() else combine_blend(image1: lv_4_ptbox(), image2: "ptbox_multiply_3.png", combine: "multiply")}
+	image: {if is_map() then mappt_background() else combine_blend(image1: lv_4_ptbox(), image2: "modules/extras/ptbox_multiply_3.png", combine: "multiply")}
 loyalty box:
 	right: 362
 	top: 466

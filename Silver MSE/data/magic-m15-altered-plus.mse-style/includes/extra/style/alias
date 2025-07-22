@@ -22,7 +22,7 @@ evobar:
 	height: 27
 	z index: 22
 	render style: image
-	image: evobar.png
+	image: modules/evobar/evobar.png
 	visible: {use_evobar()}
 evobar tip:
 	left: 
@@ -38,5 +38,5 @@ evobar tip:
 	height: 27
 	z index: 22
 	render style: image
-	image: evobar_tip.png
+	image: modules/evobar/evobar_tip.png
 	visible: {use_evobar()}

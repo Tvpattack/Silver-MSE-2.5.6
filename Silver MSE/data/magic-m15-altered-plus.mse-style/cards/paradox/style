@@ -251,7 +251,7 @@ card style:
 		z index: 1
 		render style: image
 		choice images:
-			tombstone: tombstone.png
+			tombstone: cardicons/tombstone.png
 	############################# Image
 	image:
 		left: 29
@@ -493,7 +493,7 @@ extra card style:
 		height: 7
 		z index: 1
 		render style: image
-		image: artist_arrow.png
+		image: modules/extras/artist_arrow.png
 	pt box:
 		left: 273
 		top: 466
@@ -550,7 +550,7 @@ extra card style:
 		height: 1
 		z index: 1
 		render style: image
-		image: bar.png
+		image: modules/extras/bar.png
 		visible: { card.rule_text != "" and remove_tags(card.flavor_text) != "" and set.use_flavor_bar }
 	vorthos box:
 		right: { if card.pt != "" then 275 else 350 }

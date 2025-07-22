@@ -31,7 +31,5 @@ extra card style:
 	## Everything else
 	include file: includes/extra/style/other
 	#### Modules
-	## Custom border
-	include file: /magic-modules.mse-include/custom-border/extra_card_style
 	## Pride Pins
 	include file: /magic-pride.mse-include/extra_card_style

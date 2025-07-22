@@ -30,7 +30,5 @@ include file: includes/extra/fields/saga
 ## Everything else
 include file: includes/extra/fields/other
 #### Modules
-## Custom border
-include file: /magic-modules.mse-include/custom-border/extra_card_fields
 ## Pride pins
 include file: /magic-pride.mse-include/extra_card_fields
