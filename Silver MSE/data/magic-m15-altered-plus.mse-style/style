@@ -826,25 +826,32 @@ init script:
 		)
 	}
 	is_nyx := {
-		chosen(
-			styling.frames, choice: "nyx"
-		) 
-		or(
-			lang_setting(
-				"is_enchantment"
-			)(
-				card.super_type
-			) 
-			and set.auto_nyx 
-			and not(
-				lang_setting(
-					"is_creature"
-				)(
-					card.super_type
-				) 
-				and set.auto_star
-			)
-		)
+	    chosen(
+	        styling.frames, choice: "nyx"
+	    ) 
+	    or(
+	        lang_setting(
+	            "is_enchantment"
+	        )(
+	            card.super_type
+	        ) 
+	        and set.auto_nyx 
+	        and not(
+	            (
+	                lang_setting(
+	                    "is_creature"
+	                )(
+	                    card.super_type
+	                ) 
+	                and set.auto_star
+	            )
+	            or(
+	                contains(
+	                    styling.frames, match:"less art"
+	                )
+	            )
+	        )
+	    )
 	}
 	is_star := {
 		chosen(styling.altered_plus_frames, choice:"star")
@@ -1731,7 +1738,7 @@ card style:
 			name: Beleren Bold
 			size: { (if is_map() then 12 else if use_porthole() then 14 else 13) - shrink_type() }
 			color: {if white_type2() or is_fnm() or is_frontier() or is_paradox() then "white" else if black_type() or bevel_black_type() and not is_shifted() then "black" else if white_type() or is_full_art() or is_puma() or is_shifted() or black_type() or is_inverted() then "white" else "black"}
-			shadow color: {if is_full_art() or white_type2() or is_fnm() or is_puma() or is_shifted() and not black_type() or is_fnm() then "black" else if bevel_black_type() then "white" else if use_porthole() then rgb(222, 207, 171) else rgba(0,0,0,0)} 
+			shadow color: {if is_full_art() or white_type2() or is_fnm() or is_puma() or is_shifted() and not black_type() or is_fnm() then rgba(0,0,0,0) else if bevel_black_type() then "white" else if use_porthole() then rgb(222, 207, 171) else rgba(0,0,0,0)} 
 			shadow displacement x: -1
 			shadow displacement y: 1
 			shadow blur: 5
@@ -1814,8 +1821,8 @@ card style:
 			name: Beleren Bold
 			size: {if styling.font_cap != "" then to_number(styling.font_cap) else (if is_mutate() then 13 else 15)}
 			scale down to: 7
-			color: {"black"}
-			#####shadow color: {if is_full_art() or is_fnm() then "black" else rgba(0,0,0,0)}
+			color: rgba(0,0,0,0)
+			#####shadow color: {if is_full_art() or is_fnm() then rgba(0,0,0,0) else rgba(0,0,0,0)}
 			shadow displacement x: -1
 			shadow displacement y: 1
 		symbol font:
@@ -1846,7 +1853,7 @@ card style:
 			name: Beleren Bold
 			size: { (if is_map() then 12 else 13) - shrink_type() }
 			color: {if white_type2() or is_fnm() then "white" else if black_type() or bevel_black_type() and not is_shifted() then "black" else if white_type() or is_full_art() or is_puma() or is_shifted() and not is_fnm() or is_inverted() or black_type() then "white" else "black"}
-			shadow color: {if is_full_art() or white_type2() or is_puma() or is_shifted() and not black_type() or is_fnm() then "black" else if bevel_black_type() then "white" else rgba(0,0,0,0)}
+			shadow color: {if is_full_art() or white_type2() or is_puma() or is_shifted() and not black_type() or is_fnm() then rgba(0,0,0,0) else if bevel_black_type() then "white" else rgba(0,0,0,0)}
 			shadow displacement x: -1
 			shadow displacement y: 1
 			shadow blur: 5
@@ -1862,7 +1869,7 @@ card style:
 			size: {if styling.font_cap != "" then to_number(styling.font_cap) else (if is_mutate() then 12 else 14)}
 			scale down to: 6
 			color: { if black_text() or bevel_black_text() then "black" else if is_full_art() or is_fnm() or is_inverted() or white_text() or white_text2() or is_fnm() and not black_text() then "white" else "black"}
-			shadow color: {if is_full_art() or is_fnm() then "black" else if white_text2() then "black" else if bevel_black_text() then "white" else if use_porthole() then rgb(222, 207, 171) else rgba(0,0,0,0)}
+			shadow color: {if is_full_art() or is_fnm() then rgba(0,0,0,0) else if white_text2() then rgba(0,0,0,0) else if bevel_black_text() then "white" else if use_porthole() then rgb(222, 207, 171) else rgba(0,0,0,0)}
 			shadow displacement x: -1
 			shadow displacement y: 1
 		symbol font:
@@ -1930,7 +1937,7 @@ card style:
 			size: {if styling.font_cap != "" then to_number(styling.font_cap) else 14}
 			scale down to: 6
 			color: { if is_full_art() or is_fnm() or is_inverted() then "white" else "black"}
-			shadow color: {if is_full_art() or is_fnm() then "black" else rgba(0,0,0,0)}
+			shadow color: rgba(0,0,0,0)
 			shadow displacement x: -1
 			shadow displacement y: 1
 		symbol font:
@@ -1965,7 +1972,7 @@ card style:
 			size: {if styling.font_cap != "" then to_number(styling.font_cap) else 14}
 			scale down to: 6
 			color: { if is_full_art() or is_fnm() or is_inverted() then "white" else "black"}
-			shadow color: {if is_full_art() or is_fnm() then "black" else rgba(0,0,0,0)}
+			shadow color: rgba(0,0,0,0)
 			shadow displacement x: -1
 			shadow displacement y: 1
 		symbol font:
@@ -2000,7 +2007,7 @@ card style:
 			size: {if styling.font_cap != "" then to_number(styling.font_cap) else 14}
 			scale down to: 6
 			color: { if is_full_art() or is_fnm() or is_inverted() then "white" else "black"}
-			shadow color: {if is_full_art() or is_fnm() then "black" else rgba(0,0,0,0)}
+			shadow color: rgba(0,0,0,0)
 			shadow displacement x: -1
 			shadow displacement y: 1
 		symbol font:
@@ -2035,7 +2042,7 @@ card style:
 			size: {if styling.font_cap != "" then to_number(styling.font_cap) else 14}
 			scale down to: 6
 			color: { if is_full_art() or is_fnm() then "white" else "black"}
-			shadow color: {if is_full_art() or is_fnm() then "black" else rgba(0,0,0,0)}
+			shadow color: rgba(0,0,0,0)
 			shadow displacement x: -1
 			shadow displacement y: 1
 		symbol font:
@@ -2178,7 +2185,7 @@ card style:
 			size: {if is_map() then 14 else 16}
 			color: {if is_shifted() and not black_name() or is_fnm() or is_inverted() or is_familiar() or is_familiarpt() or is_paradox() then "white" else if is_vehicle() and (not is_legend() or chosen(styling.other_options, choice:"brown legendary vehicle pt")) then "white" else if is_backdfc() then "white" else "black"}
 			separator color: red
-			shadow color: {if is_shifted() and not black_name() or is_fnm() then rgb(0,0,0) else rgba(0,0,0,0)}
+			shadow color: rgba(0,0,0,0)
 			shadow displacement x: -1
 			shadow displacement y: 1
 
@@ -2194,7 +2201,7 @@ card style:
 			size: {if is_map() or is_prototype() then 14 else 16}
 			color: {if is_shifted() and not black_name() or is_fnm() or is_inverted() or is_familiar() or is_paradox() or is_prototype() then "white" else if is_vehicle() and (not is_legend() or chosen(styling.other_options, choice:"brown legendary vehicle pt")) then "white" else "black"}
 			separator color: red
-			shadow color: {if is_shifted() and not black_name() or is_fnm() then rgb(0,0,0) else rgba(0,0,0,0)}
+			shadow color: rgba(0,0,0,0)
 			shadow displacement x: -1
 			shadow displacement y: 1
 	pt 3:
@@ -2209,7 +2216,7 @@ card style:
 			size: {if is_map() then 14 else 16}
 			color: {if is_shifted() and not black_name() or is_fnm() or is_inverted() or is_familiar() or is_paradox() then "white" else if is_vehicle() and (not is_legend() or chosen(styling.other_options, choice:"brown legendary vehicle pt")) then "white" else "black"}
 			separator color: red
-			shadow color: {if is_shifted() and not black_name() or is_fnm() then rgb(0,0,0) else rgba(0,0,0,0)}
+			shadow color: rgba(0,0,0,0)
 			shadow displacement x: -1
 			shadow displacement y: 1
 	pt 7:
@@ -2224,7 +2231,7 @@ card style:
 			size: {if is_map() then 14 else 16}
 			color: {if is_shifted() and not black_name() or is_fnm() or is_familiar() then "white" else if is_vehicle() and (not is_legend() or chosen(styling.other_options, choice:"brown legendary vehicle pt")) then "white" else "black"}
 			separator color: red
-			shadow color: {if is_shifted() and not black_name() or is_fnm() then rgb(0,0,0) else rgba(0,0,0,0)}
+			shadow color: rgba(0,0,0,0)
 			shadow displacement x: -1
 			shadow displacement y: 1
 	loyalty:
@@ -4142,7 +4149,7 @@ extra card style:
 			size: {if styling.font_cap != "" then to_number(styling.font_cap) else (if is_mutate() then 13 else 15)}
 			scale down to: 7
 			color: {"black"}
-			#####shadow color: {if is_full_art() or is_fnm() then "black" else rgba(0,0,0,0)}
+			#####shadow color: rgba(0,0,0,0)
 			shadow displacement x: -1
 			shadow displacement y: 1
 		symbol font:
