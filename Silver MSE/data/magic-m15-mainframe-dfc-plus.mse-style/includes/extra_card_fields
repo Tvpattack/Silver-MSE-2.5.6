@@ -1,0 +1,834 @@
+extra card field:
+	type: choice
+	name: foil layer
+	choice: foil
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: foil layer 2
+	choice: foil
+	save value: false
+	editable: false
+extra card field:
+	type: text
+	name: pt 2 copy
+	script: if chosen(styling.other_options, choice:"use hovering loyalty") and card.pt_2 == "" then card.loyalty_2 else card.pt_2
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 2
+	script: if front_leveler() then card.card_color else card.card_color_2
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 3
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 4
+	script: card.card_color_2
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 5
+	script: card.card_color_2
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 6
+	script: card.card_color_2
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 7
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 8
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: curtain
+	script: card.card_color
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: miracle overlay
+	choice: miracle
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: nyx overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: star overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: space overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: sky overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: hands overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: path overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: lush overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: familiar overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: frontier overlay
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: snow overlay
+	choice: snow
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: custom border overlay
+	script: card.card_color
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: draft overlay
+	script: card.card_color
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: vehicle overlay
+	choice: car door
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: bookmark
+	choice: mark
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: stripe
+	choice: mark
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: curtain 2
+	script: card.card_color_2
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: miracle overlay 2
+	choice: miracle
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: nyx overlay 2
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: star overlay 2
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: space overlay 2
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: sky overlay 2
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: hands overlay 2
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: path overlay 2
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: lush overlay 2
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: familiar overlay 2
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: frontier overlay 2
+	choice: nyx
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: snow overlay 2
+	choice: snow
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: custom border overlay 2
+	script: card.card_color_2
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: draft overlay 2
+	script: card.card_color_2
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: vehicle overlay 2
+	choice: car door
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: bookmark 2
+	choice: mark
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	name: stripe 2
+	choice: mark
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: class paper
+	choice: bookmark
+	save value: false
+	editable: false
+	script: card.card_color
+extra card field:
+	type: choice
+	name: class paper 2
+	choice: bookmark
+	save value: false
+	editable: false
+	script: card.card_color_2
+extra card field:
+	type: choice
+	choice: bar
+	name: meld bar
+	editable: false
+	show statistics: false
+extra card field:
+	type: text
+	name: filler text
+	editable: true
+	save value: true
+	show statistics: false
+	multi line: true
+	script:
+		forward_editor(field: card.special_text)
+		special_text()
+extra card field:
+	type: text
+	name: filler text 2
+	editable: true
+	save value: true
+	show statistics: false
+	multi line: true
+	script:
+		forward_editor(field: card.special_text_2)
+		special_text2()
+extra card field:
+	type: choice
+	name: chapter 1
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 2
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 3
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 4
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 5
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 6
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter custom
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: linebreak 1
+	choice: line
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: linebreak 2
+	choice: line
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: linebreak 3
+	choice: line
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: linebreak 4
+	choice: line
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 1b
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 2b
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 3b
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 4b
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 5b
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter 6b
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: chapter customb
+	choice: chapter
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: linebreak 1b
+	choice: line
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: linebreak 2b
+	choice: line
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: linebreak 3b
+	choice: line
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: linebreak 4b
+	choice: line
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: color
+	name: silver patch
+	script: rgb(0,0,0)
+extra card field:
+	type: color
+	name: silver patch 2
+	script: rgb(0,0,0)
+extra card field:
+	type: choice
+	name: evobar
+	choice: evo
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: evobar tip
+	choice: evo
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: evobar 2
+	choice: evo
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: evobar tip 2
+	choice: evo
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: evobar start
+	choice: evo
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: evobar start 2
+	choice: evo
+	save value: false
+	editable: false
+# Add the word "LEVEL" to the top arrow.
+extra card field:
+	type: text
+	name: lvl label 0
+	editable: false
+	save value: false
+	script: if loy_leveler() then ":" else level_label(0)
+# Add the word "LEVEL" to the first arrow.
+extra card field:
+	type: text
+	name: lvl label 1
+	editable: false
+	save value: false
+	script: if front_class() then "Level 2" else if loy_leveler() then ":" else level_label(1)
+# Add the word "LEVEL" to the second arrow.
+extra card field:
+	type: text
+	name: lvl label 2
+	editable: false
+	save value: false
+	script: if front_class() then "Level 3" else if loy_leveler() then ":" else level_label(2)
+# Add the word "LEVEL" to the third arrow.
+extra card field:
+	type: text
+	name: lvl label 3
+	editable: false
+	save value: false
+	script: if front_class() then "Level 4" else if loy_leveler() then ":" else level_label(2)
+extra card field:
+	type: choice
+	name: level 2 overlay
+	script: card.card_color
+	choice: mask
+	editable: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: level 3 overlay
+	script: card.card_color
+	choice: mask
+	editable: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: level 4 overlay
+	script: card.card_color
+	choice: mask
+	editable: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: arrow 1
+	script: card.card_color
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: arrow 2
+	script: card.card_color
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: arrow 3
+	script: card.card_color
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: arrow 4
+	script: card.card_color
+	editable: false
+	save value: false
+	show statistics: false
+# Add the word "LEVEL" to the top arrow.
+extra card field:
+	type: text
+	name: lvl label 5
+	editable: false
+	save value: false
+	script: if loy_leveler2() then ":" else level_label(3)
+# Add the word "LEVEL" to the first arrow.
+extra card field:
+	type: text
+	name: lvl label 6
+	editable: false
+	save value: false
+	script: if back_class() then "Level 2" else if loy_leveler2() then ":" else level_label(4)
+# Add the word "LEVEL" to the second arrow.
+extra card field:
+	type: text
+	name: lvl label 7
+	editable: false
+	save value: false
+	script: if back_class() then "Level 3" else if loy_leveler2() then ":" else level_label(5)
+# Add the word "LEVEL" to the third arrow.
+extra card field:
+	type: text
+	name: lvl label 8
+	editable: false
+	save value: false
+	script: if back_class() then "Level 4" else if loy_leveler2() then ":" else level_label(5)
+extra card field:
+	type: choice
+	name: level 6 overlay
+	script: card.card_color_2
+	choice: mask
+	editable: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: level 7 overlay
+	script: card.card_color_2
+	choice: mask
+	editable: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: level 8 overlay
+	script: card.card_color_2
+	choice: mask
+	editable: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: arrow 5
+	script: card.card_color_2
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: arrow 6
+	script: card.card_color_2
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: arrow 7
+	script: card.card_color_2
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: arrow 8
+	script: card.card_color_2
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: alias bar
+	script: card.card_color
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: alias bar 2
+	script: card.card_color_2
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: front modal flag
+	script: card.card_color_2
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: choice
+	name: back modal flag
+	script: card.card_color
+	editable: false
+	save value: false
+	show statistics: false
+extra card field:
+	type: text
+	name: back type hint
+	script: if front_modal_hint().0 != "" then front_modal_hint().0 else value
+	save value: true
+	editable: true
+extra card field:
+	type: text
+	name: back color hint
+	script: if front_modal_hint().1 != "" then front_modal_hint().1 else value
+	save value: true
+	editable: true
+extra card field:
+	type: text
+	name: front type hint
+	script: if back_modal_hint().0 != "" then back_modal_hint().0 else value
+	save value: true
+	editable: true
+extra card field:
+	type: text
+	name: front color hint
+	script: if back_modal_hint().1 != "" then back_modal_hint().1 else value
+	save value: true
+	editable: true
+extra card field:
+	type: choice
+	name: crown
+	script: card.card_color
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: crown 2
+	script: card.card_color_2
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: stamp backing
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: stamp backing 2
+	script: card.card_color_2
+	editable: false
+	save value: false
+extra card field:
+	type:				text
+	name:				colon 1
+	editable:			false
+	save value:			false
+	script:				":"
+extra card field:
+	type:				text
+	name:				colon 2
+	editable:			false
+	save value:			false
+	script:				":"
+extra card field:
+	type:				text
+	name:				colon 3
+	editable:			false
+	save value:			false
+	script:				":"
+extra card field:
+	type:				text
+	name:				colon 4
+	editable:			false
+	save value:			false
+	script:				":"
+extra card field:
+	type:				text
+	name:				colon 5
+	editable:			false
+	save value:			false
+	script:				":"
+extra card field:
+	type:				text
+	name:				colon 6
+	editable:			false
+	save value:			false
+	script:				":"
+extra card field:
+	type:				text
+	name:				colon 7
+	editable:			false
+	save value:			false
+	script:				":"
+extra card field:
+	type:				text
+	name:				colon 8
+	editable:			false
+	save value:			false
+	script:				":"
+extra card field:
+	type: choice
+	name: art mirror
+	choice: mirror
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: art mirror 2
+	choice: mirror
+	editable: false
+	save value: false
+extra card field:
+	type: color
+	name: border mirror
+	script: rgb(0,0,0)
+	editable: false
+	save value: false
+extra card field:
+	type: color
+	name: border mirror 2
+	script: rgb(0,0,0)
+	editable: false
+	save value: false

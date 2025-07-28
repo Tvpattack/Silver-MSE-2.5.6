@@ -49,8 +49,8 @@ init script:
 	#Should multicolor lands with basic land types have a colored name?
 	mask_multi_land_with_color := { styling.colored_multicolor_land_name }
 	
-	base_template_prefix := [card: "" nyx: "nyx/" miracle: "miracles/" promo: "promo/" crown: "legend/" cons:"conspiracy/" curtain: "curtains/" fnm: "fnm/", fnmpt: "paradox/", map: "maps/" energy: "energies/", mappt: "maps/" pt: "", slide: "masks/", slide2: "masks/", arrow: "arrows/", arrow2: "arrows/", arrow3: "arrows/", season: "season/" stamp: "" identity: "/magic-identity-new.mse-include/"]
-	shifted_template_prefix := [card: "shifted/" nyx: "nyx/" miracle: "shifted/" promo: "promo/" crown: "shifted/" cons:"conspiracy/" curtain: "curtains/" fnm:"fnm/", fnmpt: "paradox/", map: "maps/" energy: "energies/", mappt: "maps/" pt: "shifted/", slide: "shifted/", slide2: "shifted/", arrow: "arrows/", arrow2: "arrows/", arrow3: "arrows/", season: "season/" stamp: "shifted/" identity: "/magic-identity-new.mse-include/"]
+	base_template_prefix := [card: "" nyx: "nyx/" miracle: "modules/miracles/" promo: "modules/promo/" crown: "modules/legend/" cons:"trims/conspiracy/" curtain: "modules/curtains/" fnm: "cards/fnm/", fnmpt: "cards/paradox/", map: "cards/maps/" energy: "cards/fullart/", mappt: "cards/maps/" pt: "", slide: "modules/slides/", slide2: "modules/slides/", arrow: "arrows/", arrow2: "arrows/", arrow3: "arrows/", season: "season/" stamp: "" identity: "/magic-identity-new.mse-include/"]
+	shifted_template_prefix := [card: "modules/shifted/" nyx: "nyx/" miracle: "modules/shifted/" promo: "modules/promo/" crown: "modules/shifted/" cons:"trims/conspiracy/" curtain: "modules/curtains/" fnm:"cards/fnm/", fnmpt: "cards/paradox/", map: "cards/maps/" energy: "cards/fullart/", mappt: "cards/maps/" pt: "modules/shifted/", slide: "modules/shifted/", slide2: "modules/shifted/", arrow: "arrows/", arrow2: "arrows/", arrow3: "arrows/", season: "season/" stamp: "modules/shifted/" identity: "/magic-identity-new.mse-include/"]
 	template_prefix := { if is_shifted() then shifted_template_prefix else base_template_prefix }
 	template_suffix := [card: "card.jpg" nyx: "nyx.png" miracle: "miracle.png" promo: "card.jpg" crown: "crown.png" cons:"cons.png" curtain: "card.png" fnm:"card.png", fnmpt: "pt.png", map: "card.png", energy: "card.png", mappt: "pt.png" pt: "pt.png", slide: "slide.png", slide2: "slide2.png", stamp: "stamp.jpg", arrow: "arrow.png", arrow2: "arrow2.png", arrow3: "arrow3.png", season: "flag.png" identity: "identity.png"]
 	template      := { crown_lead(type) + template_prefix()[type] + input + crown_follow(type) + template_suffix[type] }
@@ -195,8 +195,8 @@ init script:
 	lone_pt := {chosen(styling.other_options, choice:"regular pt on levelers") and not starting_loyalty()}
 	starting_loyalty := {chosen(styling.other_options, choice:"use starting loyalty")}
 	choose_ptbox := {if is_fnm() then fnm_ptbox() else card_ptbox()}
-	lv_2_ptbox := { if is_vehicle() then "vpt.png" else if is_clear() then "cpt.png" else if is_fnm() then fnm_ptbox() else leveler_ptbox2() }
-	lv_3_ptbox := { if is_vehicle() then "vpt.png" else if is_clear() then "cpt.png" else if is_fnm() then fnm_ptbox() else leveler_ptbox3() }
+	lv_2_ptbox := { if is_vehicle() then "trims/vehicle/vpt.png" else if is_clear() then "cards/normal/cpt.png" else if is_fnm() then fnm_ptbox() else leveler_ptbox2() }
+	lv_3_ptbox := { if is_vehicle() then "trims/vehicle/vpt.png" else if is_clear() then "cards/normal/cpt.png" else if is_fnm() then fnm_ptbox() else leveler_ptbox3() }
 	arrow_left := {if box_leveler() then -3 else if loy_leveler() then 10 else 18}
 	arrow_width := {if box_leveler() then 84 else if loy_leveler() then 42 else 56}
 	arrow_height := {if aug_leveler(input) then 42 else if box_leveler() then 50 else if loy_leveler() then 40 else 40}
@@ -509,7 +509,7 @@ card style:
 		z index: 1
 		render style: image
 		choice images:
-			tombstone: tombstone.png
+			tombstone: cardicons/tombstone.png
 	############################# Image
 	image:
 		left: { if is_clear() or is_map() or is_expanded_art() or is_puma() then 0 else if is_full_art() then 23 else if is_mutate() then 22 else 29}
@@ -518,7 +518,7 @@ card style:
 		height:	{if is_clear() or is_expanded_art() then 523 else if is_map() then 241 else if is_puma() then 265 else if is_full_art() then 423 else if is_mutate() then 334 else 231}
 		z index: 1
 		default: {default_image(card.card_color)}
-		mask: { if is_clear() then "image_mask.png" else if is_thbland() then "cornermask.png" else if is_puma() then "puma_mask.png" else if is_expanded_art() then expanded_mask() else if is_full_art() then "promo/image_mask" + (if is_rare() and styling.use_holofoil_stamps then "_rare") + ".png" else if is_mutate() then "mutate_mask.png" else ""}
+		mask: { if is_clear() then "image_mask.png" else if is_thbland() then "imagemasks/cornermask.png" else if is_puma() then "puma_mask.png" else if is_expanded_art() then expanded_mask() else if is_full_art() then "modules/promo/image_mask" + (if is_rare() and styling.use_holofoil_stamps then "_rare") + ".png" else if is_mutate() then "mutate_mask.png" else ""}
 	mainframe image:
 		left: {if comma_count(styling.popout_image_style) == ",,,," then split_text(match:",", styling.popout_image_style).0 else "0"}
 		top: {if comma_count(styling.popout_image_style) == ",,,," then split_text(match:",", styling.popout_image_style).1 else "0"}
@@ -1255,7 +1255,7 @@ extra card style:
 		height: 7
 		z index: 3
 		render style: image
-		image: artist_arrow.png
+		image: modules/extras/artist_arrow.png
 	pt box:
 		left: { if is_leveler() and not lone_pt() then 278 else if is_map() then 270 else 273}
 		top: { if is_leveler() and not lone_pt() then (l1_center() - (if is_map() then 26 else 18)) else if is_map() then 453 else 466}
@@ -1264,7 +1264,7 @@ extra card style:
 		z index: 3
 		visible: { card.pt != "" }
 		render style: image
-		image: { if is_map() then mappt_background() else if is_vehicle() and (not is_legend() or chosen(styling.other_options, choice:"brown legendary vehicle pt")) then "vpt.png" else if is_clear() then "cpt.png" else choose_ptbox() }
+		image: { if is_map() then mappt_background() else if is_vehicle() and (not is_legend() or chosen(styling.other_options, choice:"brown legendary vehicle pt")) then "trims/vehicle/vpt.png" else if is_clear() then "cards/normal/cpt.png" else choose_ptbox() }
 	pt box 2:
 		left: 278
 		top: { l2_center() - (if is_map() then 26 else 15)}
@@ -1273,7 +1273,7 @@ extra card style:
 		z index: 3
 		visible: { card.pt_2 != "" }
 		render style: image
-		image: {if is_map() then mappt_background() else combine_blend(image1: lv_2_ptbox(), image2: "ptbox_multiply_1.png", combine: "multiply")}
+		image: {if is_map() then mappt_background() else combine_blend(image1: lv_2_ptbox(), image2: "modules/extras/ptbox_multiply_1.png", combine: "multiply")}
 	pt box 3:
 		left: 278
 		top: { l3_center() - (if is_map() then 26 else 15)}
@@ -1282,7 +1282,7 @@ extra card style:
 		z index: 3
 		visible: { card.pt_3 != "" }
 		render style: image
-		image: {if is_map() then mappt_background() else combine_blend(image1: lv_3_ptbox(), image2: "ptbox_multiply_2.png", combine: "multiply")}
+		image: {if is_map() then mappt_background() else combine_blend(image1: lv_3_ptbox(), image2: "modules/extras/ptbox_multiply_2.png", combine: "multiply")}
 	loyalty box:
 		right: 362
 		top: 466
@@ -1301,7 +1301,7 @@ extra card style:
 		z index: 2
 		visible: { is_rare() and styling.use_holofoil_stamps and not is_clear() }
 		render style: image
-		image: { if is_map() then "maps/holo_stamp.png" else card_stamp() }
+		image: { if is_map() then "cards/maps/holo_stamp.png" else card_stamp() }
 		mask: { if is_full_art() or (is_borderless() and is_leveler()) then "med_full_stamp_mask.png" else if is_borderless() then "med_stamp_mask.png" else if is_leveler() then "stamp_mask.png" else ""}
 	foil stamp:
 		left: 165
@@ -1350,10 +1350,10 @@ extra card style:
 		width: 375
 		height: 523
 		render style: image
-		image: {if is_clear() then "legend/xcrown.png" else if is_fnm() then set_mask(image:crown_background(), mask:"legend/fnm_mask.png") else crown_background()}
+		image: {if is_clear() then "modules/legend/xcrown.png" else if is_fnm() then set_mask(image:crown_background(), mask:"modules/legend/fnm_mask.png") else crown_background()}
 		z index: 5
 		visible: {is_legend() and not is_map()}
-		mask: {if is_legend() and (is_curtains() or is_expanded_art() or is_puma()) then "curtainmask.png" else if is_season() then "crown_season_mask.png" else ""}
+		mask: {if is_legend() and (is_curtains() or is_expanded_art() or is_puma()) then "imagemasks/curtainmask.png" else if is_season() then "crown_season_mask.png" else ""}
 	curtain:
 		left: 0
 		top: 0
@@ -1363,7 +1363,7 @@ extra card style:
 		image: {if is_cons() then cons_background() else curtain_background()}
 		z index: 0
 		visible: {is_cons() or is_curtains()}
-		mask: {if is_legend() and is_curtains() then "lcurtainmask.png"}
+		mask: {if is_legend() and is_curtains() then "limagemasks/curtainmask.png"}
 	scrolls:
 		left: 0
 		top: 0
@@ -1379,7 +1379,7 @@ extra card style:
 		width: 375
 		height: 523
 		render style: image
-		image: {if is_clear() then "miracles/xmiracle.png" else miracle_background()}
+		image: {if is_clear() then "modules/miracles/xmiracle.png" else miracle_background()}
 		z index: 1
 		visible: {is_miracle()}
 	vehicle overlay:
@@ -1388,7 +1388,7 @@ extra card style:
 		width: 375
 		height: 523
 		render style: image
-		image: {"voverlay" + (if is_full_art() then "_full" else "") + ".png" }
+		image: {"trims/vehicle/voverlay" + (if is_full_art() then "_full" else "") + ".png" }
 		z index: 0
 		visible: {is_vehicle()}
 	clear frame:
@@ -1398,7 +1398,7 @@ extra card style:
 		height: 523
 		z index: 1
 		render style: image
-		image: { if is_rare() and styling.use_holofoil_stamps then "clear_rare.png" else "clear.png"}
+		image: { if is_rare() and styling.use_holofoil_stamps then "cards/clear/clear_rare.png" else "cards/clear/clear.png"}
 		visible: { is_clear() }
 	map frame:
 		left: 0
@@ -1416,7 +1416,7 @@ extra card style:
 		height: 27
 		z index: 2
 		render style: image
-		image: evobar.png
+		image: modules/evobar/evobar.png
 		visible: {is_skinned() or use_evobar()}
 	evobar tip:
 		left: {if is_skinned() then 299.6 else (if is_map() then 14.6 else 26.6) + card_style.alias.content_width}
@@ -1425,7 +1425,7 @@ extra card style:
 		height: 27
 		z index: 2
 		render style: image
-		image: evobar_tip.png
+		image: modules/evobar/evobar_tip.png
 		visible: {is_skinned() or use_evobar()}
 	evobar start:
 		left: 39.4
@@ -1434,7 +1434,7 @@ extra card style:
 		height: 27
 		z index: 2
 		render style: image
-		image: evobar_flip.png
+		image: modules/evobar/evobar_flip.png
 		visible: {is_skinned()}
 	flavor bar:
 		left: 0
@@ -1443,7 +1443,7 @@ extra card style:
 		height: 1
 		z index: 1
 		render style: image
-		image: bar.png
+		image: modules/extras/bar.png
 		visible: { ((is_modal() and modal_flavor()) or (card.rule_text != "" and remove_tags(card.flavor_text) != "")) and set.use_flavor_bar }
 	tarot watermark:
 		left: { if is_map() then 40 else 19 }
@@ -1639,7 +1639,7 @@ extra card style:
 		height: 2
 		width: 317
 		render style: image
-		image: mutbar.png
+		image: modules/extras/mutbar.png
 		visible: {is_mutate()}
 	silver patch:
 		left: 10

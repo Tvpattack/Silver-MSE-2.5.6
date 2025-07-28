@@ -1,0 +1,73 @@
+extra card field:
+	type: text
+	name: card code
+	save value: false
+	script:
+		if set.automatic_card_numbers and not (styling.remove_from_autocount or contains(styling.other_options, match: "edit card code")) then
+			forward_editor(prefix: card_number_m15() + "/" + card_count_m15() + " " + rarity_code() + " ", field: card.card_code_text)
+		else if set.automatic_card_numbers and contains(styling.other_options, match: "edit card code") 
+			then
+			combined_editor(field1: card.custom_card_number, separator1: "/" + card_count_m15(), field2: card.card_code_text, separator2: " " + rarity_code() + " ", field3: card.card_code_text_2)
+		else
+			combined_editor(field1: card.custom_card_number, separator: " " + rarity_code() + " ", field2: card.card_code_text)
+extra card field:
+	type: choice
+	name: artist arrow
+	editable: false
+	save value: false
+	choice: white
+extra card field:
+	type: choice
+	name: pt box
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 2
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 3
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: pt box 4
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: stamp
+	script: card.card_color
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: foil stamp
+	choice: stamp
+	save value: false
+	editable: false
+extra card field:
+	type: choice
+	name: foil layer
+	choice: foil
+	save value: false
+	editable: false
+extra card field:
+	type: text
+	name: auto copyright
+	script: set.copyright
+	save value: false
+	editable: false
+	show statistics: false
+extra card field:
+	type: text
+	name: vorthos box
+	save value: true
+	editable: true
+	description: Where they put mtgstory.com on story spotlights.
