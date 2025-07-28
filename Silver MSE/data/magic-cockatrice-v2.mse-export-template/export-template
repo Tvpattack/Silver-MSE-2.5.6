@@ -34,17 +34,7 @@ option field:
 	choice: no
 	choice: JPG
 	choice: PNG
-	initial: no
-option field:
-	type: boolean
-	name: tokens In Separate XML
-	description: Tokens are exported to a Separate file called "[Set Code] Tokens.xml"
-	initial: no
-option field:
-	type: boolean
-	name: append Set Code To Tokens
-	description: Adds the set code to token names to differentiate them from tokens with the same name from other sets.
-	initial: no
+	initial: JPG
 option field:
 	type: text
 	name: append String To Names
@@ -285,7 +275,7 @@ script:
 	write_token := {
 		"\n    "+"\<card>"
 		# Name
-		+"\n      "+"\<name>"+xml_escape(strip_card_name(card_name())+(if options.append_Set_Code_To_Tokens then " " + setcode else ""))+"\</name>"
+		+"\n      "+"\<name>"+xml_escape(strip_card_name(card_name())+(if true then " " + setcode else ""))+"\</name>"
 		# Set
 		+"\n      "+"\<set>"+setcode+"\</set>"
 		+"\n      "+"\<prop>"
@@ -956,7 +946,7 @@ script:
 	format_file_name := {
 		options.append_String_To_Names
 		+ input
-		+ (if is_token() and options.append_Set_Code_To_Tokens then " " + set.set_code else "")
+		+ (if is_token() and true then " " + set.set_code else "")
 		+ "." + file_type()
 	}
 	write_single_image := {
@@ -997,7 +987,7 @@ script:
 	#Main export script
 
 	#tokens in Separate XML
-	if (chosen(options.rarities_to_export, choice:"token") and options.tokens_In_Separate_XML) then write_text_file(file:set.set_code + " Tokens" + ".xml", to_string("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<cockatrice_carddatabase version=\"4\">\n  <cards>\n"+write_all_tokens+"\n\n  </cards>\n</cockatrice_carddatabase>"))
+	if (chosen(options.rarities_to_export, choice:"token") and true) then write_text_file(file:set.set_code + " Tokens" + ".xml", to_string("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<cockatrice_carddatabase version=\"4\">\n  <cards>\n"+write_all_tokens+"\n\n  </cards>\n</cockatrice_carddatabase>"))
 
 	#other cards
-	to_string("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<cockatrice_carddatabase version=\"4\">\n  <sets>\n    <set>\n      <name>"+setcode+"</name>\n      <longname>"+xml_escape(set.title)+"</longname>\n      <settype>"+xml_escape(options.cockatrice_Set_Type)+"</settype>\n    </set>\n  </sets>\n  <cards>\n"+write_cards+if (chosen(options.rarities_to_export, choice:"token") and not(options.tokens_In_Separate_XML)) then ("\n\n    <!-->Tokens</-->\n"+write_all_tokens)+"\n\n  </cards>\n</cockatrice_carddatabase>")
+	to_string("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<cockatrice_carddatabase version=\"4\">\n  <sets>\n    <set>\n      <name>"+setcode+"</name>\n      <longname>"+xml_escape(set.title)+"</longname>\n      <settype>"+xml_escape(options.cockatrice_Set_Type)+"</settype>\n    </set>\n  </sets>\n  <cards>\n"+write_cards+if (chosen(options.rarities_to_export, choice:"token") and not(true)) then ("\n\n    <!-->Tokens</-->\n"+write_all_tokens)+"\n\n  </cards>\n</cockatrice_carddatabase>")

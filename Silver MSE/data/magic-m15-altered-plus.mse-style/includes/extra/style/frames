@@ -44,6 +44,16 @@ ocean frame:
 	render style: image
 	image: {if use_ocean() then "cards/voyager/seafoam-2.png"}
 	visible: { use_ocean()}
+ocean frame color:
+	left: 0
+	top: 0
+	width: 375
+	height: 523
+	z index: 11
+	render style: image
+	image: {card_background()}
+	visible: { use_ocean()}
+	mask: imagemasks/voyager_card_color.png
 styles frame:
 	left: 0
 	top: 0

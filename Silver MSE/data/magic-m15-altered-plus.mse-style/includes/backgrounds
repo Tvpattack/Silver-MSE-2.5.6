@@ -146,13 +146,14 @@ pins_image          := { color_background(type: "pins"           , base_hybrid: 
 texture_background  := { color_background(type: "texture"        , base_hybrid: card_hybrid) }
 saga_background     := { color_background(type: "saga"           , base_hybrid: card_hybrid) }
 bookmark_background := { color_background(type: "bookmark"       , base_hybrid: card_hybrid) }
+ocean_background 	:= { color_background(type: "ocean"			 , base_hybrid: card_hybrid) }
 
 main_background := { 
 	if is_clear() 
 		or clear_tops() 
 		or use_porthole() 
-		or use_ocean() 
 		or use_styles() 
+		or use_ocean()
 			then "" 
 	else if is_fnm() 
 		then fnm_background() 

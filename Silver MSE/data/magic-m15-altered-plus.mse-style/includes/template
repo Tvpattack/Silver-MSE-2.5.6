@@ -67,6 +67,7 @@ base_template_prefix := [
     focus2: "cards/focus/"
     paradox: "cards/paradox/"
     paradoxpt: "cards/paradox/"
+	ocean: "cards/normal/"
 ]
 
 shifted_template_prefix := [
@@ -127,7 +128,8 @@ shifted_template_prefix := [
     pro: "modules/prototype/"
     paradox: "cards/paradox/"
     paradoxpt: "cards/paradox/"
-    ]
+	ocean: "cards/normal"
+]
 template_prefix := { 
     if type == "miracle" 
     and pure_snow() 
@@ -207,6 +209,7 @@ template_suffix := [
     texture: "texture.png"
     saga: "card.jpg"
     bookmark: "mark.png"
+	ocean: "card.jpg"
 ]
 dummy := {"dummy"}
 harder_script := [

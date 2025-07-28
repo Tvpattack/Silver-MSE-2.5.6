@@ -1,10 +1,9 @@
 pins:
 	left: 19
 	top: 21
-	width: {if use_pins() or use_ocean() then 338 else 0}
+	width: {if use_pins() then 338 else 0}
 	height: 465
 	render style: image
 	image: {pins_image()}
 	z index: 13
-	visible: {use_pins() or use_ocean()}
-	mask: { if use_ocean() then "imagemasks/pinlineframe-voyager.png" else "" }
+	visible: {use_pins()}
